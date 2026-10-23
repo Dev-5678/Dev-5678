@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 480" width="1000" height="480">
+<defs>
+  <!-- Background Carbon & Grid -->
+  <linearGradient id="bgCockpit" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#030508"/>
+    <stop offset="50%" stop-color="#070b14"/>
+    <stop offset="100%" stop-color="#04060a"/>
+  </linearGradient>
+
+  <!-- Glowing Embers & Hyper Cyan -->
+  <linearGradient id="emberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff4400"/>
+    <stop offset="50%" stop-color="#ff7700"/>
+    <stop offset="100%" stop-color="#ffaa00"/>
+  </linearGradient>
+  <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#00d4ff"/>
+    <stop offset="100%" stop-color="#00ffcc"/>
+  </linearGradient>
+  <linearGradient id="radarSweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ff5500" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#ff5500" stop-opacity="0"/>
+  </linearGradient>
+
+  <!-- Honeycomb Hex Grid Pattern -->
+  <pattern id="hexGrid" width="28" height="48.497" patternUnits="userSpaceOnUse">
+    <path d="M 14 0 L 28 8.08 L 28 24.25 L 14 32.33 L 0 24.25 L 0 8.08 Z M 14 48.5 L 28 40.42 L 28 24.25 L 14 32.33 L 0 24.25 L 0 40.42 Z" 
+          fill="none" stroke="#ff5500" stroke-width="0.7" stroke-opacity="0.04"/>
+  </pattern>
+
+  <radialGradient id="cockpitGlow" cx="680" cy="240" r="320" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#ff5500" stop-opacity="0.18"/>
+    <stop offset="100%" stop-color="#ff5500" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Glow Filter -->
+  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+    <feMerge>
+      <feMergeNode in="coloredBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+
+<style>
+  .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
+  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  
+  @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(485px); } }
+  @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
+  @keyframes pulseGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes targetPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.4; } }
+  
+  .scanline { animation: sweepLine 5.5s linear infinite; }
+  .blink { animation: blinkLed 1s infinite; }
+  .pulse { animation: pulseGlow 2s ease-in-out infinite; }
+</style>
+
+<!-- Canvas Base -->
+<rect width="1000" height="480" fill="url(#bgCockpit)"/>
+<rect width="1000" height="480" fill="url(#hexGrid)"/>
+<circle cx="680" cy="240" r="320" fill="url(#cockpitGlow)"/>
+
+<!-- Realtime Laser Scanline Sweep -->
+<rect class="scanline" width="1000" height="2" fill="#ff5500" opacity="0.35"/>
+
+<!-- Heavy Chamfered Mecha Hull Border -->
+<polygon points="34,10 966,10 990,34 990,446 966,470 34,470 10,446 10,34" 
+         fill="none" stroke="#ff5500" stroke-opacity="0.45" stroke-width="1.5"/>
+<polygon points="40,16 960,16 984,40 984,440 960,464 40,464 16,440 16,40" 
+         fill="none" stroke="#00d4ff" stroke-opacity="0.15" stroke-width="1"/>
+
+<!-- Corner Notches -->
+<path d="M 10 44 L 44 10 M 990 44 L 956 10 M 10 436 L 44 470 M 990 436 L 956 470" stroke="#ff5500" stroke-width="2"/>
+
+<!-- TOP AVIONICS CONTROL BAR -->
+<rect x="24" y="20" width="952" height="34" rx="4" fill="#070c16" stroke="#ffffff" stroke-opacity="0.08"/>
+
+<!-- Window Indicator Jewels -->
+<circle cx="42" cy="37" r="4.5" fill="#ef4444"/>
+<circle cx="58" cy="37" r="4.5" fill="#f59e0b"/>
+<circle cx="74" cy="37" r="4.5" fill="#10b981"/>
+
+<!-- Monospace Avionics Status Telemetry -->
+<text x="96" y="41" class="mono" font-size="10.5" fill="#94a3b8">
+  HUD_STATION: <tspan fill="#ffffff" font-weight="700">DEV_JANGID_01</tspan>
+  <tspan fill="#334155"> │ </tspan>SYS_CALLSIGN: <tspan fill="#ff7700" font-weight="700">AAI_ANS_RADAR_DEFENSE</tspan>
+  <tspan fill="#334155"> │ </tspan>UHF_BEACON: <tspan fill="#00d4ff" font-weight="700">433.920 MHz</tspan>
+</text>
+
+<!-- Top Right Live Status Pill -->
+<g transform="translate(830, 26)">
+  <rect width="136" height="22" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.4"/>
+  <circle cx="12" cy="11" r="3.5" fill="#10b981" class="blink"/>
+  <text x="24" y="15" class="mono" font-size="9.5" font-weight="800" fill="#34d399" letter-spacing="0.12em">ALL NODES GREEN</text>
+</g>
+
+<!-- ================= LEFT REGION: OPERATOR IDENTITY & CORE SPECS ================= -->
+<g transform="translate(42, 85)">
+  <!-- Sub-heading Tag -->
+  <g>
+    <polygon points="0,0 270,0 260,24 0,24" fill="#ff5500" fill-opacity="0.12" stroke="#ff5500" stroke-opacity="0.5"/>
+    <circle cx="12" cy="12" r="3" fill="#ff5500"/>
+    <text x="24" y="16" class="mono" font-size="10" font-weight="800" fill="#fed7aa" letter-spacing="0.15em">COMPUTER SCIENCE ENGINEER</text>
+  </g>
+
+  <!-- Big Display Name -->
+  <text x="0" y="82" class="display" font-size="56" fill="#ffffff" letter-spacing="-0.02em">DEV JANGID</text>
+
+  <!-- High-Tech Headline -->
+  <text x="0" y="116" class="display" font-size="17" fill="url(#emberGrad)" letter-spacing="0.02em">
+    DISTRIBUTED SYSTEMS • EDGE GATEWAYS • AVIONICS RADAR
+  </text>
+  
+  <text x="0" y="140" class="mono" font-size="12" fill="#94a3b8">
+    &gt; Architecting sub-2.8ms edge proxies, CRDT semilattices &amp; satellite telemetry.
+  </text>
+
+  <!-- Live Telemetry Stream Tape (Different from anyone else!) -->
+  <g transform="translate(0, 162)">
+    <rect width="450" height="28" rx="4" fill="#000000" fill-opacity="0.6" stroke="#00d4ff" stroke-opacity="0.3"/>
+    <text x="12" y="18" class="mono" font-size="10.5" fill="#00d4ff">
+      [UHF_RX: 0x4A 0xF2] <tspan fill="#10b981">SEC_JOIN: CONVERGED</tspan> <tspan fill="#ff7700">p99: 2.24ms</tspan>
+    </text>
+  </g>
+
+  <!-- 3 CIRCULAR AVIONICS SPEEDOMETER GAUGES (TOTALLY UNIQUE FEATURE) -->
+  <g transform="translate(0, 212)">
+    <!-- Gauge 1: Verified SLA 99.98% -->
+    <g transform="translate(50, 50)">
+      <circle r="42" fill="none" stroke="#1e293b" stroke-width="7"/>
+      <!-- 99.98% arc (circumference = 263.89, offset ~ 10) -->
+      <circle r="42" fill="none" stroke="#10b981" stroke-width="7" 
+              stroke-dasharray="264" stroke-dashoffset="15" stroke-linecap="round"
+              transform="rotate(-90)" filter="url(#neonGlow)"/>
+      <text x="0" y="-4" class="display" font-size="16" fill="#ffffff" text-anchor="middle">99.98%</text>
+      <text x="0" y="12" class="mono" font-size="8.5" fill="#10b981" text-anchor="middle" font-weight="700">AAI SLA</text>
+      <text x="0" y="58" class="mono" font-size="9" fill="#94a3b8" text-anchor="middle">RADAR UPTIME</text>
+    </g>
+
+    <!-- Gauge 2: p99 Latency < 2.8ms -->
+    <g transform="translate(190, 50)">
+      <circle r="42" fill="none" stroke="#1e293b" stroke-width="7"/>
+      <!-- Sub-2.8ms arc -->
+      <circle r="42" fill="none" stroke="#00d4ff" stroke-width="7" 
+              stroke-dasharray="264" stroke-dashoffset="40" stroke-linecap="round"
+              transform="rotate(-90)" filter="url(#neonGlow)"/>
+      <text x="0" y="-4" class="display" font-size="16" fill="#ffffff" text-anchor="middle">&lt; 2.8ms</text>
+      <text x="0" y="12" class="mono" font-size="8.5" fill="#00d4ff" text-anchor="middle" font-weight="700">EDGE p99</text>
+      <text x="0" y="58" class="mono" font-size="9" fill="#94a3b8" text-anchor="middle">HYPERROUTE</text>
+    </g>
+
+    <!-- Gauge 3: Verified Test Suite 100% -->
+    <g transform="translate(330, 50)">
+      <circle r="42" fill="none" stroke="#1e293b" stroke-width="7"/>
+      <!-- 100% arc -->
+      <circle r="42" fill="none" stroke="#ff5500" stroke-width="7" 
+              stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round"
+              transform="rotate(-90)" filter="url(#neonGlow)"/>
+      <text x="0" y="-4" class="display" font-size="16" fill="#ffffff" text-anchor="middle">72 / 72</text>
+      <text x="0" y="12" class="mono" font-size="8.5" fill="#ffaa00" text-anchor="middle" font-weight="700">100% PASS</text>
+      <text x="0" y="58" class="mono" font-size="9" fill="#94a3b8" text-anchor="middle">CI SUITES</text>
+    </g>
+  </g>
+
+  <!-- Navigation Action Pills (Stealth Chamfer) -->
+  <g transform="translate(0, 340)">
+    <!-- Pill 1 -->
+    <polygon points="10,0 100,0 90,26 0,26" fill="#090d16" stroke="#ff5500" stroke-width="1.2"/>
+    <text x="45" y="17" class="mono" font-size="10" font-weight="700" fill="#fed7aa" text-anchor="middle">PROJECTS</text>
+
+    <!-- Pill 2 -->
+    <polygon points="120,0 210,0 200,26 110,26" fill="#090d16" stroke="#00d4ff" stroke-width="1.2"/>
+    <text x="155" y="17" class="mono" font-size="10" font-weight="700" fill="#bae6fd" text-anchor="middle">SYSTEMS</text>
+
+    <!-- Pill 3 -->
+    <polygon points="230,0 320,0 310,26 220,26" fill="#090d16" stroke="#10b981" stroke-width="1.2"/>
+    <text x="265" y="17" class="mono" font-size="10" font-weight="700" fill="#a7f3d0" text-anchor="middle">AVIONICS</text>
+
+    <!-- Pill 4 -->
+    <polygon points="340,0 430,0 420,26 330,26" fill="#090d16" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="375" y="17" class="mono" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">CONTACT</text>
+  </g>
+</g>
+
+<!-- ================= RIGHT REGION: 360° LIVE AIR TRAFFIC RADAR SCOPE ================= -->
+<g transform="translate(730, 255)">
+  <!-- Outer Azimuth Ring with Degrees -->
+  <circle r="175" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+  <circle r="165" fill="#050a14" stroke="#ff5500" stroke-opacity="0.4" stroke-width="1.5"/>
+
+  <!-- Compass Cardinal Ticks -->
+  <line x1="0" y1="-165" x2="0" y2="-152" stroke="#ff5500" stroke-width="2"/>
+  <text x="0" y="-138" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">000° N</text>
+
+  <line x1="165" y1="0" x2="152" y2="0" stroke="#ff5500" stroke-width="2"/>
+  <text x="136" y="4" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">090° E</text>
+
+  <line x1="0" y1="165" x2="0" y2="152" stroke="#ff5500" stroke-width="2"/>
+  <text x="0" y="148" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">180° S</text>
+
+  <line x1="-165" y1="0" x2="-152" y2="0" stroke="#ff5500" stroke-width="2"/>
+  <text x="-136" y="4" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">270° W</text>
+
+  <!-- Range Rings (10 NM, 25 NM, 50 NM) -->
+  <circle r="125" fill="none" stroke="#ff5500" stroke-opacity="0.2" stroke-dasharray="4 4"/>
+  <circle r="85" fill="none" stroke="#ff5500" stroke-opacity="0.25" stroke-dasharray="2 4"/>
+  <circle r="45" fill="none" stroke="#00d4ff" stroke-opacity="0.3"/>
+  <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+
+  <!-- Crosshairs -->
+  <line x1="-165" y1="0" x2="165" y2="0" stroke="#ffffff" stroke-opacity="0.08"/>
+  <line x1="0" y1="-165" x2="0" y2="165" stroke="#ffffff" stroke-opacity="0.08"/>
+
+  <!-- CONTINUOUS 360° ROTATING RADAR SWEEP BEAM -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite"/>
+    <path d="M 0 0 L 165 0 A 165 165 0 0 0 116 -116 Z" fill="url(#radarSweepGrad)"/>
+    <line x1="0" y1="0" x2="165" y2="0" stroke="#ff5500" stroke-width="2" filter="url(#neonGlow)"/>
+  </g>
+
+  <!-- LIVE FLIGHT / SATELLITE TARGET VECTORS (ILLUMINATED BY RADAR) -->
+  <!-- Target 1: AAI Primary Radar Northern Region -->
+  <g transform="translate(-70, -65)">
+    <circle cx="0" cy="0" r="4" fill="#00ffcc" class="blink"/>
+    <circle cx="0" cy="0" r="9" fill="none" stroke="#00ffcc" stroke-opacity="0.5"/>
+    <line x1="0" y1="0" x2="18" y2="-12" stroke="#00ffcc" stroke-width="1.2"/>
+    <text x="22" y="-10" class="mono" font-size="9" font-weight="700" fill="#00ffcc">AAI-RADAR-NR</text>
+    <text x="22" y="2" class="mono" font-size="8" fill="#94a3b8">FL320 · 99.98%</text>
+  </g>
+
+  <!-- Target 2: ISL CanSat Satellite UHF Telemetry -->
+  <g transform="translate(60, 50)">
+    <circle cx="0" cy="0" r="4" fill="#ff5500" class="blink"/>
+    <polygon points="-5,-5 5,-5 0,6" fill="#ffaa00"/>
+    <line x1="0" y1="0" x2="16" y2="14" stroke="#ff5500" stroke-width="1.2"/>
+    <text x="20" y="16" class="mono" font-size="9" font-weight="700" fill="#ffaa00">ISL-CANSAT-1</text>
+    <text x="20" y="28" class="mono" font-size="8" fill="#94a3b8">433.92MHz · UHF</text>
+  </g>
+
+  <!-- Target 3: HyperRoute Gateway Cluster Node -->
+  <g transform="translate(50, -90)">
+    <rect x="-3" y="-3" width="6" height="6" fill="#38bdf8" class="blink"/>
+    <line x1="0" y1="0" x2="-14" y2="-10" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="-16" y="-14" class="mono" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="end">EDGE-HYPER-01</text>
+    <text x="-16" y="-3" class="mono" font-size="8" fill="#94a3b8" text-anchor="end">p99: 2.1ms</text>
+  </g>
+</g>
+
+<!-- BOTTOM TICKER STRIP -->
+<line x1="24" y1="452" x2="976" y2="452" stroke="#ff5500" stroke-opacity="0.3"/>
+<text x="32" y="466" class="mono" font-size="9.5" fill="#94a3b8">
+  PRIMARY FLIGHT RADAR // <tspan fill="#10b981">VHF BRIDGE STABLE</tspan> // <tspan fill="#38bdf8">CRDT SEC SYNC ACTIVE</tspan> // <tspan fill="#ff7700">AVX2 SIMD ENABLED</tspan>
+</text>
+<text x="968" y="466" class="mono" font-size="9.5" fill="#38bdf8" text-anchor="end">
+  OPERATOR STATUS: VERIFIED
+</text>
+</svg>

@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+  <linearGradient id="bgAudio" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#030508"/>
+    <stop offset="50%" stop-color="#070b14"/>
+    <stop offset="100%" stop-color="#04060a"/>
+  </linearGradient>
+
+  <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#00d4ff"/>
+    <stop offset="50%" stop-color="#ff7700"/>
+    <stop offset="100%" stop-color="#10b981"/>
+  </linearGradient>
+
+  <pattern id="gridAud" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#10b981" stroke-width="0.7" stroke-opacity="0.04"/>
+  </pattern>
+
+  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+    <feMerge>
+      <feMergeNode in="coloredBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+
+<style>
+  .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
+  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  
+  @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(425px); } }
+  @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
+  @keyframes rippleCircle { 0% { r: 10; opacity: 1; } 100% { r: 65; opacity: 0; } }
+  
+  .scanline { animation: sweepLine 5s linear infinite; }
+  .blink { animation: blinkLed 1s infinite; }
+  .ripple { animation: rippleCircle 2.5s ease-out infinite; }
+</style>
+
+<!-- Canvas Base -->
+<rect width="1000" height="420" fill="url(#bgAudio)"/>
+<rect width="1000" height="420" fill="url(#gridAud)"/>
+<rect class="scanline" width="1000" height="2" fill="#10b981" opacity="0.3"/>
+
+<!-- Hull Frame -->
+<polygon points="34,10 966,10 990,34 990,386 966,410 34,410 10,386 10,34" 
+         fill="none" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+
+<!-- Header Section -->
+<g transform="translate(42, 42)">
+  <text class="mono" font-size="11" letter-spacing="2" fill="#10b981" font-weight="700">// 03. SPATIAL AUDIO ACOUSTICS &amp; WEBRTC OSCILLOSCOPE</text>
+  <text class="display" font-size="28" fill="#ffffff" y="32">PROXISPEAK REAL-TIME FREQUENCY &amp; HRTF ENGINE</text>
+  <text class="mono" font-size="12" fill="#94a3b8" y="54">Inverse-square Euclidean volume falloff with dynamic directional stereo panning under 24ms latency.</text>
+</g>
+
+<!-- TOP RIGHT METRIC PILL -->
+<g transform="translate(790, 36)">
+  <rect width="168" height="24" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.5"/>
+  <circle cx="12" cy="12" r="3.5" fill="#10b981" class="blink"/>
+  <text x="24" y="16" class="mono" font-size="10" font-weight="700" fill="#a7f3d0">AUDIO PIPELINE: &lt; 24ms</text>
+</g>
+
+<!-- LEFT: OSCILLOSCOPE DYNAMIC AUDIO WAVEFORM (TOTALLY UNIQUE ON GITHUB) -->
+<g transform="translate(42, 120)">
+  <rect width="520" height="255" rx="8" fill="#040810" stroke="#10b981" stroke-opacity="0.35" stroke-width="1.2"/>
+  
+  <!-- Oscilloscope Grid Lines -->
+  <line x1="20" y1="127" x2="500" y2="127" stroke="#10b981" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+  <line x1="260" y1="20" x2="260" y2="235" stroke="#10b981" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+  
+  <text x="20" y="24" class="mono" font-size="9.5" fill="#10b981" font-weight="700">OSCILLOSCOPE // REAL-TIME EUCLIDEAN FALLOFF ATTENUATION</text>
+  
+  <!-- ANIMATED UNDULATING SINE AUDIO WAVEFORM -->
+  <path fill="none" stroke="url(#waveGrad)" stroke-width="3" filter="url(#neonGlow)">
+    <animate attributeName="d" 
+      values="
+        M 20 127 Q 80 50, 140 127 T 260 127 T 380 127 T 500 127;
+        M 20 127 Q 80 190, 140 127 T 260 127 T 380 127 T 500 127;
+        M 20 127 Q 80 40, 140 127 T 260 127 T 380 127 T 500 127;
+        M 20 127 Q 80 170, 140 127 T 260 127 T 380 127 T 500 127;
+        M 20 127 Q 80 50, 140 127 T 260 127 T 380 127 T 500 127"
+      dur="3.2s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Secondary High-Frequency Harmonic Wave -->
+  <path fill="none" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6">
+    <animate attributeName="d" 
+      values="
+        M 20 127 Q 50 80, 80 127 T 140 127 T 200 127 T 260 127 T 320 127 T 380 127 T 440 127 T 500 127;
+        M 20 127 Q 50 160, 80 127 T 140 127 T 200 127 T 260 127 T 320 127 T 380 127 T 440 127 T 500 127;
+        M 20 127 Q 50 80, 80 127 T 140 127 T 200 127 T 260 127 T 320 127 T 380 127 T 440 127 T 500 127"
+      dur="1.8s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Formula Callout -->
+  <rect x="20" y="215" width="480" height="28" rx="4" fill="#000000" fill-opacity="0.6"/>
+  <text x="30" y="233" class="mono" font-size="9.5" fill="#a7f3d0">
+    GAIN EQUATION: <tspan fill="#ffffff" font-weight="700">A(d) = A₀ · min(1, d_ref / (d_ref + rolloff · (d - d_ref)))</tspan>
+  </text>
+</g>
+
+<!-- RIGHT: 2D SPATIAL RADAR & WEBAUDIO NODES -->
+<g transform="translate(580, 120)">
+  <rect width="378" height="255" rx="8" fill="#040810" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1.2"/>
+  
+  <g transform="translate(18, 20)">
+    <text class="mono" font-size="9.5" fill="#00d4ff" font-weight="700">WEB AUDIO GRAPH NODE PIPELINE</text>
+    
+    <!-- Audio Graph Nodes -->
+    <g transform="translate(0, 24)">
+      <!-- Node 1: AudioContext -->
+      <rect width="90" height="38" rx="4" fill="#1e293b"/>
+      <text x="45" y="16" class="mono" font-size="8" fill="#94a3b8" text-anchor="middle">SOURCE</text>
+      <text x="45" y="30" class="mono" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">WebRTC Stream</text>
+
+      <line x1="90" y1="19" x2="114" y2="19" stroke="#00d4ff" stroke-width="1.5"/>
+
+      <!-- Node 2: GainNode -->
+      <rect x="114" y="0" width="105" height="38" rx="4" fill="#2d1202" stroke="#ff5500" stroke-opacity="0.6"/>
+      <text x="166" y="16" class="mono" font-size="8" fill="#fed7aa" text-anchor="middle">GAIN NODE</text>
+      <text x="166" y="30" class="mono" font-size="8.5" font-weight="700" fill="#ff7700" text-anchor="middle">1/d² Falloff</text>
+
+      <line x1="219" y1="19" x2="243" y2="19" stroke="#00d4ff" stroke-width="1.5"/>
+
+      <!-- Node 3: StereoPannerNode -->
+      <rect x="243" y="0" width="95" height="38" rx="4" fill="#022a1f" stroke="#10b981" stroke-opacity="0.6"/>
+      <text x="290" y="16" class="mono" font-size="8" fill="#a7f3d0" text-anchor="middle">PANNER NODE</text>
+      <text x="290" y="30" class="mono" font-size="8.5" font-weight="700" fill="#10b981" text-anchor="middle">HRTF Stereo</text>
+    </g>
+
+    <!-- 2D Spatial Positional Canvas -->
+    <g transform="translate(170, 140)">
+      <!-- Acoustic Sound Waves Radiating -->
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#10b981" stroke-width="1.5" class="ripple"/>
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#00d4ff" stroke-width="1.5" class="ripple" style="animation-delay: 1.25s"/>
+      
+      <!-- Center Listener Node -->
+      <circle cx="0" cy="0" r="6" fill="#10b981"/>
+      <line x1="0" y1="0" x2="0" y2="-18" stroke="#ffffff" stroke-width="2"/>
+      <text x="0" y="24" class="mono" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">LISTENER (YOU)</text>
+
+      <!-- Remote Sound Emitters -->
+      <circle cx="-90" cy="-30" r="4" fill="#ff5500" class="blink"/>
+      <text x="-90" y="-38" class="mono" font-size="8" fill="#fed7aa" text-anchor="middle">PEER_01 (-3dB)</text>
+
+      <circle cx="85" cy="25" r="4" fill="#00d4ff" class="blink"/>
+      <text x="85" y="38" class="mono" font-size="8" fill="#bae6fd" text-anchor="middle">PEER_02 (-8dB)</text>
+    </g>
+  </g>
+</g>
+</svg>

@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 580" width="1000" height="580">
+<defs>
+  <linearGradient id="bgMesh" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#030508"/>
+    <stop offset="50%" stop-color="#070b14"/>
+    <stop offset="100%" stop-color="#04060a"/>
+  </linearGradient>
+
+  <linearGradient id="emberG" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff4400"/>
+    <stop offset="100%" stop-color="#ffaa00"/>
+  </linearGradient>
+  <linearGradient id="cyanG" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#00d4ff"/>
+    <stop offset="100%" stop-color="#00ffcc"/>
+  </linearGradient>
+  <linearGradient id="purpleG" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#a855f7"/>
+    <stop offset="100%" stop-color="#c084fc"/>
+  </linearGradient>
+
+  <pattern id="gridMesh" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#00d4ff" stroke-width="0.7" stroke-opacity="0.04"/>
+  </pattern>
+
+  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+    <feMerge>
+      <feMergeNode in="coloredBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+
+<style>
+  .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
+  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  
+  @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(585px); } }
+  @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
+  
+  .scanline { animation: sweepLine 6s linear infinite; }
+  .blink { animation: blinkLed 1s infinite; }
+</style>
+
+<!-- Canvas Base -->
+<rect width="1000" height="580" fill="url(#bgMesh)"/>
+<rect width="1000" height="580" fill="url(#gridMesh)"/>
+<rect class="scanline" width="1000" height="2" fill="#00d4ff" opacity="0.3"/>
+
+<!-- Hull Frame -->
+<polygon points="34,10 966,10 990,34 990,546 966,570 34,570 10,546 10,34" 
+         fill="none" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1.5"/>
+
+<!-- Header Section -->
+<g transform="translate(42, 42)">
+  <text class="mono" font-size="11" letter-spacing="2" fill="#00d4ff" font-weight="700">// 05. DISTRIBUTED STATE ARCHITECTURE &amp; TOPOLOGY</text>
+  <text class="display" font-size="28" fill="#ffffff" y="32">JOIN-SEMILATTICE CRDTS &amp; KAHN DAG SCHEDULER</text>
+  <text class="mono" font-size="12" fill="#94a3b8" y="54">Strong Eventual Consistency (SEC) under network partitions and zero cyclic deadlock execution.</text>
+</g>
+
+<!-- TOP RIGHT CAP AP PILL -->
+<g transform="translate(770, 36)">
+  <rect width="188" height="24" rx="4" fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-opacity="0.5"/>
+  <circle cx="12" cy="12" r="3.5" fill="#00ffcc" class="blink"/>
+  <text x="24" y="16" class="mono" font-size="10" font-weight="700" fill="#00ffcc">CAP: AP PARTITION-TOLERANT</text>
+</g>
+
+<!-- LEFT: DECENTRALIZED MESH TOPOLOGY WITH ANIMATED PACKET PULSES -->
+<g transform="translate(42, 120)">
+  <rect width="440" height="420" rx="8" fill="#040810" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1.2"/>
+  
+  <g transform="translate(20, 20)">
+    <text class="mono" font-size="10" fill="#00ffcc" font-weight="700">NEXUSCRDT GOSSIP MESH &amp; LWW SEMILATTICE</text>
+
+    <!-- Mesh Graph Connections with Animated Packets -->
+    <g transform="translate(200, 150)">
+      <!-- Mesh Lines -->
+      <line x1="-120" y1="60" x2="120" y2="60" stroke="#00d4ff" stroke-opacity="0.2" stroke-width="2"/>
+      <line x1="-120" y1="60" x2="0" y2="-90" stroke="#00d4ff" stroke-opacity="0.2" stroke-width="2"/>
+      <line x1="120" y1="60" x2="0" y2="-90" stroke="#00d4ff" stroke-opacity="0.2" stroke-width="2"/>
+
+      <!-- Animated Traveling Sync Pulses along Edges -->
+      <path d="M -120 60 L 120 60" stroke="#ff5500" stroke-width="3" fill="none" stroke-dasharray="10 40">
+        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="1.5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M -120 60 L 0 -90" stroke="#00d4ff" stroke-width="3" fill="none" stroke-dasharray="10 40">
+        <animate attributeName="stroke-dashoffset" from="0" to="100" dur="1.5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M 0 -90 L 120 60" stroke="#10b981" stroke-width="3" fill="none" stroke-dasharray="10 40">
+        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="1.5s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Node A: US-East Edge Proxy -->
+      <g transform="translate(0, -90)">
+        <circle r="36" fill="#070c16" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)"/>
+        <text x="0" y="-6" class="mono" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">NODE_A</text>
+        <text x="0" y="8" class="mono" font-size="8" fill="#00d4ff" text-anchor="middle">US-EAST</text>
+        <circle cx="0" cy="18" r="3" fill="#10b981"/>
+      </g>
+
+      <!-- Node B: EU-Central Edge Proxy -->
+      <g transform="translate(-120, 60)">
+        <circle r="36" fill="#070c16" stroke="#ff5500" stroke-width="2" filter="url(#neonGlow)"/>
+        <text x="0" y="-6" class="mono" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">NODE_B</text>
+        <text x="0" y="8" class="mono" font-size="8" fill="#ff7700" text-anchor="middle">EU-CENTRAL</text>
+        <circle cx="0" cy="18" r="3" fill="#10b981"/>
+      </g>
+
+      <!-- Node C: AP-South Edge Proxy (Jaipur) -->
+      <g transform="translate(120, 60)">
+        <circle r="36" fill="#070c16" stroke="#10b981" stroke-width="2" filter="url(#neonGlow)"/>
+        <text x="0" y="-6" class="mono" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">NODE_C</text>
+        <text x="0" y="8" class="mono" font-size="8" fill="#10b981" text-anchor="middle">AP-SOUTH</text>
+        <circle cx="0" cy="18" r="3" fill="#10b981"/>
+      </g>
+    </g>
+
+    <!-- Mathematical Proof Box -->
+    <g transform="translate(0, 275)">
+      <rect width="400" height="95" rx="6" fill="#020813" stroke="#ffffff" stroke-opacity="0.08"/>
+      <g transform="translate(14, 16)">
+        <text x="0" y="0" class="mono" font-size="9.5" font-weight="700" fill="#fed7aa">MATHEMATICAL CONVERGENCE PROOF (JOIN-SEMILATTICE):</text>
+        <text x="0" y="20" class="mono" font-size="10.5" fill="#00ffcc">x ⊔ y = y ⊔ x  (Commutative)</text>
+        <text x="0" y="38" class="mono" font-size="10.5" fill="#00ffcc">(x ⊔ y) ⊔ z = x ⊔ (y ⊔ z)  (Associative)</text>
+        <text x="0" y="56" class="mono" font-size="10.5" fill="#00ffcc">x ⊔ x = x  (Idempotent · Zero Duplicate Side-Effects)</text>
+        <text x="0" y="74" class="mono" font-size="9.5" fill="#94a3b8">Delta state compression &lt; 48 Bytes · Tombstone garbage collection.</text>
+      </g>
+    </g>
+  </g>
+</g>
+
+<!-- RIGHT: AGENTFORGE KAHN DAG TOPOLOGICAL SCHEDULER -->
+<g transform="translate(506, 120)">
+  <rect width="452" height="420" rx="8" fill="#040810" stroke="#a855f7" stroke-opacity="0.35" stroke-width="1.2"/>
+  
+  <g transform="translate(20, 20)">
+    <text class="mono" font-size="10" fill="#e9d5ff" font-weight="700">AGENTFORGE KAHN DAG TOPOLOGICAL WAVE EXECUTION</text>
+
+    <!-- Wave 01: In-Degree Zero Ingress -->
+    <g transform="translate(0, 32)">
+      <rect width="412" height="80" rx="6" fill="#0d0818" stroke="#a855f7" stroke-opacity="0.4"/>
+      <g transform="translate(14, 16)">
+        <rect width="70" height="18" rx="3" fill="#a855f7" fill-opacity="0.2"/>
+        <text x="35" y="13" class="mono" font-size="8.5" font-weight="700" fill="#e9d5ff" text-anchor="middle">WAVE 01</text>
+        <text x="80" y="14" class="display" font-size="13" fill="#ffffff">Ingress Extraction &amp; Dependency Resolution</text>
+        <text x="0" y="38" class="mono" font-size="10" fill="#cbd5e1">• Computes initial task nodes with in-degree = 0 across DAG graph.</text>
+        <text x="0" y="54" class="mono" font-size="10" fill="#a855f7">✓ 4 parallel workers spawned concurrently (zero thread lock contention).</text>
+      </g>
+    </g>
+
+    <!-- Downward Arrow Flow -->
+    <g transform="translate(206, 118)">
+      <line x1="0" y1="0" x2="0" y2="18" stroke="#a855f7" stroke-width="2" stroke-dasharray="3 3"/>
+      <polygon points="-4,18 4,18 0,24" fill="#a855f7"/>
+    </g>
+
+    <!-- Wave 02: Parallel Worker Execution -->
+    <g transform="translate(0, 146)">
+      <rect width="412" height="80" rx="6" fill="#0d0818" stroke="#38bdf8" stroke-opacity="0.4"/>
+      <g transform="translate(14, 16)">
+        <rect width="70" height="18" rx="3" fill="#00d4ff" fill-opacity="0.2"/>
+        <text x="35" y="13" class="mono" font-size="8.5" font-weight="700" fill="#00ffcc" text-anchor="middle">WAVE 02</text>
+        <text x="80" y="14" class="display" font-size="13" fill="#ffffff">Vectorized Parallel Computation &amp; CAS Mutex</text>
+        <text x="0" y="38" class="mono" font-size="10" fill="#cbd5e1">• Memory isolation: tool sandboxes executed with zero dynamic leaks.</text>
+        <text x="0" y="54" class="mono" font-size="10" fill="#00d4ff">✓ O(V + E) validation: graph checked for cyclic deadlocks before dispatch.</text>
+      </g>
+    </g>
+
+    <!-- Downward Arrow Flow -->
+    <g transform="translate(206, 232)">
+      <line x1="0" y1="0" x2="0" y2="18" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3"/>
+      <polygon points="-4,18 4,18 0,24" fill="#10b981"/>
+    </g>
+
+    <!-- Wave 03: Sink & State Convergence -->
+    <g transform="translate(0, 260)">
+      <rect width="412" height="80" rx="6" fill="#0d0818" stroke="#10b981" stroke-opacity="0.4"/>
+      <g transform="translate(14, 16)">
+        <rect width="70" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
+        <text x="35" y="13" class="mono" font-size="8.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">WAVE 03</text>
+        <text x="80" y="14" class="display" font-size="13" fill="#ffffff">State Convergence &amp; Prometheus Telemetry</text>
+        <text x="0" y="38" class="mono" font-size="10" fill="#cbd5e1">• Commits state deltas to NexusCRDT semilattice with monotonic clock.</text>
+        <text x="0" y="54" class="mono" font-size="10" fill="#10b981">✓ Emits OpenMetrics Prometheus spans with sub-millisecond trace headers.</text>
+      </g>
+    </g>
+
+    <!-- Bottom Status Note -->
+    <g transform="translate(0, 355)">
+      <rect width="412" height="30" rx="4" fill="#000000" fill-opacity="0.6"/>
+      <text x="12" y="19" class="mono" font-size="9.5" fill="#a7f3d0">
+        DEADLOCK GUARANTEE: <tspan fill="#ffffff" font-weight="700">Strict Kahn's In-Degree Reduction (Zero Cyclic Halts)</tspan>
+      </text>
+    </g>
+  </g>
+</g>
+</svg>

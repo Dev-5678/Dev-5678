@@ -1,0 +1,122 @@
+<svg width="880" height="320" viewBox="0 0 880 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080d"/>
+      <stop offset="50%" stop-color="#0a0d14"/>
+      <stop offset="100%" stop-color="#07090e"/>
+    </linearGradient>
+    <linearGradient id="emberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fc6b2f"/>
+      <stop offset="50%" stop-color="#ff8c42"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <radialGradient id="emberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fc6b2f" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#fc6b2f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyanGlow" cx="90%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <style>
+    .mono { font-family: 'SF Pro Mono', 'Cascadia Code', 'Fira Code', Menlo, Consolas, monospace; }
+    .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .title { font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; }
+    .badge-text { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .live-dot { animation: pulse-dot 2s infinite ease-in-out; }
+  </style>
+
+  <!-- Container Box -->
+  <rect width="880" height="320" rx="16" fill="url(#bgGrad)"/>
+  <rect width="880" height="320" rx="16" fill="url(#grid)"/>
+
+  <!-- Ambient Glows -->
+  <circle cx="200" cy="160" r="260" fill="url(#emberGlow)"/>
+  <circle cx="800" cy="60" r="200" fill="url(#cyanGlow)"/>
+
+  <!-- Outer Hairline Border -->
+  <rect x="1" y="1" width="878" height="318" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
+  <line x1="0" y1="319" x2="880" y2="319" stroke="url(#emberGrad)" stroke-width="2"/>
+
+  <!-- Top Terminal Bar -->
+  <rect x="1" y="1" width="878" height="42" rx="15" fill="#000000" fill-opacity="0.45"/>
+  <line x1="1" y1="43" x2="879" y2="43" stroke="#ffffff" stroke-opacity="0.08"/>
+
+  <!-- Window Dots -->
+  <circle cx="28" cy="22" r="5" fill="#ff5f56"/>
+  <circle cx="44" cy="22" r="5" fill="#ffbd2e"/>
+  <circle cx="60" cy="22" r="5" fill="#27c93f"/>
+
+  <!-- Terminal Commandline -->
+  <text x="88" y="26" class="mono" font-size="11" fill="#71717a">dev@jangid:~$ <tspan fill="#e4e4e7">./initialize_systems_profile.sh</tspan> <tspan fill="#fc6b2f">--role="Systems Architect"</tspan> <tspan fill="#10b981">--status=PRODUCTION_READY</tspan></text>
+
+  <!-- Status Chip Top Right -->
+  <g transform="translate(734, 13)">
+    <rect width="122" height="20" rx="10" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.35"/>
+    <circle cx="12" cy="10" r="3.5" fill="#34d399" class="live-dot"/>
+    <text x="22" y="14" class="mono" font-size="9" font-weight="700" fill="#34d399" letter-spacing="0.08em">NODE ONLINE</text>
+  </g>
+
+  <!-- Main Hero Block -->
+  <g transform="translate(48, 80)">
+    <!-- Sub-badge -->
+    <rect x="0" y="0" width="220" height="22" rx="11" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.15"/>
+    <circle cx="12" cy="11" r="3" fill="#fc6b2f"/>
+    <text x="24" y="15" class="mono" font-size="10" font-weight="700" fill="#fed7aa" letter-spacing="0.12em">DISTRIBUTED COMPUTING &amp; CS</text>
+
+    <!-- Main Title -->
+    <text x="0" y="66" class="sans title" font-size="44" fill="#ffffff">DEV JANGID</text>
+
+    <!-- Subtitle -->
+    <text x="0" y="96" class="mono" font-size="14" font-weight="600" fill="#a1a1aa" letter-spacing="0.06em">
+      Computer Science Engineer <tspan fill="#fc6b2f">//</tspan> Distributed Systems &amp; Low-Latency Architecture
+    </text>
+
+    <!-- Core Specialization Pills -->
+    <g transform="translate(0, 116)">
+      <!-- Pill 1: CRDTs -->
+      <rect x="0" y="0" width="124" height="24" rx="6" fill="#06080d" stroke="#38bdf8" stroke-opacity="0.4"/>
+      <text x="10" y="16" class="mono badge-text" fill="#7dd3fc">NexusCRDT Engine</text>
+
+      <!-- Pill 2: DAG Schedulers -->
+      <rect x="132" y="0" width="138" height="24" rx="6" fill="#06080d" stroke="#a855f7" stroke-opacity="0.4"/>
+      <text x="142" y="16" class="mono badge-text" fill="#d8b4fe">AgentForge DAG</text>
+
+      <!-- Pill 3: Edge Gateway -->
+      <rect x="278" y="0" width="136" height="24" rx="6" fill="#06080d" stroke="#10b981" stroke-opacity="0.4"/>
+      <text x="288" y="16" class="mono badge-text" fill="#6ee7b7">HyperRoute Proxy</text>
+
+      <!-- Pill 4: Spatial Audio -->
+      <rect x="422" y="0" width="144" height="24" rx="6" fill="#06080d" stroke="#fc6b2f" stroke-opacity="0.4"/>
+      <text x="432" y="16" class="mono badge-text" fill="#fdba74">ProxiSpeak Audio</text>
+
+      <!-- Pill 5: Civil Aviation & Aerospace -->
+      <rect x="574" y="0" width="170" height="24" rx="6" fill="#06080d" stroke="#eab308" stroke-opacity="0.4"/>
+      <text x="584" y="16" class="mono badge-text" fill="#fde047">AAI &amp; ISL Flight Systems</text>
+    </g>
+  </g>
+
+  <!-- Bottom Telemetry HUD Bar -->
+  <g transform="translate(48, 268)">
+    <line x1="0" y1="0" x2="784" y2="0" stroke="#ffffff" stroke-opacity="0.08"/>
+    
+    <!-- Item 1 -->
+    <text x="0" y="24" class="mono" font-size="11" fill="#71717a">CORE STACK: <tspan fill="#ffffff" font-weight="700">C++20 · TypeScript · Python · Go · WebSockets</tspan></text>
+
+    <!-- Item 2 -->
+    <text x="430" y="24" class="mono" font-size="11" fill="#71717a">INFRASTRUCTURE: <tspan fill="#38bdf8" font-weight="700">bom1 Anycast · Vercel Edge</tspan></text>
+
+    <!-- Item 3 -->
+    <text x="696" y="24" class="mono" font-size="11" fill="#71717a">VERIFICATION: <tspan fill="#10b981" font-weight="700">100% CI PASS</tspan></text>
+  </g>
+</svg>

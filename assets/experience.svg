@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 530" width="1000" height="530">
+<defs>
+  <linearGradient id="bgLog" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#030508"/>
+    <stop offset="50%" stop-color="#070b14"/>
+    <stop offset="100%" stop-color="#04060a"/>
+  </linearGradient>
+
+  <linearGradient id="emberG" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff4400"/>
+    <stop offset="100%" stop-color="#ffaa00"/>
+  </linearGradient>
+  <linearGradient id="cyanG" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#00d4ff"/>
+    <stop offset="100%" stop-color="#00ffcc"/>
+  </linearGradient>
+
+  <pattern id="gridLog" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#10b981" stroke-width="0.7" stroke-opacity="0.04"/>
+  </pattern>
+
+  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+    <feMerge>
+      <feMergeNode in="coloredBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+
+<style>
+  .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
+  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  
+  @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(535px); } }
+  @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
+  
+  .scanline { animation: sweepLine 6s linear infinite; }
+  .blink { animation: blinkLed 1s infinite; }
+</style>
+
+<!-- Canvas Base -->
+<rect width="1000" height="530" fill="url(#bgLog)"/>
+<rect width="1000" height="530" fill="url(#gridLog)"/>
+<rect class="scanline" width="1000" height="2" fill="#10b981" opacity="0.3"/>
+
+<!-- Hull Frame -->
+<polygon points="34,10 966,10 990,34 990,496 966,520 34,520 10,496 10,34" 
+         fill="none" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+
+<!-- Header Section -->
+<g transform="translate(42, 42)">
+  <text class="mono" font-size="11" letter-spacing="2" fill="#10b981" font-weight="700">// 07. AVIONICS FLIGHT LOG &amp; MILESTONES</text>
+  <text class="display" font-size="28" fill="#ffffff" y="32">CHRONOLOGICAL PRODUCTION ENGINEERING TRACK RECORD</text>
+  <text class="mono" font-size="12" fill="#94a3b8" y="54">Air Navigation Services flight radar defense, satellite radio research &amp; systems academia.</text>
+</g>
+
+<!-- TOP RIGHT DISPATCH STATUS -->
+<g transform="translate(770, 36)">
+  <rect width="188" height="24" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.5"/>
+  <circle cx="12" cy="12" r="3.5" fill="#10b981" class="blink"/>
+  <text x="24" y="16" class="mono" font-size="10" font-weight="700" fill="#a7f3d0">ALL LOGS COMMITTED</text>
+</g>
+
+<!-- FLIGHT LOG ENTRIES -->
+<!-- ENTRY 01: Airports Authority of India -->
+<g transform="translate(42, 120)">
+  <polygon points="16,0 916,0 916,105 900,121 0,121 0,16" fill="#070c16" stroke="#00d4ff" stroke-opacity="0.5" stroke-width="1.2"/>
+  <g transform="translate(20, 16)">
+    <!-- Log Number & Callsign -->
+    <rect width="70" height="20" rx="3" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-opacity="0.4"/>
+    <text x="35" y="14" class="mono" font-size="8.5" font-weight="700" fill="#00ffcc" text-anchor="middle">LOG 01</text>
+    <rect x="78" width="112" height="20" rx="3" fill="#1e293b"/>
+    <text x="134" y="14" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="middle">ICAO: VIDP [DEL]</text>
+    <rect x="198" width="138" height="20" rx="3" fill="#10b981" fill-opacity="0.12"/>
+    <text x="267" y="14" class="mono" font-size="8.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">FL320 ANS RADAR</text>
+
+    <text x="800" y="15" class="mono" font-size="10" font-weight="700" fill="#00d4ff">JUL 2024 – AUG 2024</text>
+
+    <text x="0" y="44" class="display" font-size="16" fill="#ffffff">Airports Authority of India (Northern Region HQ)</text>
+    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#00d4ff">CNS/ATM Division · Flight Radar Network Segregation Intern · New Delhi, India</text>
+    <text x="0" y="82" class="mono" font-size="10.5" fill="#cbd5e1">• Segregated Northern Region administrative network from mission-critical Air Navigation Services (ANS) radar datastreams.</text>
+    <text x="0" y="98" class="mono" font-size="10.5" fill="#10b981">✓ Zero broadcast packet loops achieved across VHF communication bridges under 99.98% operational uptime SLA.</text>
+  </g>
+</g>
+
+<!-- ENTRY 02: India Space Lab -->
+<g transform="translate(42, 252)">
+  <polygon points="16,0 916,0 916,105 900,121 0,121 0,16" fill="#070c16" stroke="#ff5500" stroke-opacity="0.5" stroke-width="1.2"/>
+  <g transform="translate(20, 16)">
+    <!-- Log Number & Callsign -->
+    <rect width="70" height="20" rx="3" fill="#ff5500" fill-opacity="0.15" stroke="#ff5500" stroke-opacity="0.4"/>
+    <text x="35" y="14" class="mono" font-size="8.5" font-weight="700" fill="#fed7aa" text-anchor="middle">LOG 02</text>
+    <rect x="78" width="112" height="20" rx="3" fill="#1e293b"/>
+    <text x="134" y="14" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="middle">ICAO: VOBL [BLR]</text>
+    <rect x="198" width="138" height="20" rx="3" fill="#f59e0b" fill-opacity="0.12"/>
+    <text x="267" y="14" class="mono" font-size="8.5" font-weight="700" fill="#fde68a" text-anchor="middle">AGL 850m [APOGEE]</text>
+
+    <text x="800" y="15" class="mono" font-size="10" font-weight="700" fill="#ff7700">JAN 2024 – MAY 2024</text>
+
+    <text x="0" y="44" class="display" font-size="16" fill="#ffffff">India Space Lab (ISL) · Autonomous Satellite Systems</text>
+    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#ff7700">1U CanSat &amp; CubeSat Telemetry Engineer Intern · Bengaluru, India</text>
+    <text x="0" y="82" class="mono" font-size="10.5" fill="#cbd5e1">• Engineered 433.92 MHz UHF radio frequency telemetry packet decoder processing 9600 baud binary frames with CRC checksums.</text>
+    <text x="0" y="98" class="mono" font-size="10.5" fill="#10b981">✓ Integrated BMP280 barometer &amp; MPU6050 6-DOF IMU bus; deployed automated dual-stage recovery parachute below 500m AGL.</text>
+  </g>
+</g>
+
+<!-- ENTRY 03: Poornima Institute of Engineering & Technology -->
+<g transform="translate(42, 384)">
+  <polygon points="16,0 916,0 916,105 900,121 0,121 0,16" fill="#070c16" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.2"/>
+  <g transform="translate(20, 16)">
+    <!-- Log Number & Callsign -->
+    <rect width="70" height="20" rx="3" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
+    <text x="35" y="14" class="mono" font-size="8.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">LOG 03</text>
+    <rect x="78" width="112" height="20" rx="3" fill="#1e293b"/>
+    <text x="134" y="14" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="middle">ICAO: VIJP [JAI]</text>
+    <rect x="198" width="138" height="20" rx="3" fill="#a855f7" fill-opacity="0.12"/>
+    <text x="267" y="14" class="mono" font-size="8.5" font-weight="700" fill="#e9d5ff" text-anchor="middle">B.TECH CSE SYSTEMS</text>
+
+    <text x="825" y="15" class="mono" font-size="10" font-weight="700" fill="#10b981">2022 – PRESENT</text>
+
+    <text x="0" y="44" class="display" font-size="16" fill="#ffffff">Poornima Institute of Engineering &amp; Technology</text>
+    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#10b981">Bachelor of Technology (B.Tech) — Computer Science &amp; Engineering · Jaipur, India</text>
+    <text x="0" y="82" class="mono" font-size="10.5" fill="#cbd5e1">• Advanced research focus in Distributed Systems, Operating Systems, Modern Compilers, and Low-Level Memory Layouts.</text>
+    <text x="0" y="98" class="mono" font-size="10.5" fill="#10b981">✓ Architected C++20 Cache-Aligned QuickSort with 99.4% L1 hit rate; 72/72 unit test suites passing in CI matrix.</text>
+  </g>
+</g>
+</svg>
