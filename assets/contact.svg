@@ -2,25 +2,18 @@
 <defs>
   <linearGradient id="bgUplink" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#030508"/>
-    <stop offset="50%" stop-color="#070b14"/>
-    <stop offset="100%" stop-color="#04060a"/>
+    <stop offset="50%" stop-color="#080c14"/>
+    <stop offset="100%" stop-color="#03060a"/>
   </linearGradient>
 
-  <linearGradient id="emberG" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#ff4400"/>
-    <stop offset="100%" stop-color="#ffaa00"/>
-  </linearGradient>
-  <linearGradient id="cyanG" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#00d4ff"/>
-    <stop offset="100%" stop-color="#00ffcc"/>
-  </linearGradient>
-  <linearGradient id="borderUp" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#ff4400"><animate attributeName="stop-color" values="#ff4400;#00d4ff;#10b981;#ff4400" dur="8s" repeatCount="indefinite"/></stop>
-    <stop offset="100%" stop-color="#00d4ff"><animate attributeName="stop-color" values="#00d4ff;#ffaa00;#00ffcc;#00d4ff" dur="8s" repeatCount="indefinite"/></stop>
+  <linearGradient id="borderUp" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff5500"/>
+    <stop offset="50%" stop-color="#00d4ff"/>
+    <stop offset="100%" stop-color="#10b981"/>
   </linearGradient>
 
-  <pattern id="gridUp" width="24" height="24" patternUnits="userSpaceOnUse">
-    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#00d4ff" stroke-width="0.7" stroke-opacity="0.04"/>
+  <pattern id="gridUp" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#00d4ff" stroke-width="0.7" stroke-opacity="0.04"/>
   </pattern>
 
   <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -34,7 +27,7 @@
 
 <style>
   .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
-  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  .display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial Black', Impact, sans-serif; font-weight: 800; }
   
   @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(265px); } }
   @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
@@ -52,10 +45,10 @@
 <polygon points="34,10 966,10 990,34 990,226 966,250 34,250 10,226 10,34" 
          fill="none" stroke="url(#borderUp)" stroke-width="1.5"/>
 
-<!-- Header Section -->
+<!-- Header Section (Balanced typography, clear of top-right badge) -->
 <g transform="translate(42, 38)">
   <text class="mono" font-size="11" letter-spacing="2" fill="#00d4ff" font-weight="700">// 08. SATELLITE GROUND STATION UPLINK</text>
-  <text class="display" font-size="24" fill="#ffffff" y="28">INITIATE UPLINK / DISPATCH SIGNAL</text>
+  <text class="display" font-size="21" fill="#ffffff" y="28">SATELLITE GROUND STATION UPLINK &amp; DISPATCH</text>
   <text class="mono" font-size="11.5" fill="#94a3b8" y="48">Open to high-impact distributed systems roles, infrastructure engineering &amp; aerospace research.</text>
 </g>
 
@@ -75,40 +68,44 @@
       <circle cx="4" cy="4" r="3" fill="#ff5500" class="blink"/>
       <text x="14" y="8" class="mono" font-size="9" font-weight="700" fill="#fed7aa">DIRECT SIGNAL</text>
       <text x="0" y="32" class="display" font-size="13" fill="#ffffff">PRIMARY COMMS</text>
-      <text x="0" y="52" class="mono" font-size="10" font-weight="700" fill="#ffaa00">devjangid577@gmail.com</text>
+      <text x="0" y="52" class="mono" font-size="9.5" font-weight="700" fill="#ff7700">contact.dev5678@gmail.com</text>
+      <text x="0" y="68" class="mono" font-size="8.5" fill="#64748b">Encrypted PGP Key Available</text>
     </g>
   </g>
 
-  <!-- Cell 2: Live Production Portfolio -->
-  <g transform="translate(234, 0)">
+  <!-- Cell 2: Professional Network -->
+  <g transform="translate(230, 0)">
     <polygon points="12,0 216,0 216,84 204,96 0,96 0,12" fill="#070c16" stroke="#00d4ff" stroke-opacity="0.5" stroke-width="1.2"/>
     <g transform="translate(14, 18)">
       <circle cx="4" cy="4" r="3" fill="#00d4ff" class="blink"/>
-      <text x="14" y="8" class="mono" font-size="9" font-weight="700" fill="#bae6fd">LIVE PRODUCTION</text>
-      <text x="0" y="32" class="display" font-size="13" fill="#ffffff">SYSTEM ENGINE</text>
-      <text x="0" y="52" class="mono" font-size="10" font-weight="700" fill="#00ffcc">dev-jangid-portfolio</text>
+      <text x="14" y="8" class="mono" font-size="9" font-weight="700" fill="#00ffcc">NETWORK RADAR</text>
+      <text x="0" y="32" class="display" font-size="13" fill="#ffffff">LINKEDIN NETWORK</text>
+      <text x="0" y="52" class="mono" font-size="9.5" font-weight="700" fill="#00d4ff">in/dev-5678</text>
+      <text x="0" y="68" class="mono" font-size="8.5" fill="#64748b">Verified Engineering Roster</text>
     </g>
   </g>
 
-  <!-- Cell 3: Professional Network -->
-  <g transform="translate(468, 0)">
-    <polygon points="12,0 216,0 216,84 204,96 0,96 0,12" fill="#070c16" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.2"/>
-    <g transform="translate(14, 18)">
-      <circle cx="4" cy="4" r="3" fill="#a855f7" class="blink"/>
-      <text x="14" y="8" class="mono" font-size="9" font-weight="700" fill="#e9d5ff">PROFESSIONAL</text>
-      <text x="0" y="32" class="display" font-size="13" fill="#ffffff">LINKEDIN UPLINK</text>
-      <text x="0" y="52" class="mono" font-size="10" font-weight="700" fill="#c084fc">in/dev-jangid-</text>
-    </g>
-  </g>
-
-  <!-- Cell 4: Base Location & Coordinates -->
-  <g transform="translate(702, 0)">
+  <!-- Cell 3: Ground Station Location (Faridabad / NCR) -->
+  <g transform="translate(460, 0)">
     <polygon points="12,0 216,0 216,84 204,96 0,96 0,12" fill="#070c16" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.2"/>
     <g transform="translate(14, 18)">
       <circle cx="4" cy="4" r="3" fill="#10b981" class="blink"/>
-      <text x="14" y="8" class="mono" font-size="9" font-weight="700" fill="#a7f3d0">GEOLOCATION</text>
-      <text x="0" y="32" class="display" font-size="13" fill="#ffffff">BASE STATION</text>
-      <text x="0" y="52" class="mono" font-size="9.5" font-weight="700" fill="#10b981">Jaipur, India [26.9°N, 75.8°E]</text>
+      <text x="14" y="8" class="mono" font-size="9" font-weight="700" fill="#a7f3d0">GROUND STATION</text>
+      <text x="0" y="32" class="display" font-size="13" fill="#ffffff">FARIDABAD / NCR</text>
+      <text x="0" y="52" class="mono" font-size="9.5" font-weight="700" fill="#10b981">Faridabad, India [28.4°N, 77.3°E]</text>
+      <text x="0" y="68" class="mono" font-size="8.5" fill="#64748b">UHF AZ: 142° • EL: 48°</text>
+    </g>
+  </g>
+
+  <!-- Cell 4: Production Core -->
+  <g transform="translate(690, 0)">
+    <polygon points="12,0 226,0 226,84 214,96 0,96 0,12" fill="#070c16" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.2"/>
+    <g transform="translate(14, 18)">
+      <circle cx="4" cy="4" r="3" fill="#a855f7" class="blink"/>
+      <text x="14" y="8" class="mono" font-size="9" font-weight="700" fill="#e9d5ff">SYSTEMS COCKPIT</text>
+      <text x="0" y="32" class="display" font-size="13" fill="#ffffff">LIVE PORTFOLIO</text>
+      <text x="0" y="52" class="mono" font-size="9.5" font-weight="700" fill="#c084fc">dev-5678.vercel.app</text>
+      <text x="0" y="68" class="mono" font-size="8.5" fill="#64748b">72/72 Unit Tests Passing (100%)</text>
     </g>
   </g>
 </g>

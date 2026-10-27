@@ -58,7 +58,7 @@
   <circle cx="60" cy="22" r="5" fill="#27c93f"/>
 
   <!-- Terminal Commandline -->
-  <text x="88" y="26" class="mono" font-size="11" fill="#71717a">dev@jangid:~$ <tspan fill="#e4e4e7">./initialize_systems_profile.sh</tspan> <tspan fill="#fc6b2f">--role="Systems Architect"</tspan> <tspan fill="#10b981">--status=PRODUCTION_READY</tspan></text>
+  <text x="88" y="26" class="mono" font-size="11" fill="#71717a">dev@edge-node:~$ <tspan fill="#e4e4e7">./initialize_systems_profile.sh</tspan> <tspan fill="#fc6b2f">--role="Systems Architect"</tspan> <tspan fill="#10b981">--status=PRODUCTION_READY</tspan></text>
 
   <!-- Status Chip Top Right -->
   <g transform="translate(734, 13)">
@@ -75,7 +75,7 @@
     <text x="24" y="15" class="mono" font-size="10" font-weight="700" fill="#fed7aa" letter-spacing="0.12em">DISTRIBUTED COMPUTING &amp; CS</text>
 
     <!-- Main Title -->
-    <text x="0" y="66" class="sans title" font-size="44" fill="#ffffff">DEV JANGID</text>
+    <text x="0" y="66" class="sans title" font-size="44" fill="#ffffff">DEV // 5678</text>
 
     <!-- Subtitle -->
     <text x="0" y="96" class="mono" font-size="14" font-weight="600" fill="#a1a1aa" letter-spacing="0.06em">

@@ -2,19 +2,23 @@
 <defs>
   <linearGradient id="bgAudio" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#030508"/>
-    <stop offset="50%" stop-color="#070b14"/>
-    <stop offset="100%" stop-color="#04060a"/>
+    <stop offset="50%" stop-color="#040e0c"/>
+    <stop offset="100%" stop-color="#020608"/>
   </linearGradient>
 
   <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
     <stop offset="0%" stop-color="#00d4ff"/>
-    <stop offset="50%" stop-color="#ff7700"/>
-    <stop offset="100%" stop-color="#10b981"/>
+    <stop offset="40%" stop-color="#10b981"/>
+    <stop offset="80%" stop-color="#00ffcc"/>
+    <stop offset="100%" stop-color="#34d399"/>
   </linearGradient>
 
-  <pattern id="gridAud" width="24" height="24" patternUnits="userSpaceOnUse">
-    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#10b981" stroke-width="0.7" stroke-opacity="0.04"/>
-  </pattern>
+  <linearGradient id="eqGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#059669"/>
+    <stop offset="60%" stop-color="#10b981"/>
+    <stop offset="85%" stop-color="#34d399"/>
+    <stop offset="100%" stop-color="#f59e0b"/>
+  </linearGradient>
 
   <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
     <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
@@ -23,19 +27,27 @@
       <feMergeNode in="SourceGraphic"/>
     </feMerge>
   </filter>
+
+  <pattern id="gridAud" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#10b981" stroke-width="0.6" stroke-opacity="0.04"/>
+  </pattern>
 </defs>
 
 <style>
   .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
-  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  .display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial Black', Impact, sans-serif; font-weight: 800; }
   
   @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(425px); } }
   @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
-  @keyframes rippleCircle { 0% { r: 10; opacity: 1; } 100% { r: 65; opacity: 0; } }
+  @keyframes crtSweep { 0% { transform: translateX(0px); opacity: 0.8; } 100% { transform: translateX(480px); opacity: 0.1; } }
+  @keyframes pulseRingsFast { 0% { r: 10px; opacity: 1; } 100% { r: 78px; opacity: 0; } }
+  @keyframes packetTravel { 0% { cx: 40; cy: 68; } 100% { cx: 270; cy: 68; } }
   
   .scanline { animation: sweepLine 5s linear infinite; }
-  .blink { animation: blinkLed 1s infinite; }
-  .ripple { animation: rippleCircle 2.5s ease-out infinite; }
+  .blink { animation: blinkLed 0.8s infinite; }
+  .fastRing1 { animation: pulseRingsFast 1.4s cubic-bezier(0.1, 0.7, 0.3, 1) infinite; }
+  .fastRing2 { animation: pulseRingsFast 1.4s cubic-bezier(0.1, 0.7, 0.3, 1) infinite 0.45s; }
+  .fastRing3 { animation: pulseRingsFast 1.4s cubic-bezier(0.1, 0.7, 0.3, 1) infinite 0.9s; }
 </style>
 
 <!-- Canvas Base -->
@@ -47,105 +59,269 @@
 <polygon points="34,10 966,10 990,34 990,386 966,410 34,410 10,386 10,34" 
          fill="none" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
 
-<!-- Header Section -->
+<!-- Header Section (Clean spacing, 147px clearance before pill) -->
 <g transform="translate(42, 42)">
   <text class="mono" font-size="11" letter-spacing="2" fill="#10b981" font-weight="700">// 03. SPATIAL AUDIO ACOUSTICS &amp; WEBRTC OSCILLOSCOPE</text>
-  <text class="display" font-size="28" fill="#ffffff" y="32">PROXISPEAK REAL-TIME FREQUENCY &amp; HRTF ENGINE</text>
-  <text class="mono" font-size="12" fill="#94a3b8" y="54">Inverse-square Euclidean volume falloff with dynamic directional stereo panning under 24ms latency.</text>
+  <text class="display" font-size="21" fill="#ffffff" y="30">PROXISPEAK REAL-TIME AUDIO &amp; HRTF ENGINE</text>
+  <text class="mono" font-size="11" fill="#94a3b8" y="50">Inverse-square Euclidean volume falloff with dynamic directional stereo panning under 24ms latency.</text>
 </g>
 
 <!-- TOP RIGHT METRIC PILL -->
 <g transform="translate(790, 36)">
   <rect width="168" height="24" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.5"/>
   <circle cx="12" cy="12" r="3.5" fill="#10b981" class="blink"/>
-  <text x="24" y="16" class="mono" font-size="10" font-weight="700" fill="#a7f3d0">AUDIO PIPELINE: &lt; 24ms</text>
+  <text x="24" y="16" class="mono" font-size="9.5" font-weight="700" fill="#a7f3d0">LIVE STREAM: &lt; 24ms</text>
 </g>
 
-<!-- LEFT: OSCILLOSCOPE DYNAMIC AUDIO WAVEFORM (TOTALLY UNIQUE ON GITHUB) -->
-<g transform="translate(42, 120)">
-  <rect width="520" height="255" rx="8" fill="#040810" stroke="#10b981" stroke-opacity="0.35" stroke-width="1.2"/>
+<!-- LEFT: REAL-TIME OSCILLOSCOPE & BOUNCING 24-BAND EQUALIZER -->
+<g transform="translate(42, 118)">
+  <rect width="520" height="260" rx="8" fill="#040810" stroke="#10b981" stroke-opacity="0.35" stroke-width="1.2"/>
   
-  <!-- Oscilloscope Grid Lines -->
-  <line x1="20" y1="127" x2="500" y2="127" stroke="#10b981" stroke-opacity="0.2" stroke-dasharray="3 3"/>
-  <line x1="260" y1="20" x2="260" y2="235" stroke="#10b981" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+  <!-- Oscilloscope Top Status Bar -->
+  <rect x="0" y="0" width="520" height="28" rx="8" fill="#021f17" stroke="#10b981" stroke-opacity="0.2"/>
+  <circle cx="16" cy="14" r="3.5" fill="#10b981" class="blink"/>
+  <text x="28" y="18" class="mono" font-size="9" font-weight="700" fill="#a7f3d0">REAL-TIME PCM OSCILLOSCOPE // 48,000 Hz • 128 SAMPLES</text>
+  <text x="504" y="18" class="mono" font-size="8.5" font-weight="700" fill="#00ffcc" text-anchor="end">FFT SPECTRUM: ACTIVE</text>
+
+  <!-- Oscilloscope Grid Reticle -->
+  <line x1="20" y1="85" x2="500" y2="85" stroke="#10b981" stroke-opacity="0.15" stroke-dasharray="3 3"/>
+  <line x1="260" y1="32" x2="260" y2="140" stroke="#10b981" stroke-opacity="0.15" stroke-dasharray="3 3"/>
   
-  <text x="20" y="24" class="mono" font-size="9.5" fill="#10b981" font-weight="700">OSCILLOSCOPE // REAL-TIME EUCLIDEAN FALLOFF ATTENUATION</text>
-  
-  <!-- ANIMATED UNDULATING SINE AUDIO WAVEFORM -->
-  <path fill="none" stroke="url(#waveGrad)" stroke-width="3" filter="url(#neonGlow)">
+  <!-- REAL-TIME DYNAMIC CARRIER SINE WAVE (RAPID LIVE MORPHING) -->
+  <path fill="none" stroke="url(#waveGrad)" stroke-width="2.5" filter="url(#neonGlow)">
     <animate attributeName="d" 
       values="
-        M 20 127 Q 80 50, 140 127 T 260 127 T 380 127 T 500 127;
-        M 20 127 Q 80 190, 140 127 T 260 127 T 380 127 T 500 127;
-        M 20 127 Q 80 40, 140 127 T 260 127 T 380 127 T 500 127;
-        M 20 127 Q 80 170, 140 127 T 260 127 T 380 127 T 500 127;
-        M 20 127 Q 80 50, 140 127 T 260 127 T 380 127 T 500 127"
-      dur="3.2s" repeatCount="indefinite"/>
+        M 20 85 Q 80 40, 140 85 T 260 85 T 380 85 T 500 85;
+        M 20 85 Q 80 130, 140 85 T 260 85 T 380 85 T 500 85;
+        M 20 85 Q 80 55, 140 85 T 260 85 T 380 85 T 500 85;
+        M 20 85 Q 80 115, 140 85 T 260 85 T 380 85 T 500 85;
+        M 20 85 Q 80 40, 140 85 T 260 85 T 380 85 T 500 85" 
+      dur="0.8s" repeatCount="indefinite"/>
   </path>
 
-  <!-- Secondary High-Frequency Harmonic Wave -->
+  <!-- HIGH-FREQUENCY REAL-TIME AUDIO HARMONIC RIPPLE -->
   <path fill="none" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6">
     <animate attributeName="d" 
       values="
-        M 20 127 Q 50 80, 80 127 T 140 127 T 200 127 T 260 127 T 320 127 T 380 127 T 440 127 T 500 127;
-        M 20 127 Q 50 160, 80 127 T 140 127 T 200 127 T 260 127 T 320 127 T 380 127 T 440 127 T 500 127;
-        M 20 127 Q 50 80, 80 127 T 140 127 T 200 127 T 260 127 T 320 127 T 380 127 T 440 127 T 500 127"
-      dur="1.8s" repeatCount="indefinite"/>
+        M 20 85 Q 50 65, 80 85 T 140 85 T 200 85 T 260 85 T 320 85 T 380 85 T 440 85 T 500 85;
+        M 20 85 Q 50 105, 80 85 T 140 85 T 200 85 T 260 85 T 320 85 T 380 85 T 440 85 T 500 85;
+        M 20 85 Q 50 72, 80 85 T 140 85 T 200 85 T 260 85 T 320 85 T 380 85 T 440 85 T 500 85;
+        M 20 85 Q 50 65, 80 85 T 140 85 T 200 85 T 260 85 T 320 85 T 380 85 T 440 85 T 500 85" 
+      dur="0.45s" repeatCount="indefinite"/>
   </path>
 
-  <!-- Formula Callout -->
-  <rect x="20" y="215" width="480" height="28" rx="4" fill="#000000" fill-opacity="0.6"/>
-  <text x="30" y="233" class="mono" font-size="9.5" fill="#a7f3d0">
-    GAIN EQUATION: <tspan fill="#ffffff" font-weight="700">A(d) = A₀ · min(1, d_ref / (d_ref + rolloff · (d - d_ref)))</tspan>
-  </text>
+  <!-- REAL-TIME 24-BAND FFT FREQUENCY EQUALIZER BARS (DANCING UP & DOWN!) -->
+  <g transform="translate(24, 150)">
+    <text x="0" y="0" class="mono" font-size="8" fill="#64748b" font-weight="700">60Hz</text>
+    <text x="220" y="0" class="mono" font-size="8" fill="#64748b" font-weight="700">1kHz</text>
+    <text x="445" y="0" class="mono" font-size="8" fill="#64748b" font-weight="700">16kHz</text>
+    <line x1="0" y1="5" x2="472" y2="5" stroke="#ffffff" stroke-opacity="0.08"/>
+
+    <!-- 24 Equalizer Bars with Staggered Real-Time Heights -->
+    <!-- Bass Region -->
+    <rect x="0" y="10" width="14" height="35" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="20;55;30;62;20" dur="0.42s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="45;10;35;3;45" dur="0.42s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="20" y="10" width="14" height="45" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="35;60;25;50;35" dur="0.38s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="30;5;40;15;30" dur="0.38s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="40" y="10" width="14" height="50" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="50;25;58;32;50" dur="0.46s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="15;40;7;33;15" dur="0.46s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="60" y="10" width="14" height="40" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="25;52;30;48;25" dur="0.34s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="40;13;35;17;40" dur="0.34s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Low-Mid Region -->
+    <rect x="80" y="10" width="14" height="38" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="42;20;50;28;42" dur="0.51s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="23;45;15;37;23" dur="0.51s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="100" y="10" width="14" height="48" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="30;56;22;46;30" dur="0.36s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="35;9;43;19;35" dur="0.36s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="120" y="10" width="14" height="52" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="48;32;58;20;48" dur="0.44s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="17;33;7;45;17" dur="0.44s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="140" y="10" width="14" height="36" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="22;48;35;55;22" dur="0.39s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="43;17;30;10;43" dur="0.39s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Midrange (Human Voice 1kHz) -->
+    <rect x="160" y="10" width="14" height="55" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="55;28;62;40;55" dur="0.31s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="10;37;3;25;10" dur="0.31s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="180" y="10" width="14" height="42" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="38;58;24;50;38" dur="0.47s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="27;7;41;15;27" dur="0.47s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="200" y="10" width="14" height="50" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="45;20;56;35;45" dur="0.33s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="20;45;9;30;20" dur="0.33s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="220" y="10" width="14" height="60" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="58;35;62;25;58" dur="0.41s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="7;30;3;40;7" dur="0.41s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- High-Mid Region -->
+    <rect x="240" y="10" width="14" height="46" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="32;54;28;48;32" dur="0.37s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="33;11;37;17;33" dur="0.37s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="260" y="10" width="14" height="52" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="50;26;58;36;50" dur="0.49s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="15;39;7;29;15" dur="0.49s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="280" y="10" width="14" height="38" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="25;48;32;55;25" dur="0.35s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="40;17;33;10;40" dur="0.35s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="300" y="10" width="14" height="48" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="45;22;52;30;45" dur="0.43s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="20;43;13;35;20" dur="0.43s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Treble Region -->
+    <rect x="320" y="10" width="14" height="40" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="35;56;20;46;35" dur="0.32s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="30;9;45;19;30" dur="0.32s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="340" y="10" width="14" height="54" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="52;28;58;34;52" dur="0.48s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="13;37;7;31;13" dur="0.48s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="360" y="10" width="14" height="36" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="20;45;28;50;20" dur="0.36s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="45;20;37;15;45" dur="0.36s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="380" y="10" width="14" height="46" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="42;20;50;32;42" dur="0.42s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="23;45;15;33;23" dur="0.42s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="400" y="10" width="14" height="32" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="18;40;25;46;18" dur="0.38s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="47;25;40;19;47" dur="0.38s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="420" y="10" width="14" height="42" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="38;16;44;22;38" dur="0.45s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="27;49;21;43;27" dur="0.45s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="440" y="10" width="14" height="28" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="15;35;20;38;15" dur="0.34s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="50;30;45;27;50" dur="0.34s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="460" y="10" width="14" height="22" rx="2" fill="url(#eqGrad)">
+      <animate attributeName="height" values="12;28;16;32;12" dur="0.40s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="53;37;49;33;53" dur="0.40s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Live VU Meter Bar at bottom -->
+  <g transform="translate(24, 230)">
+    <rect width="472" height="18" rx="3" fill="#02140e" stroke="#10b981" stroke-opacity="0.3"/>
+    <text x="8" y="13" class="mono" font-size="8.5" font-weight="700" fill="#a7f3d0">VU STEREO</text>
+    
+    <!-- Left Channel Dynamic Peak Bar -->
+    <rect x="80" y="5" width="180" height="8" rx="2" fill="#052e16"/>
+    <rect x="80" y="5" width="140" height="8" rx="2" fill="#10b981">
+      <animate attributeName="width" values="120;175;95;165;140" dur="0.3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Right Channel Dynamic Peak Bar -->
+    <rect x="280" y="5" width="180" height="8" rx="2" fill="#052e16"/>
+    <rect x="280" y="5" width="150" height="8" rx="2" fill="#00d4ff">
+      <animate attributeName="width" values="135;170;110;178;150" dur="0.28s" repeatCount="indefinite"/>
+    </rect>
+  </g>
 </g>
 
-<!-- RIGHT: 2D SPATIAL RADAR & WEBAUDIO NODES -->
-<g transform="translate(580, 120)">
-  <rect width="378" height="255" rx="8" fill="#040810" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1.2"/>
+<!-- RIGHT: REAL-TIME 2D SPATIAL ACOUSTIC FIELD & DSP CHAIN -->
+<g transform="translate(582, 118)">
+  <rect width="376" height="260" rx="8" fill="#070c16" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1.2"/>
   
-  <g transform="translate(18, 20)">
-    <text class="mono" font-size="9.5" fill="#00d4ff" font-weight="700">WEB AUDIO GRAPH NODE PIPELINE</text>
-    
-    <!-- Audio Graph Nodes -->
-    <g transform="translate(0, 24)">
-      <!-- Node 1: AudioContext -->
-      <rect width="90" height="38" rx="4" fill="#1e293b"/>
-      <text x="45" y="16" class="mono" font-size="8" fill="#94a3b8" text-anchor="middle">SOURCE</text>
-      <text x="45" y="30" class="mono" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">WebRTC Stream</text>
+  <g transform="translate(18, 16)">
+    <!-- Header -->
+    <text class="mono" font-size="10" fill="#00ffcc" font-weight="700">2D SPATIAL ACOUSTIC LISTENER FIELD</text>
+    <text class="mono" font-size="8.5" fill="#64748b" y="16">Real-time Euclidean falloff &amp; 3D HRTF panning</text>
 
-      <line x1="90" y1="19" x2="114" y2="19" stroke="#00d4ff" stroke-width="1.5"/>
+    <!-- Radar Acoustic Field Simulation -->
+    <g transform="translate(170, 78)">
+      <!-- Field Circular Grids -->
+      <circle r="60" fill="none" stroke="#10b981" stroke-opacity="0.1" stroke-width="1"/>
+      <circle r="40" fill="none" stroke="#10b981" stroke-opacity="0.15" stroke-width="1"/>
+      <circle r="20" fill="none" stroke="#10b981" stroke-opacity="0.2" stroke-width="1"/>
 
-      <!-- Node 2: GainNode -->
-      <rect x="114" y="0" width="105" height="38" rx="4" fill="#2d1202" stroke="#ff5500" stroke-opacity="0.6"/>
-      <text x="166" y="16" class="mono" font-size="8" fill="#fed7aa" text-anchor="middle">GAIN NODE</text>
-      <text x="166" y="30" class="mono" font-size="8.5" font-weight="700" fill="#ff7700" text-anchor="middle">1/d² Falloff</text>
+      <!-- Rapid Radiating Sound Pressure Waves -->
+      <circle class="fastRing1" cx="-70" cy="0" fill="none" stroke="#10b981" stroke-width="2"/>
+      <circle class="fastRing2" cx="-70" cy="0" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <circle class="fastRing3" cx="-70" cy="0" fill="none" stroke="#00ffcc" stroke-width="1.2"/>
 
-      <line x1="219" y1="19" x2="243" y2="19" stroke="#00d4ff" stroke-width="1.5"/>
+      <!-- Speaker Node (Emitter) -->
+      <g transform="translate(-70, 0)">
+        <circle r="9" fill="#10b981" filter="url(#neonGlow)"/>
+        <circle r="4" fill="#ffffff"/>
+        <text x="0" y="20" class="mono" font-size="8" fill="#a7f3d0" text-anchor="middle" font-weight="700">EMITTER</text>
+      </g>
 
-      <!-- Node 3: StereoPannerNode -->
-      <rect x="243" y="0" width="95" height="38" rx="4" fill="#022a1f" stroke="#10b981" stroke-opacity="0.6"/>
-      <text x="290" y="16" class="mono" font-size="8" fill="#a7f3d0" text-anchor="middle">PANNER NODE</text>
-      <text x="290" y="30" class="mono" font-size="8.5" font-weight="700" fill="#10b981" text-anchor="middle">HRTF Stereo</text>
+      <!-- Traveling Acoustic Sound Vector Arrow -->
+      <line x1="-60" y1="0" x2="60" y2="0" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="3 3"/>
+      
+      <!-- Moving Audio Wavefront Packet -->
+      <circle r="4" fill="#00ffcc" filter="url(#neonGlow)">
+        <animate attributeName="cx" values="-60;60" dur="0.9s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="0;0" dur="0.9s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Listener Node (Headphones) -->
+      <g transform="translate(70, 0)">
+        <circle r="11" fill="#022c22" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)"/>
+        <circle r="4" fill="#00d4ff"/>
+        <text x="0" y="20" class="mono" font-size="8" fill="#00ffcc" text-anchor="middle" font-weight="700">LISTENER</text>
+      </g>
     </g>
 
-    <!-- 2D Spatial Positional Canvas -->
-    <g transform="translate(170, 140)">
-      <!-- Acoustic Sound Waves Radiating -->
-      <circle cx="0" cy="0" r="10" fill="none" stroke="#10b981" stroke-width="1.5" class="ripple"/>
-      <circle cx="0" cy="0" r="10" fill="none" stroke="#00d4ff" stroke-width="1.5" class="ripple" style="animation-delay: 1.25s"/>
-      
-      <!-- Center Listener Node -->
-      <circle cx="0" cy="0" r="6" fill="#10b981"/>
-      <line x1="0" y1="0" x2="0" y2="-18" stroke="#ffffff" stroke-width="2"/>
-      <text x="0" y="24" class="mono" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">LISTENER (YOU)</text>
+    <!-- Real-Time Falloff Telemetry Pill -->
+    <g transform="translate(0, 142)">
+      <rect width="340" height="24" rx="4" fill="#021f17" stroke="#10b981" stroke-opacity="0.3"/>
+      <text x="12" y="16" class="mono" font-size="8.5" fill="#a7f3d0">
+        DIST: <tspan fill="#ffffff" font-weight="700">4.2m</tspan>
+        <tspan fill="#334155"> │ </tspan>FALLOFF: <tspan fill="#ffaa00" font-weight="700">-12.4 dB</tspan>
+        <tspan fill="#334155"> │ </tspan>PAN: <tspan fill="#00ffcc" font-weight="700">L 35% / R 65%</tspan>
+      </text>
+    </g>
 
-      <!-- Remote Sound Emitters -->
-      <circle cx="-90" cy="-30" r="4" fill="#ff5500" class="blink"/>
-      <text x="-90" y="-38" class="mono" font-size="8" fill="#fed7aa" text-anchor="middle">PEER_01 (-3dB)</text>
+    <!-- Web Audio DSP Chain Nodes -->
+    <g transform="translate(0, 180)">
+      <rect width="66" height="26" rx="3" fill="#1e293b"/>
+      <text x="33" y="17" class="mono" font-size="8" fill="#cbd5e1" text-anchor="middle">STREAM</text>
 
-      <circle cx="85" cy="25" r="4" fill="#00d4ff" class="blink"/>
-      <text x="85" y="38" class="mono" font-size="8" fill="#bae6fd" text-anchor="middle">PEER_02 (-8dB)</text>
+      <path d="M 68 13 L 80 13" stroke="#10b981" stroke-width="1.5"/>
+
+      <rect x="82" width="76" height="26" rx="3" fill="#042f2e" stroke="#14b8a6" stroke-opacity="0.5"/>
+      <text x="120" y="17" class="mono" font-size="8" fill="#5eead4" text-anchor="middle">PANNER_3D</text>
+
+      <path d="M 160 13 L 172 13" stroke="#10b981" stroke-width="1.5"/>
+
+      <rect x="174" width="76" height="26" rx="3" fill="#042f2e" stroke="#14b8a6" stroke-opacity="0.5"/>
+      <text x="212" y="17" class="mono" font-size="8" fill="#5eead4" text-anchor="middle">GAIN_EXP</text>
+
+      <path d="M 252 13 L 264 13" stroke="#10b981" stroke-width="1.5"/>
+
+      <rect x="266" width="74" height="26" rx="3" fill="#1e293b"/>
+      <text x="303" y="17" class="mono" font-size="8" fill="#10b981" text-anchor="middle">DEST_PCM</text>
+
+      <text x="0" y="44" class="mono" font-size="8" fill="#64748b">
+        Formula: <tspan fill="#10b981">Gain = 1 / (1 + Rolloff * (Distance - MinDist))</tspan>
+      </text>
     </g>
   </g>
 </g>

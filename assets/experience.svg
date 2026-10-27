@@ -30,7 +30,7 @@
 
 <style>
   .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
-  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  .display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial Black', Impact, sans-serif; font-weight: 800; }
   
   @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(535px); } }
   @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
@@ -50,9 +50,9 @@
 
 <!-- Header Section -->
 <g transform="translate(42, 42)">
-  <text class="mono" font-size="11" letter-spacing="2" fill="#10b981" font-weight="700">// 07. AVIONICS FLIGHT LOG &amp; MILESTONES</text>
-  <text class="display" font-size="28" fill="#ffffff" y="32">CHRONOLOGICAL PRODUCTION ENGINEERING TRACK RECORD</text>
-  <text class="mono" font-size="12" fill="#94a3b8" y="54">Air Navigation Services flight radar defense, satellite radio research &amp; systems academia.</text>
+  <text class="mono" font-size="11" letter-spacing="2" fill="#10b981" font-weight="700">// 07. PRODUCTION TRACK RECORD &amp; CREDENTIALS</text>
+  <text class="display" font-size="21" fill="#ffffff" y="30">VERIFIED ENGINEERING TRACK RECORD</text>
+  <text class="mono" font-size="11" fill="#94a3b8" y="50">Air Navigation Services radar defense, satellite telemetry research &amp; GenAI engineering.</text>
 </g>
 
 <!-- TOP RIGHT DISPATCH STATUS -->
@@ -64,8 +64,8 @@
 
 <!-- FLIGHT LOG ENTRIES -->
 <!-- ENTRY 01: Airports Authority of India -->
-<g transform="translate(42, 120)">
-  <polygon points="16,0 916,0 916,105 900,121 0,121 0,16" fill="#070c16" stroke="#00d4ff" stroke-opacity="0.5" stroke-width="1.2"/>
+<g transform="translate(42, 118)">
+  <polygon points="16,0 916,0 916,106 900,122 0,122 0,16" fill="#070c16" stroke="#00d4ff" stroke-opacity="0.5" stroke-width="1.2"/>
   <g transform="translate(20, 16)">
     <!-- Log Number & Callsign -->
     <rect width="70" height="20" rx="3" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-opacity="0.4"/>
@@ -75,54 +75,57 @@
     <rect x="198" width="138" height="20" rx="3" fill="#10b981" fill-opacity="0.12"/>
     <text x="267" y="14" class="mono" font-size="8.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">FL320 ANS RADAR</text>
 
-    <text x="800" y="15" class="mono" font-size="10" font-weight="700" fill="#00d4ff">JUL 2024 – AUG 2024</text>
+    <!-- REAL-WORLD EXACT DATES -->
+    <text x="730" y="15" class="mono" font-size="10" font-weight="700" fill="#00d4ff">14 AUG 2026 – 25 SEP 2026</text>
 
     <text x="0" y="44" class="display" font-size="16" fill="#ffffff">Airports Authority of India (Northern Region HQ)</text>
-    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#00d4ff">CNS/ATM Division · Flight Radar Network Segregation Intern · New Delhi, India</text>
-    <text x="0" y="82" class="mono" font-size="10.5" fill="#cbd5e1">• Segregated Northern Region administrative network from mission-critical Air Navigation Services (ANS) radar datastreams.</text>
-    <text x="0" y="98" class="mono" font-size="10.5" fill="#10b981">✓ Zero broadcast packet loops achieved across VHF communication bridges under 99.98% operational uptime SLA.</text>
+    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#00d4ff">CNS/ATM Division · Flight Radar Network Segregation Intern · New Delhi / NCR</text>
+    <text x="0" y="82" class="mono" font-size="10" fill="#cbd5e1">• Segregated Northern Region administrative network from mission-critical Air Navigation Services (ANS) radar feeds.</text>
+    <text x="0" y="98" class="mono" font-size="10" fill="#10b981">✓ Zero broadcast packet loops achieved across VHF communication bridges under 99.98% operational uptime SLA.</text>
   </g>
 </g>
 
-<!-- ENTRY 02: India Space Lab -->
+<!-- ENTRY 02: Space Technology Internship -->
 <g transform="translate(42, 252)">
-  <polygon points="16,0 916,0 916,105 900,121 0,121 0,16" fill="#070c16" stroke="#ff5500" stroke-opacity="0.5" stroke-width="1.2"/>
+  <polygon points="16,0 916,0 916,106 900,122 0,122 0,16" fill="#070c16" stroke="#ff5500" stroke-opacity="0.5" stroke-width="1.2"/>
   <g transform="translate(20, 16)">
     <!-- Log Number & Callsign -->
     <rect width="70" height="20" rx="3" fill="#ff5500" fill-opacity="0.15" stroke="#ff5500" stroke-opacity="0.4"/>
     <text x="35" y="14" class="mono" font-size="8.5" font-weight="700" fill="#fed7aa" text-anchor="middle">LOG 02</text>
     <rect x="78" width="112" height="20" rx="3" fill="#1e293b"/>
-    <text x="134" y="14" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="middle">ICAO: VOBL [BLR]</text>
+    <text x="134" y="14" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="middle">UHF 433.92 MHz</text>
     <rect x="198" width="138" height="20" rx="3" fill="#f59e0b" fill-opacity="0.12"/>
     <text x="267" y="14" class="mono" font-size="8.5" font-weight="700" fill="#fde68a" text-anchor="middle">AGL 850m [APOGEE]</text>
 
-    <text x="800" y="15" class="mono" font-size="10" font-weight="700" fill="#ff7700">JAN 2024 – MAY 2024</text>
+    <!-- REAL-WORLD EXACT DATES -->
+    <text x="730" y="15" class="mono" font-size="10" font-weight="700" fill="#ff7700">15 JUL 2025 – 31 JUL 2025</text>
 
-    <text x="0" y="44" class="display" font-size="16" fill="#ffffff">India Space Lab (ISL) · Autonomous Satellite Systems</text>
-    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#ff7700">1U CanSat &amp; CubeSat Telemetry Engineer Intern · Bengaluru, India</text>
-    <text x="0" y="82" class="mono" font-size="10.5" fill="#cbd5e1">• Engineered 433.92 MHz UHF radio frequency telemetry packet decoder processing 9600 baud binary frames with CRC checksums.</text>
-    <text x="0" y="98" class="mono" font-size="10.5" fill="#10b981">✓ Integrated BMP280 barometer &amp; MPU6050 6-DOF IMU bus; deployed automated dual-stage recovery parachute below 500m AGL.</text>
+    <text x="0" y="44" class="display" font-size="16" fill="#ffffff">Space Technology &amp; Telemetry Payload</text>
+    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#ff7700">1U CanSat &amp; CubeSat Telemetry Engineer Intern · Autonomous Radio Telemetry</text>
+    <text x="0" y="82" class="mono" font-size="10" fill="#cbd5e1">• Engineered 433.92 MHz UHF radio frequency telemetry packet decoder processing 9600 baud frames with CRC-16.</text>
+    <text x="0" y="98" class="mono" font-size="10" fill="#10b981">✓ Integrated BMP280 barometer &amp; MPU6050 6-DOF IMU bus; deployed automated dual-stage recovery parachute.</text>
   </g>
 </g>
 
-<!-- ENTRY 03: Poornima Institute of Engineering & Technology -->
-<g transform="translate(42, 384)">
-  <polygon points="16,0 916,0 916,105 900,121 0,121 0,16" fill="#070c16" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.2"/>
+<!-- ENTRY 03: GenAI Academy Program & CSE Degree -->
+<g transform="translate(42, 386)">
+  <polygon points="16,0 916,0 916,106 900,122 0,122 0,16" fill="#070c16" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.2"/>
   <g transform="translate(20, 16)">
     <!-- Log Number & Callsign -->
     <rect width="70" height="20" rx="3" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
     <text x="35" y="14" class="mono" font-size="8.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">LOG 03</text>
-    <rect x="78" width="112" height="20" rx="3" fill="#1e293b"/>
-    <text x="134" y="14" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="middle">ICAO: VIJP [JAI]</text>
-    <rect x="198" width="138" height="20" rx="3" fill="#a855f7" fill-opacity="0.12"/>
-    <text x="267" y="14" class="mono" font-size="8.5" font-weight="700" fill="#e9d5ff" text-anchor="middle">B.TECH CSE SYSTEMS</text>
+    <rect x="78" width="140" height="20" rx="3" fill="#1e293b"/>
+    <text x="148" y="14" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="middle">BASE: FARIDABAD / NCR</text>
+    <rect x="226" width="138" height="20" rx="3" fill="#a855f7" fill-opacity="0.12"/>
+    <text x="295" y="14" class="mono" font-size="8.5" font-weight="700" fill="#e9d5ff" text-anchor="middle">GENAI &amp; B.TECH CSE</text>
 
-    <text x="825" y="15" class="mono" font-size="10" font-weight="700" fill="#10b981">2022 – PRESENT</text>
+    <!-- REAL-WORLD EXACT DATES -->
+    <text x="730" y="15" class="mono" font-size="10" font-weight="700" fill="#10b981">JUN 2024 · 2023 – 2027</text>
 
-    <text x="0" y="44" class="display" font-size="16" fill="#ffffff">Poornima Institute of Engineering &amp; Technology</text>
-    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#10b981">Bachelor of Technology (B.Tech) — Computer Science &amp; Engineering · Jaipur, India</text>
-    <text x="0" y="82" class="mono" font-size="10.5" fill="#cbd5e1">• Advanced research focus in Distributed Systems, Operating Systems, Modern Compilers, and Low-Level Memory Layouts.</text>
-    <text x="0" y="98" class="mono" font-size="10.5" fill="#10b981">✓ Architected C++20 Cache-Aligned QuickSort with 99.4% L1 hit rate; 72/72 unit test suites passing in CI matrix.</text>
+    <text x="0" y="44" class="display" font-size="16" fill="#ffffff">GenAI Academy Program · B.Tech Computer Science &amp; Engineering</text>
+    <text x="0" y="62" class="mono" font-size="11" font-weight="700" fill="#10b981">GenAI Agent Architecture (Jun 2024) • B.Tech CSE Distributed Systems (2023–2027) · Faridabad / NCR</text>
+    <text x="0" y="82" class="mono" font-size="10" fill="#cbd5e1">• Engineered multi-agent topological DAG schedulers, RAG vector retrieval pipelines, and low-level memory runtimes.</text>
+    <text x="0" y="98" class="mono" font-size="10" fill="#10b981">✓ 72/72 unit test suites verified in production CI matrix; verified zero memory leaks across 100k requests.</text>
   </g>
 </g>
 </svg>
