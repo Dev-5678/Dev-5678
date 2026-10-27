@@ -1,82 +1,218 @@
 <div align="center">
 
-<!-- 01. AVIONICS FLIGHT RADAR COCKPIT HUD -->
+<!-- 01. SYSTEMS ARCHITECT & FULL-STACK SOFTWARE ENGINEER HUD (WITH LIVE SMIL ANIMATIONS) -->
 <a href="https://dev-jangid-portfolio.vercel.app" target="_blank">
-  <img src="./assets/hero.svg" width="100%" alt="Dev Jangid - Avionics Radar Cockpit &amp; Systems HUD"/>
+  <img src="./assets/hero.svg" width="100%" alt="Dev Jangid - Systems Architect &amp; Full-Stack Software Engineer"/>
 </a>
 
-<br/><br/>
+<br/>
+
+<!-- FLOATING CYBER HUD NAVIGATION BAR -->
+<p align="center">
+  <a href="#-systems-arsenal"><code>⚡ SYSTEMS ARSENAL</code></a> &nbsp;•&nbsp;
+  <a href="#-architectural-blueprints"><code>🧬 ARCHITECTURE BLUEPRINTS</code></a> &nbsp;•&nbsp;
+  <a href="#-live-telemetry--metrics"><code>📊 LIVE TELEMETRY</code></a> &nbsp;•&nbsp;
+  <a href="https://dev-jangid-portfolio.vercel.app" target="_blank"><code>🌐 3D PORTFOLIO</code></a> &nbsp;•&nbsp;
+  <a href="#-direct-dispatch"><code>📡 DIRECT SIGNAL</code></a>
+</p>
 
 <!-- MISSION-CRITICAL METRIC BADGES -->
-<a href="#"><img src="https://komarev.com/ghpvc/?username=Dev-5678&label=COCKPIT_VIEWS&color=ff5500&style=for-the-badge&labelColor=030508" alt="Cockpit Views"/></a>
-&nbsp;
-<a href="#"><img src="https://img.shields.io/badge/AAI%20NORTHERN%20REGION-ANS%20FLIGHT%20RADAR%20DEFENSE-ff5500?style=for-the-badge&labelColor=030508" alt="AAI Flight Radar Defense"/></a>
-&nbsp;
-<a href="#"><img src="https://img.shields.io/badge/INDIA%20SPACE%20LAB-433.92%20MHz%20UHF%20CANSAT-00d4ff?style=for-the-badge&labelColor=030508" alt="ISL UHF Telemetry"/></a>
-&nbsp;
-<a href="https://github.com/Dev-5678/dev-jangid-portfolio/actions" target="_blank"><img src="https://img.shields.io/badge/CI_MATRIX-72%2F72%20PASSING%20(100%25)-10b981?style=for-the-badge&labelColor=030508" alt="CI Verification"/></a>
+<p align="center">
+  <a href="https://github.com/Dev-5678"><img src="https://komarev.com/ghpvc/?username=Dev-5678&label=PROFILE%20VIEWS&color=00d4ff&style=flat-square&labelColor=080e1c" alt="Profile Views"/></a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/Dev-5678?tab=repositories"><img src="https://img.shields.io/badge/AAI%20CNS%2FATM-SYSTEMS%20INTERN-ffaa00?style=flat-square&labelColor=080e1c" alt="Airports Authority of India Intern"/></a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/Dev-5678/dev-jangid-portfolio/actions" target="_blank"><img src="https://img.shields.io/badge/CI%20VERIFIED-72%2F72%20PASSING-10b981?style=flat-square&labelColor=080e1c" alt="CI Verification"/></a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/Dev-5678"><img src="https://img.shields.io/badge/CONTRIBUTIONS-523_ANNUAL-00ffcc?style=flat-square&labelColor=080e1c" alt="Annual Contributions"/></a>
+</p>
 
-<br/><br/>
+<br/>
 
-<!-- 02. CIVIL AVIATION RADAR & SATELLITE TELEMETRY INFRASTRUCTURE -->
-<a href="#"><img src="./assets/deployments.svg" width="100%" alt="Civil Aviation ANS Radar &amp; Satellite Telemetry Infrastructure"/></a>
+<!-- SECTION: FLAGSHIP SYSTEMS ARSENAL -->
+<h2 id="-systems-arsenal" align="center">⚡ FLAGSHIP DISTRIBUTED SYSTEMS ARSENAL</h2>
 
-<br/><br/>
+<img src="./assets/missions.svg" width="100%" alt="Five Flagship Production Systems Codebases"/>
 
-<!-- 03. PROXISPEAK SPATIAL AUDIO REAL-TIME OSCILLOSCOPE -->
-<a href="#"><img src="./assets/audio_engine.svg" width="100%" alt="ProxiSpeak Real-Time Audio Frequency Oscilloscope"/></a>
+<br/>
 
-<br/><br/>
-
-<!-- 04. C++20 CPU CACHE HIERARCHY & MEMORY ALIGNMENT ENGINE -->
-<a href="#"><img src="./assets/engine.svg" width="100%" alt="C++20 CPU Cache Hierarchy &amp; Memory Alignment Engine"/></a>
-
-<br/><br/>
-
-<!-- 05. DECENTRALIZED CRDT GOSSIP MESH & DAG SCHEDULER -->
-<a href="#"><img src="./assets/architecture.svg" width="100%" alt="Decentralized CRDT Gossip Mesh &amp; Kahn DAG Scheduler"/></a>
-
-<br/><br/>
-
-<!-- 06. FIVE FLAGSHIP PRODUCTION SYSTEMS CODEBASES -->
-<a href="#"><img src="./assets/missions.svg" width="100%" alt="Five Flagship Production Systems Codebases"/></a>
-
-<br/><br/>
-
-<!-- 07. AVIONICS FLIGHT LOG & ENGINEERING MILESTONES -->
-<a href="#"><img src="./assets/experience.svg" width="100%" alt="Avionics Flight Log &amp; Engineering Milestones"/></a>
-
-<br/><br/>
-
-<!-- 08. SATELLITE GROUND STATION UPLINK & DIRECT DISPATCH -->
-<a href="#"><img src="./assets/contact.svg" width="100%" alt="Satellite Ground Station Uplink &amp; Direct Dispatch Array"/></a>
-
-<br/><br/>
-
-<!-- DIRECT CHANNELS & PROFESSIONAL NETWORKS -->
-<a href="https://dev-jangid-portfolio.vercel.app" target="_blank">
-  <img src="https://img.shields.io/badge/INTERACTIVE_PORTFOLIO-LIVE_PRODUCTION-ff5500?style=for-the-badge&logo=vercel&logoColor=white&labelColor=030508" alt="Live Portfolio" />
-</a>
-&nbsp;
-<a href="https://linkedin.com/in/dev-jangid-" target="_blank">
-  <img src="https://img.shields.io/badge/LINKEDIN-DEV_JANGID-00d4ff?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=030508" alt="LinkedIn" />
-</a>
-&nbsp;
-<a href="mailto:devjangid577@gmail.com">
-  <img src="https://img.shields.io/badge/DIRECT_SIGNAL-DEVJANGID577-10b981?style=for-the-badge&logo=gmail&logoColor=white&labelColor=030508" alt="Email" />
-</a>
-&nbsp;
-<a href="https://github.com/Dev-5678" target="_blank">
-  <img src="https://img.shields.io/badge/GITHUB_CODEBASES-DEV_5678-ffffff?style=for-the-badge&logo=github&logoColor=black&labelColor=030508" alt="GitHub" />
-</a>
+<!-- INTERACTIVE REPO LAUNCH MATRIX (WITH HOVER EFFECTS & DIRECT REPO ROUTING) -->
+<table align="center" width="100%">
+  <tr>
+    <td align="center" width="20%">
+      <a href="https://github.com/Dev-5678/HyperRoute" target="_blank">
+        <img src="https://img.shields.io/badge/01_HYPERROUTE-SUB--2.8ms_GATEWAY-ff5500?style=for-the-badge&logo=fastify&logoColor=white&labelColor=030508" alt="HyperRoute Gateway"/><br/>
+        <sub><b>⚡ Sub-2.8ms Reverse Proxy &amp; Limiter</b></sub>
+      </a>
+    </td>
+    <td align="center" width="20%">
+      <a href="https://github.com/Dev-5678/NexusCRDT" target="_blank">
+        <img src="https://img.shields.io/badge/02_NEXUSCRDT-CRDT_SEMILATTICE-00d4ff?style=for-the-badge&logo=typescript&logoColor=white&labelColor=030508" alt="NexusCRDT Engine"/><br/>
+        <sub><b>🧬 Conflict-Free Replicated State</b></sub>
+      </a>
+    </td>
+    <td align="center" width="20%">
+      <a href="https://github.com/Dev-5678/AgentForge" target="_blank">
+        <img src="https://img.shields.io/badge/03_AGENTFORGE-KAHN_DAG_RUNTIME-a855f7?style=for-the-badge&logo=apacheairflow&logoColor=white&labelColor=030508" alt="AgentForge DAG Runtime"/><br/>
+        <sub><b>🤖 Topological Autonomous DAG</b></sub>
+      </a>
+    </td>
+    <td align="center" width="20%">
+      <a href="https://github.com/Dev-5678/ProxiSpeak" target="_blank">
+        <img src="https://img.shields.io/badge/04_PROXISPEAK-SPATIAL_WEBRTC-10b981?style=for-the-badge&logo=webrtc&logoColor=white&labelColor=030508" alt="ProxiSpeak Gateway"/><br/>
+        <sub><b>🎧 Geospatial HRTC WebRTC Audio</b></sub>
+      </a>
+    </td>
+    <td align="center" width="20%">
+      <a href="https://dev-jangid-portfolio.vercel.app" target="_blank">
+        <img src="https://img.shields.io/badge/05_3D_PORTFOLIO-THREE.JS_WEBGL-ffaa00?style=for-the-badge&logo=threedotjs&logoColor=white&labelColor=030508" alt="3D Portfolio Vercel"/><br/>
+        <sub><b>🌐 Interactive Mechanical Cockpit</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 </div>
 
+<br/>
+
+<!-- SECTION: INTERACTIVE ARCHITECTURAL DRAWERS -->
+<h2 id="-architectural-blueprints" align="center">🧬 INTERACTIVE ARCHITECTURAL BLUEPRINTS</h2>
+
+<!-- BLUEPRINT 01: HyperRoute Gateway (OPEN BY DEFAULT) -->
+<details open>
+<summary><img src="https://img.shields.io/badge/BLUEPRINT_01-HYPERROUTE_GATEWAY-ff5500?style=for-the-badge&logo=fastify&logoColor=white"/> <b>&nbsp;&nbsp;Sub-2.8ms Distributed Edge Gateway &amp; Sliding-Window Rate Limiter</b></summary>
+<br/>
+
+> **Core Problem:** Mitigate thundering-herd API traffic spikes while guaranteeing sub-2.8ms p99 routing latency across distributed container clusters.
+
+<div align="center">
+  <img src="./assets/engine.svg" width="100%" alt="Systems Concurrency &amp; Cache Coherence Engine"/>
+</div>
+
+#### Verified Benchmark Matrix:
+| Test Scenario | Latency (p50) | Latency (p99) | Throughput | Error Rate |
+| :--- | :--- | :--- | :--- | :--- |
+| **Direct Upstream Bypass** | `0.6ms` | `1.4ms` | `168k req/s` | `0.00%` |
+| **Token-Bucket Sliding Counter** | `0.8ms` | `2.1ms` | `142k req/s` | `0.00%` |
+| **EWMA Health-Aware Balancing** | `1.1ms` | `2.7ms` | `129k req/s` | `0.00%` |
+
+```bash
+# Verify HyperRoute benchmark cluster locally:
+git clone https://github.com/Dev-5678/HyperRoute.git
+cd HyperRoute && npm install && npm test
+```
+<p align="right"><a href="https://github.com/Dev-5678/HyperRoute" target="_blank"><b>Explore Full HyperRoute Codebase ↗</b></a></p>
+</details>
+
+<br/>
+
+<!-- BLUEPRINT 02: NexusCRDT -->
+<details>
+<summary><img src="https://img.shields.io/badge/BLUEPRINT_02-NEXUSCRDT_ENGINE-00d4ff?style=for-the-badge&logo=typescript&logoColor=white"/> <b>&nbsp;&nbsp;State Semilattice Distributed Canvas Synchronization</b></summary>
+<br/>
+
+> **Core Problem:** Achieve 100% deterministic multi-peer conflict resolution without a central lock manager or single point of failure under high packet jitter.
+
+<div align="center">
+  <img src="./assets/architecture.svg" width="100%" alt="Decentralized CRDT Gossip Mesh &amp; Kahn DAG Scheduler"/>
+</div>
+
+#### Semilattice Convergence Properties:
+* **Commutativity:** A ⊔ B = B ⊔ A (Packet arrival order does not affect final state).
+* **Associativity:** (A ⊔ B) ⊔ C = A ⊔ (B ⊔ C) (Clustering hierarchies yield identical canvas state).
+* **Idempotence:** A ⊔ A = A (Duplicate network transmissions cause zero phantom side-effects).
+
+```bash
+# Run 12-peer partition convergence stress test:
+git clone https://github.com/Dev-5678/NexusCRDT.git
+cd NexusCRDT && npm install && npm run test:convergence
+```
+<p align="right"><a href="https://github.com/Dev-5678/NexusCRDT" target="_blank"><b>Explore Full NexusCRDT Codebase ↗</b></a></p>
+</details>
+
+<br/>
+
+<!-- BLUEPRINT 03: ProxiSpeak -->
+<details>
+<summary><img src="https://img.shields.io/badge/BLUEPRINT_03-PROXISPEAK_WEBRTC-10b981?style=for-the-badge&logo=webrtc&logoColor=white"/> <b>&nbsp;&nbsp;Geospatial WebRTC Proximity Audio &amp; HRTF Oscilloscope</b></summary>
+<br/>
+
+> **Core Problem:** Render 60Hz 3D binaural spatial audio for 50+ concurrent peers with sub-24ms end-to-end latency and zero garbage-collection stutter.
+
+<div align="center">
+  <img src="./assets/audio_engine.svg" width="100%" alt="ProxiSpeak Real-Time Audio Frequency Oscilloscope"/>
+</div>
+
+#### Acoustic Modeling Specs:
+* **HRTF Panning Matrix:** Dual-ear binaural coordinate transform with inverse-square amplitude rolloff.
+* **Doppler Shift Engine:** Velocity-vector frequency modulation with dynamic observer vector math.
+* **Spatial Horizon Culling:** 2D QuadTree spatial index pruning all peers outside 150px hearing radius to conserve peer-to-peer WebRTC mesh bandwidth.
+
+<p align="right"><a href="https://github.com/Dev-5678/ProxiSpeak" target="_blank"><b>Explore Full ProxiSpeak Codebase ↗</b></a></p>
+</details>
+
+<br/>
+
+<!-- BLUEPRINT 04: AAI CNS/ATM Case Study -->
+<details>
+<summary><img src="https://img.shields.io/badge/BLUEPRINT_04-AAI_CNS%2FATM-ffaa00?style=for-the-badge&logo=radar&logoColor=white"/> <b>&nbsp;&nbsp;Airports Authority of India (CNS/ATM Telemetry &amp; Flight Radar Case Study)</b></summary>
+<br/>
+
+> **Industrial Scope:** Flight radar feed segregation, enterprise network partitioning, and mission-critical voice/surveillance loops with zero broadcast storm loops.
+
+<div align="center">
+  <img src="./assets/deployments.svg" width="100%" alt="Enterprise Telemetry &amp; Network Segregation Infrastructure"/>
+  <br/>
+  <img src="./assets/experience.svg" width="100%" alt="Verified Engineering Track Record &amp; Education"/>
+</div>
+</details>
+
+<br/>
+
+<!-- SECTION: LIVE TELEMETRY & GITHUB ACTIVITY -->
+<div align="center">
+<h2 id="-live-telemetry--metrics">📊 LIVE ENGINEERING TELEMETRY &amp; METRICS</h2>
+
+<a href="https://github.com/Dev-5678">
+  <img src="./assets/stats.svg" width="100%" alt="Dev Jangid Live Engineering Telemetry &amp; Metrics" />
+</a>
+
+<br/><br/>
+
+<!-- SECTION: DIRECT DISPATCH ARRAY -->
+<h2 id="-direct-dispatch">📡 DIRECT DISPATCH &amp; DEVELOPER CHANNELS</h2>
+
+<img src="./assets/contact.svg" width="100%" alt="Developer Channels &amp; Direct Dispatch Array"/>
+
+<br/><br/>
+
+<!-- INTERACTIVE DIRECT DISPATCH HOVER LAUNCHPAD -->
+<p align="center">
+  <a href="mailto:jangid.dev20@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/DIRECT_SIGNAL-JANGID.DEV20%40GMAIL.COM-ff5500?style=for-the-badge&logo=gmail&logoColor=white&labelColor=080e1c" alt="Direct Email Signal"/>
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/devjangid911/" target="_blank">
+    <img src="https://img.shields.io/badge/LINKEDIN-DEVJANGID911-00d4ff?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=080e1c" alt="LinkedIn"/>
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://dev-jangid-portfolio.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/PORTFOLIO-DEV--JANGID--PORTFOLIO.VERCEL.APP-c084fc?style=for-the-badge&logo=vercel&logoColor=white&labelColor=080e1c" alt="Live Portfolio"/>
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/Dev-5678" target="_blank">
+    <img src="https://img.shields.io/badge/GITHUB-DEV_5678-10b981?style=for-the-badge&logo=github&logoColor=white&labelColor=080e1c" alt="GitHub Profile"/>
+  </a>
+</p>
+
 <!-- WAVING CYBER FOOTER -->
-<a href="#">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:030508,50:ff5500,100:030508&height=110&section=footer" width="100%" alt="Waving Cyber Footer" />
+<a href="https://github.com/Dev-5678">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:030508,50:00d4ff,100:030508&height=110&section=footer" width="100%" alt="Waving Cyber Footer" />
 </a>
 
 <p align="center">
-  <sub>OPERATOR // DEV JANGID • COMPUTER SCIENCE &amp; ENGINEERING • AIRPORTS AUTHORITY OF INDIA (NR HQ) • INDIA SPACE LAB</sub>
+  <sub>DEV JANGID // SYSTEMS ARCHITECT &amp; FULL-STACK SOFTWARE ENGINEER • B.TECH CSE (2023–2027) • FARIDABAD / DELHI NCR • AIRPORTS AUTHORITY OF INDIA (CNS/ATM INTERN)</sub>
 </p>
+
+</div>

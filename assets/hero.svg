@@ -1,259 +1,416 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 480" width="1000" height="480">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 460" width="1000" height="460">
 <defs>
-  <!-- Background Carbon & Grid -->
-  <linearGradient id="bgCockpit" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#030508"/>
-    <stop offset="50%" stop-color="#070b14"/>
-    <stop offset="100%" stop-color="#04060a"/>
+  <!-- Background Carbon & Slate Gradients -->
+  <linearGradient id="bgTerminal" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#040711"/>
+    <stop offset="50%" stop-color="#070d1a"/>
+    <stop offset="100%" stop-color="#03050d"/>
   </linearGradient>
 
-  <!-- Glowing Embers & Hyper Cyan -->
-  <linearGradient id="emberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#ff4400"/>
-    <stop offset="50%" stop-color="#ff7700"/>
-    <stop offset="100%" stop-color="#ffaa00"/>
-  </linearGradient>
-  <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+  <!-- High-Tech Neon Blue/Cyan Accent -->
+  <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
     <stop offset="0%" stop-color="#00d4ff"/>
     <stop offset="100%" stop-color="#00ffcc"/>
   </linearGradient>
-  <linearGradient id="radarSweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#ff5500" stop-opacity="0.35"/>
-    <stop offset="100%" stop-color="#ff5500" stop-opacity="0"/>
+
+  <!-- Title Chrome Gradient -->
+  <linearGradient id="titleChrome" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="60%" stop-color="#f1f5f9"/>
+    <stop offset="100%" stop-color="#94a3b8"/>
   </linearGradient>
 
-  <!-- Honeycomb Hex Grid Pattern -->
-  <pattern id="hexGrid" width="28" height="48.497" patternUnits="userSpaceOnUse">
-    <path d="M 14 0 L 28 8.08 L 28 24.25 L 14 32.33 L 0 24.25 L 0 8.08 Z M 14 48.5 L 28 40.42 L 28 24.25 L 14 32.33 L 0 24.25 L 0 40.42 Z" 
-          fill="none" stroke="#ff5500" stroke-width="0.7" stroke-opacity="0.04"/>
+  <!-- Subtle Blueprint Dot Matrix -->
+  <pattern id="dotMatrix" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="0.8" fill="#00d4ff" fill-opacity="0.10"/>
   </pattern>
 
-  <radialGradient id="cockpitGlow" cx="680" cy="240" r="320" gradientUnits="userSpaceOnUse">
-    <stop offset="0%" stop-color="#ff5500" stop-opacity="0.18"/>
-    <stop offset="100%" stop-color="#ff5500" stop-opacity="0"/>
-  </radialGradient>
-
-  <!-- Glow Filter -->
   <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+    <feGaussianBlur stdDeviation="3" result="blur"/>
     <feMerge>
-      <feMergeNode in="coloredBlur"/>
+      <feMergeNode in="blur"/>
       <feMergeNode in="SourceGraphic"/>
     </feMerge>
   </filter>
+
+  <!-- Circular Clip-Path for Dead-Center Developer Photo (r=44, center=48,48) -->
+  <clipPath id="devDeadCenterClip">
+    <circle cx="48" cy="48" r="44"/>
+  </clipPath>
+  <!-- Inner Chassis Clip-Path to Guarantee Zero Line Overflows -->
+  <clipPath id="chassisInnerClip">
+    <rect x="15" y="15" width="970" height="430" rx="6"/>
+  </clipPath>
+
+  <!-- Dynamic Energy Stream Gradient -->
+  <linearGradient id="energyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#00d4ff" stop-opacity="1"/>
+    <stop offset="35%" stop-color="#00ffcc" stop-opacity="0.9"/>
+    <stop offset="70%" stop-color="#ff007f" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#00d4ff" stop-opacity="1"/>
+  </linearGradient>
 </defs>
 
 <style>
-  .mono { font-family: 'JetBrains Mono', 'SF Pro Mono', Menlo, Consolas, monospace; }
-  .display { font-family: 'Arial Black', Impact, 'Trebuchet MS', sans-serif; font-weight: 900; }
+  .mono { font-family: 'JetBrains Mono', 'Fira Code', 'SF Pro Mono', Menlo, Consolas, monospace; }
+  .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif; }
+  .display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial Black', sans-serif; font-weight: 900; }
   
-  @keyframes sweepLine { 0% { transform: translateY(-5px); } 100% { transform: translateY(485px); } }
   @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
-  @keyframes pulseGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
-  @keyframes targetPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.4; } }
+  @keyframes pulseSubtle { 0%, 100% { opacity: 0.85; } 50% { opacity: 1; } }
+  @keyframes scanline { 0% { transform: translateY(16px); } 100% { transform: translateY(440px); } }
   
-  .scanline { animation: sweepLine 5.5s linear infinite; }
-  .blink { animation: blinkLed 1s infinite; }
-  .pulse { animation: pulseGlow 2s ease-in-out infinite; }
+  /* Next-Gen Cyber Animations */
+  @keyframes spinReticle { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes spinReticleRev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+  @keyframes sonarPulse { 0% { r: 45px; opacity: 0.9; stroke-width: 2px; } 60% { opacity: 0.35; } 100% { r: 68px; opacity: 0; stroke-width: 0.5px; } }
+  @keyframes energyCirc { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1200; } }
+  @keyframes cornerGlow { 0%, 100% { stroke: #00ffcc; filter: drop-shadow(0 0 2px #00ffcc); } 50% { stroke: #00d4ff; filter: drop-shadow(0 0 6px #00d4ff); } }
+  @keyframes waveMotion { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -60; } }
+  @keyframes cursorBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @keyframes textGlowPulse { 0%, 100% { filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.4)); } 50% { filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.8)); } }
+
+  .scan { animation: scanline 6.5s linear infinite; }
+  .blink { animation: blinkLed 1.2s infinite; }
+  .cursor-blink { animation: cursorBlink 0.9s infinite; }
+  .pulse { animation: pulseSubtle 3s ease-in-out infinite; }
+  .reticle-spin { transform-origin: 48px 48px; animation: spinReticle 18s linear infinite; }
+  .reticle-spin-rev { transform-origin: 48px 48px; animation: spinReticleRev 26s linear infinite; }
+  .sonar-ring { animation: sonarPulse 3.4s cubic-bezier(0.1, 0.7, 0.3, 1) infinite; }
+  .energy-border { animation: energyCirc 12s linear infinite; }
+  .hud-bracket { animation: cornerGlow 3s ease-in-out infinite; }
+  .telemetry-wave { stroke-dasharray: 6 3; animation: waveMotion 1.5s linear infinite; }
+  .name-glow { animation: textGlowPulse 4s ease-in-out infinite; }
+
+  /* Interactive Hover Transitions */
+  .tech-card { cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+  .tech-card:hover { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); transform: translateY(-2px); }
+  .tech-card:hover rect.card-bg { fill: #0b172e; stroke: #00ffcc; stroke-opacity: 1; stroke-width: 1.5; }
+  .tech-card:hover text.card-title { fill: #00ffcc; }
+
+  .action-btn { cursor: pointer; transition: all 0.25s ease; }
+  .action-btn:hover { filter: drop-shadow(0 0 12px rgba(0, 255, 204, 0.6)); }
+  .action-btn:hover rect { fill-opacity: 0.45; stroke-width: 1.8; stroke: #00ffcc; }
 </style>
 
 <!-- Canvas Base -->
-<rect width="1000" height="480" fill="url(#bgCockpit)"/>
-<rect width="1000" height="480" fill="url(#hexGrid)"/>
-<circle cx="680" cy="240" r="320" fill="url(#cockpitGlow)"/>
+<rect width="1000" height="460" fill="url(#bgTerminal)"/>
+<rect width="1000" height="460" fill="url(#dotMatrix)"/>
 
-<!-- Realtime Laser Scanline Sweep -->
-<rect class="scanline" width="1000" height="2" fill="#ff5500" opacity="0.35"/>
 
-<!-- Heavy Chamfered Mecha Hull Border -->
-<polygon points="34,10 966,10 990,34 990,446 966,470 34,470 10,446 10,34" 
-         fill="none" stroke="#ff5500" stroke-opacity="0.45" stroke-width="1.5"/>
-<polygon points="40,16 960,16 984,40 984,440 960,464 40,464 16,440 16,40" 
-         fill="none" stroke="#00d4ff" stroke-opacity="0.15" stroke-width="1"/>
+<!-- Realtime Laser Scanline Sweep (Strictly Contained Inside Chassis Box) -->
+<g clip-path="url(#chassisInnerClip)">
+  <rect x="16" y="16" width="968" height="1.5" fill="#00d4ff" opacity="0.28"><animate attributeName="y" values="16;440;16" dur="6.5s" repeatCount="indefinite"/></rect>
+</g>
+<!-- Outer Chassis Bevel & Border (100% contained, zero overflowing lines) -->
+<rect x="12" y="12" width="976" height="436" rx="8" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+<rect x="14" y="14" width="972" height="432" rx="7" fill="none" stroke="#00d4ff" stroke-opacity="0.25" stroke-width="1"/>
 
-<!-- Corner Notches -->
-<path d="M 10 44 L 44 10 M 990 44 L 956 10 M 10 436 L 44 470 M 990 436 L 956 470" stroke="#ff5500" stroke-width="2"/>
+<!-- Corner Precision Brackets -->
+<path d="M 14 36 L 14 14 L 36 14" fill="none" stroke="#00d4ff" stroke-width="2"/>
+<path d="M 986 36 L 986 14 L 964 14" fill="none" stroke="#00d4ff" stroke-width="2"/>
+<path d="M 14 424 L 14 446 L 36 446" fill="none" stroke="#00d4ff" stroke-width="2"/>
+<path d="M 986 424 L 986 446 L 964 446" fill="none" stroke="#00d4ff" stroke-width="2"/>
 
-<!-- TOP AVIONICS CONTROL BAR -->
-<rect x="24" y="20" width="952" height="34" rx="4" fill="#070c16" stroke="#ffffff" stroke-opacity="0.08"/>
+<!-- ================= 01. TOP TERMINAL WORKSPACE BAR ================= -->
+<g transform="translate(14, 14)">
+  <rect width="972" height="34" rx="7" fill="#080e1a" stroke="#ffffff" stroke-opacity="0.06"/>
+  
+  <!-- Terminal Control Jewels -->
+  <circle cx="20" cy="17" r="4.5" fill="#ef4444"/>
+  <circle cx="36" cy="17" r="4.5" fill="#f59e0b"/>
+  <circle cx="52" cy="17" r="4.5" fill="#10b981"/>
 
-<!-- Window Indicator Jewels -->
-<circle cx="42" cy="37" r="4.5" fill="#ef4444"/>
-<circle cx="58" cy="37" r="4.5" fill="#f59e0b"/>
-<circle cx="74" cy="37" r="4.5" fill="#10b981"/>
+  <!-- Command Prompt & Git Branch Telemetry -->
+  <text x="74" y="21" class="mono" font-size="10" fill="#94a3b8">
+    <tspan fill="#38bdf8" font-weight="700">dev-jangid@production</tspan>:<tspan fill="#a855f7">~/systems</tspan>$
+    <tspan fill="#64748b"> git checkout </tspan><tspan fill="#10b981" font-weight="700">main</tspan>
+    <tspan fill="#64748b"> │ </tspan>ci:<tspan fill="#10b981">72/72_PASSING</tspan>
+  </text>
 
-<!-- Monospace Avionics Status Telemetry -->
-<text x="96" y="41" class="mono" font-size="10.5" fill="#94a3b8">
-  HUD_STATION: <tspan fill="#ffffff" font-weight="700">DEV_JANGID_01</tspan>
-  <tspan fill="#334155"> │ </tspan>SYS_CALLSIGN: <tspan fill="#ff7700" font-weight="700">AAI_ANS_RADAR_DEFENSE</tspan>
-  <tspan fill="#334155"> │ </tspan>UHF_BEACON: <tspan fill="#00d4ff" font-weight="700">433.920 MHz</tspan>
-</text>
-
-<!-- Top Right Live Status Pill -->
-<g transform="translate(830, 26)">
-  <rect width="136" height="22" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.4"/>
-  <circle cx="12" cy="11" r="3.5" fill="#10b981" class="blink"/>
-  <text x="24" y="15" class="mono" font-size="9.5" font-weight="800" fill="#34d399" letter-spacing="0.12em">ALL NODES GREEN</text>
+  <!-- Right Status Badge -->
+  <g transform="translate(776, 6)">
+    <rect width="184" height="22" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.4"/>
+    <circle cx="12" cy="11" r="3.5" fill="#10b981">
+      <animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="12" cy="11" r="3.5" fill="none" stroke="#10b981" stroke-width="1.5">
+      <animate attributeName="r" values="3.5;14" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="24" y="15" class="mono" font-size="9" font-weight="700" fill="#34d399" letter-spacing="0.5">OPEN TO SDE / SYSTEMS</text>
+  </g>
 </g>
 
-<!-- ================= LEFT REGION: OPERATOR IDENTITY & CORE SPECS ================= -->
-<g transform="translate(42, 85)">
-  <!-- Sub-heading Tag -->
+<!-- ================= 02. LEFT PANE: SYSTEMATIC DEVELOPER IDENTITY & BENCHMARK ================= -->
+<g transform="translate(38, 64)">
+  
+  <!-- INTEGRATED PROFILE HEADER LOCKUP (Straight, Upright, Dead-Centered Avatar) -->
   <g>
-    <polygon points="0,0 270,0 260,24 0,24" fill="#ff5500" fill-opacity="0.12" stroke="#ff5500" stroke-opacity="0.5"/>
-    <circle cx="12" cy="12" r="3" fill="#ff5500"/>
-    <text x="24" y="16" class="mono" font-size="10" font-weight="800" fill="#fed7aa" letter-spacing="0.15em">COMPUTER SCIENCE ENGINEER</text>
+    <!-- AVATAR RETICLE DEDICATED ANCHOR (Diameter 96px, Center 48,48) -->
+    <g transform="translate(0, 0)">
+      <!-- Outer HUD Radar Ring with Tick Marks -->
+      <circle cx="48" cy="48" r="50" fill="none" stroke="#00d4ff" stroke-opacity="0.25" stroke-dasharray="4 4"/>
+      <!-- Dynamic Animated Reticle Arrays (SMIL 100% Browser Compatible) -->
+      <circle cx="48" cy="48" r="44" fill="none" stroke="#00d4ff" stroke-width="1.5" pointer-events="none">
+        <animate attributeName="r" values="44;70" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.9;0" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="48" cy="48" r="46" fill="#040812" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)"/>
+      
+      <!-- Clockwise Rotating HUD Reticle Outer Ring -->
+      <g transform="translate(48, 48)">
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="18s" repeatCount="indefinite"/>
+          <circle cx="0" cy="0" r="47.5" fill="none" stroke="#00ffcc" stroke-width="1.5" stroke-dasharray="12 18" opacity="0.95"/>
+        </g>
+      </g>
+      
+      <!-- Counter-Clockwise Rotating HUD Reticle Inner Ring -->
+      <g transform="translate(48, 48)">
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="26s" repeatCount="indefinite"/>
+          <circle cx="0" cy="0" r="49" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="6 24" opacity="0.85"/>
+        </g>
+      </g>
+      
+      <!-- Embedded Dead-Center Face Photo (+1.7 deg upright facial midline, Zero Phone, 100% Centered) -->
+      <image href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCADwAPADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8yelOAoAzTgB6V0HO3YMAmgY707HtQF5oM3K4ox1NPKFTtNIPpxVi1j8+VIh948D3oQiR9Omjt4Z3wvnAlAxxkDjP+fSmRmOO6EXlSTbWyQqZDY7A+9dZqGntqlg0EH7kWMyRKVHzn5D8ufr/ADrFvLNERLa1tsF2AAOS8hGBkk8jnP0x7Vo4OJMZKWxa0KSz1iZLX7QkcspkiUucFSw4yPTd+v1qCy0G5lvDaHZHKrGOWOTOVx16du+e1Mjs1F0GuNOe6hRSXlt5PnXHVkOOcEcE9exrtodFs9S0az1WDVhPCymOO9ztYc/ckHYj3/Os27OzNlDmimjl/wCzNNtI8PfuxQ7iyIAWXOOCT0/AVUuLS3VpJ45Hwh8xd6AKy+pOST+eas6vFe6Vci3njadVcYxng8c9DgEfhXPa3rkt6SsKIoQ4VEG1VIOOnrScrD9mTpq32WTzoLVBCOVWQjczerD09B371Tae0uZ2ur27mLnqqd29s547VBpWjPqUwlurkpDn52Xov1P+Ga3jqfg7w/cbIdHGqSqBukuEyo46KvQfU5J9aycmaKKRVttDXUoPNttJvpYc7jLborEH8ev5Va0/wlqMM/23RZvtvdoNvl3CEdQFP3vwp6arpWqXEt1p1rJpa2yefNJEyr9FPrk/KBTtA1qfUBKWdY7mEq4ZQQST/EOeCMDjuPfFFmytES63rerWbrJFcbGk4eNsxnpznsf0NYlxqC3VxDJCqRTNkEKcgHtknJx3rtLvWLXxLDLYataxSX9qNxTaAbhBzwRyH64I64wetZcVr4ajQXNho8sikAlILoh93fgj+WPpVKTWhEo8zTuc3d/2THMPtN5O87ABxGNsat3PXPviun0LV/CdqUW0uLzzl4Jkl2Z9cAcY+v41nalqPhlHMcmhzpIecm5cHPcnd1rDc21zMDbRSo5JCsuDg4447nipuWtD0+/S71mORoNQtFBGEWSMowH/AF0UuM++BXIXVpq9vqkUF7FNZxgMFkEo6YzuDr19uag8PWGqxxfara8cBOQW3Iufpgk/kPrW4uuzQTSWXiWyiubJgA5RhgEdGB/hPce4qouzuROPMrHMSSC+bzQp3gHcxQLkj1H9arMu0lT24rrLiw022abUY909rDCXt5VIImJwFz/d28Z9a5ZgWJZjlicn61tLujl1Ts1Yi25GaQripCCOlIwqSiIgdKMZ4pWGKTB7UAJt9800qRzT+lHHegaYmMc0ozjgUDmnAYoQgUc0uOnFLg4pwGaaATbxwKtWKyrMksKbnjYMo+nPH5VAPl6HFW4nWFUeNPO3D58DhWzwCe3r+NCDqdJc3dtJbm7dRHHIMzHcVySRg8f54FaEEFpqNqtnfzqJmH7mUtxMpJ53dj6/1zmqVxb2l34ZMmjR7rdWC3G0kbZGyMgnoMgD3yOlN0G0srOJoZ9UnEYbcuLYSAN1CnLe3pjnrWk5NJJipQTk2i82mXGgswnVpkaMcMOVX0x3A7EccdqoWuqPpb3A02aFYrkFZolJ2SSY43KeN3Ubh1zXUpc6X5X2PUL5ZIlySrJkDkZ69PoDVHUPDnhyWPzrJ2aVkyoWVsNwTjnIx14I/GueTudaVjgrm9F7J9o00m1KH51eQ7FA6YJ+6P8AZBx7Vk7Y5bhpJ8zEHcZGBC59h1bP/wBc1p6rFEH8mSH92mDiJyyjPQFj0zj3PoKo3Mnlfuo0CnPMca/Kv+z3Jb1JPH1rFFEOr3/kQLaxqqu6BnA6DP4+mPzNYTyNI2WfGTn15qeffLPJI+Tk8+gFNFjcu4EUTvu5XaCaYF8Iiypawb3LAu4Axl19+4wD+ddT4aghB8l4THHcxyNBMwDMEx1zjkZzweoB9qw9P0+a0nivL2PKp8+C+FGOTnuffFdnppaztLeJlURZYxFUByjj+HnAwT9cHrzVwEzmL+OGC7S68zmM7FAOMsPQ+nFV9W1C6lS2YRxxtszkcOqMcjB6AnnnrXS6p4f8vxPHpsoEghs1uZVA3YcqXx+n41z2sDa8dw9uonvE+UFiQqqMDj3GP1rSMmk0ZTgm1IWawvWjia38uWGZTIgn5YtjDLuPcY/rVSwhvrO5jne1AjhkVy4GUAz3PP0/lWt4U1Ke7K2CsrmORf3cv3c5OceuRjpg8V6DD4c0aWJbzTS9pdrlZLZl2kNj5lKEYbPXjris0r7Gmxk2ulx6tALuO9Nt5+QUS3zj2yMHHqOfXmuV1DQdSttU2x3cciOFUMTgYPIyOnHp6V6HYWVjZKIrqOOCF2IWaNm8o9/qnODg8emKz/HehwSaU19ZRMZ7Y7yQwBlX3H94ZyfUc0+XuDZzUGoR/wBiT6S+A2nszquNoMLkHofQgY+tZDIoIK8hhkEdMVPBdtLaJq9zteV4Ws5F24L4yR9cKKZBFIdOjuHgMJB255w4PIwOx9RWiTsc9Rp+pWKnPFIyn0qXAppI6ZoM7kBWk24qUqM9KbjHFMZER2xSU80hFAwHFLjvQBmnY/SgAC5p60KKdj0pCYBHfOwZIGR71oXVibSFXeTYfKMhUcl8AYJ9uaseH7eOVriecghIyQmQNxoRonBvrsBoml/eBur5IwAfQYz2HSi9jSEbq5seAJo7fSdbjuiXiuliWQMehOfmAHcAfyqle6VfLdS3mkTnapy1uBnoAche+R/n0l0Wxlk8OeIJIX+drpJYWzztXocdh8w/MVYur+wvZk8yORi1souAg5iZRyQw4HTHXI/kSvypMuNk20Mur+E/aIjbMsrEqyhyEDEcHb1Pbv61TXRNZcRu8s0eTlY4kkyTnjA24698/nWlY6jpFvftfSw3qnaohmYoGxtAzyCFJx1Na9x4k8Nm3WZpLjk4ZZSXeU+isST+Qxz1rHQ21MN/B7BPtU9y1v5WW2Iu1YiewJJLPzjIGa5rVdMuIbkaNptm7TSfL5arukP++eefboK62PVL/UiraNpzQqWxCiOqRRAcGR3OcY7YAz1xXS+GNO0/TrE3QQS3M/3pdud5PBAyeFHOWJ55/EtcDjIPAGm2GmpP4huTCkeC8aOqyTucHGTkIoPBYgngYU1R1HxR4esIUt9A0i3llQbSSrGJRjoATuf6scH+6K2vFNjZBpL3UrvEEjEKIiS83rtGfXjjOK4PUZrWPEVrFGijO4r1BIxjPfHSkxjJdZv5JzcTSh5XOANiAL+GMDHYf4VqaLrMsMn9kSzGZbl9oYkMqMe6n64rmdyr824cHG3POP6VJYPuu0mB2mMhlUHqc8fTmknYD1ez1ayi1f8AtW/UAzECQZyfKRChB/NVH+8azdStLe/Sy1wx7ZjbmKOPb/FI+UPT+FcH65rlZru+vr6SNvnJjIzjrwQM468mtptT8/UE0uDiHT7UxqR/FLs5bjrjAH51pGWpEldWOH0u5uLK/We2mCNG2QcZBPQZr3bw3c2/jLTXtdYjFrqUcalZcfOVHIZSOHXqCPf2rxGOzNlqSxzuIwG4JGFDg4Of5/jXp8lxd6XpVpPLY/ZOVaG/tpPNibrgN3X6nI/CpW5XQl1XWL3SY5tOvvn8pg6XKuWVkbPyt144Jz2rmbPxX5sk1vNc+UWXAZzuCv1DAf3T0I9CSO4q9DqZvJ7mG/LCWJchg+3POcjHUA8/QmuU8Q2sYmkurRmCoy5BPOT3Hp9KHJhY15oLifSWNipJhmkMkSIPkZlCn1J6A8fXNWdfuLZbi20KKTL6faqrAdN+Ofqcn9BVfwpc/abS6lbb50EQnVQMFjGwI/8AZh9Kryzy397c68+Ga5mZiHQlmXO0lSOOMjg9q7KScqZwVpKM7MrkVGQe1Tsm1mX0NMK+tYj2IqYw5qU9xTStAJkJHtSYqRhzTaCgA4pwHfFNFPHoKGIcCD2pyAu4UEcnFN5pUyrBu4OaBHU6ZpHn6U+1gHuSUXjoQMqM++f5Vh+Iwy3FvbQyeX5DKcA/xMf6Yrr/AA3cWLWryz3EYGxkCMCck42kehGKxNejs7q5muILctJ94uMlQQBg56E8/mKqUbNG0J+67C6Nqiy6ZcaTE5gkEoaUqedpX+Hv1Az6DFXFtbaO2cJGGa3LHZGPnjBHQg8OO4PfHrXEafcXFjfyeUezFwx4Izn8Dx19q6nR7r7c51iGdoDagRSLKAyS5HAA6hvXGQQBntSc046hGDU9Nh9tcQtE8UJiaYj52wybV77gflHtzitCLTvC0uyC4lgldMMMxZYDv05I9c8ehrHmI1RmeLaAQfmhbaQ2P4sjjOfvVDcm20HSxFFFK1xdkKzPnCp14HckdPTINcz3OlanRL4htrl/IFvHaaZCMxxcANtHUgdM+nPr6Vjav4wuHvpJt5FrbtgIh++2DgDFcvJM15cbA3LtzEvyhcdgBUsgWGdLa6ibMMzBlJxljjrSu0rj32Lt3Lc6pI2oXsgDxR7IlUYVCPvEfjkD6VkX8CRpAka4ZsuMjBx6fpXY6baj+zI7idmONyiNWBOcnIAA5HeoXtbZIjFIm9pCVj3AZAzyP64NZJ31NpQSSSOBniZCCMANyAf8amtYWiQTSEhCcgDvXWXPh+0Eik38AJOVjWMuxPoBjr7EmlXSILX95HC5l6+ZPyU9wo6n0Bq4u6MnGxS0+zuLWP7Q5CTTqBGn3iqk9/f/AD3qUwyaZK0o+9GrFyepYjoPp6+tbENssYd9whXOJJ523Mg79OjH1J9MCmMsF8HtLS1lMSje8h4JAHJweemePSnKairlQpubsYHiW3a5u3aAKW80vkHqGxx+A21qeGZta0a2M1tIpQKTs3HYpPqrDb74rSsvDc8+lx6pfWpRYwY1bueNqnHuRVVNNtd9g14hKNOFY46jdsyc9Ov6Vl7VOVka+wko8zKGo3ls0i6ppcEcCY2yQjordGK88ryOOwNVSFkmljG4+YDtXGRjqP0AqeXTFMNwIVKmINwo4Lg4P0HJP6VKYfKtIdSiXLyxeWqAlju+6VHHXPPPbvXRBczOWWha8I28Nne3aXKJLBLZsgJbAJfG39enuDTbyPU9K1EtpkN5ahsNPHKqKVxnLH0Ujp6jrU2my6WIbYSm7draVxJHCT+8i+/wT90Kdwz24qnFqmsXgkkFmwsb2QRwi5cvwmdqmQ/MxA9eCBjsK9OFo00vyPKqpuo308xlycybzjLgMcDjNVzV66UCzsxhd+xmfBzgk+v4Z/GqeCOlc0lY2jqrkWMdqQ8dKkZaYR6VAyJgKaRxUmM9aaQM4oGKBzS468UgJBNOBoBi9KBz0pO9KBigR1PhS8l+x3VqsZkIZXwFBPIK1g6pcJaaxdRafIYC8SyCNGwuQVJ4HA6E1b8P6j/Z88pD7PMTAOP4gcgfj0/Gs3U0gOtia5z5WzBYcloyp6/p+VW7cqY43bsUnhaTEyFyHy0v1OMZps+ouEMESrHBHkhR/EcYyfXnNPuN6qq8lZUUgA4C+oH41Wv4kZpRESyhVGD1zj+fNZ8qeqNk2tC5Y+INUe1eGSdVjjUhSynIJPTJzjr2pmoXct0sckzySFWO9ye59B2HFQadBKLM2qRPJJKd2FQk45wOOmeKu3dpc6dYqlzbh5Jm2sAT8pxnB/T8jWThdXNU9bGfp8Ed1fiFmKLNlDJ/zzJHDfnW5cCK8mIuoJTcbhueI5B7BiuMgHrkf4Gsqzhsrm68u5QqjlGIIO4HGCOO3Gfxr0W18L6VPbrqNvHMzKg2Ljc5XP3iPTj1JA9a5qtZU3ys7KOHlVXNExdGh1SymKWkEknlECSSRfkGSAAB3Jz1/wAK6y38MwDzLu8ihgm8skl5G8sYPYE4zz06k4x6VY0qKzQSRNrUQYlV2NIRtGeo3gE8Z9+Kv37xzObWwvj9ljXIlJVHdgcELjIAGc5Y556VySqTbstj0IUKcY3lucXrEttZSyCOeNGU4xHBlgT2Y9Mn0H41Jpeh3d1bG8UyTT5OBL8oI56ds8H8q6PSPC1veaiktzAIYVJZDI2MDPLDceh9Tzk8CvQh4VjmsAlrbG2tlXzWuGib5goxhF9+m7pRPEcqsFLB+0bkzwu6tp5b3bklUYuwZuVGRnrwD+vFd/4a8DSalKtxYReZBEgYlT8rkk4JY+gI6dK6/wALfDW38QXdxqP2dAsTeaXnAA2Z4z7nP1Ax9K9a8PeGX8K3K6Xe2V1FFnbFJgtGVYAgbh8pGe/BHPHIrCtik1ZHXh8FaV5bHj194A1HT4IYo9ME1ruyluxKFFwQPkBIxnmsz/hA4/IYQrG4WXefMTGD32r/AAivqXVfBaOLe6tpo5Wz5xwQ4bjqCCePT/61cJ4q0m30+0nvJZFhChnbcoKKehXn8PxPvXFDEuUrHfUwcYRufMWr6KdItru9uVjRYSy3BXksCMqMnoTlfxPSsI6JqWl+ErLU7+2eOAyPIhZcj7zDIyR0IGPevR7vw3N8WPEieH/DCP8A2Xbyo1/fsAkckqDiOLucAAdevoOvqfxN+EOo3nwuuJLTToFtNLjjRT5e2RVBPJ6ng9c9yfqfqcFTnUg5I+PxzhCdj48jtH1zUNsXmSCWQN5at8uccnkjgHnjJxXULHp9zaxQzCWB7GQJapGdpcjJ3Nk/dzxkelM8O2UelzzRMu8mNy4JAwPugDrg8DP5Uataxwz2t8jbBNa42q2SfnOT6D/69ejSTpwbfU8au41JJJ7FDUmQzmNNnynJKDhj6/zqkR1FPZtzlivUk49Kaen0rB7m60VhhFMbOfannGKjas2DGHrTTnrTiKOg4pAN6DnGacvPak+tOA44oBige1FJk5pwINAh8Iy4B6E4pNUiFzaLNCCJ4OOOQwIw2acrY5+v50qsVO4Egjvmn5FJtO6KmkOl9Ym0YI01tKHUMOQh64P1zx/tVBLbPDczq0PDuRyOgzjA/ECi80+7ts39kxKK2ZFU4x37dqu2E0F/vE7sH5CsejHGcZ/Cjklaxr7SLZ6/8KvAmq3fhGbWLfSI5luiYxcSygEhe2zGTyKybzwDeXVxbw3WCIpxI6qTl9oOB06Z+n516p8BdflPh608Gatbi2kw1xaFmEf2mHrvTPDgHggHcPToa2viHoptrfOj/Z0uMgksMkcYzwO+Pxr0sVQi8LCcfsrU83A15rGVKc/tPS3Y8rj8D6Zp6Rm4hhjdiCcjLV3fhLQdOaQPbmFZF+6GXkjuensOtcvZeEvGmpqWM1uSjblWSYxZb6cbvoeK5nxRY/EnwsxLWN2dqlg8ZJA9wO9fIVIKpN3Z9xTqOhBNR0PoE+FdPuEXyoYpwAcM0YJXJBO04+v61W074Y6EG8xvIWa0Jxlc8k85A5KkYB+vqBXzPp/xh8cacGjlu5946B8gHHr6V6F4L+JF1qTx3d+6LIeN6yYZT9O4NY1MNKCunobUsdCo9VqfSfhXwz4UsrZbmHRbWC4gIcmC182Rjk/x4xjJ74I+lZutWN3r1w9hbxyrDcuqzSsuFVScbFIAzkAg9frS/DG7bV9NZbqOI+cSyIwIUL346HPNetX+nwx2lrcthVgwY1XGOOvHpj+lefOXKz2qSU4p9DC8PeHNE8EqZppIhG6kSK4G0ErhgR0P+RW1b+K/Cs+n/Y5dSt7w2zjy3d90kajhQT6gADPXivC/iT44urK6uoFn8qJmdst0QhTgqPUnb/kV8s694w8U2mqzDTLy5SFvuqsjAHn0B4/z1rooUHW3djhxOOVD4Vc/Ra88b+GY02tdxsu3bwQMfXHfpXlvi/UfAviO4/sq+u45LGY72XzMozZ4V8dsj+lfI/hnWfiHqt75sZcSOApkmm4fnvnnpXqui+EfGDQm8vLiGRyGGFA2Nn1BGSfetVhYUpX5tTm+u1ay+GyPfPBngyy0ySN9JtrVbXO1EjKpGqgn7qjt3r1+TSrS+8N3ekyIjLe2jQzKynDMyY59eSDXgHwrgvbNlivtTaMwDI2RFQ2OoJ78Ec9Tjmvfre8SVYp4yfnQNjOQ34/0r7PLEnRTPkMyb9s4s/LnWrS+0fxVqelSxBJIrl7Ytk/vMNkf98jn6fSovEt2s9xFGhBMcYBYd8it/wCOIVPiZ4kmjRd0+o3AQhsfx4B47gg/ga4yeQSzPIqkAnjnNKpLljynBTjzT5iDoaXPWl29c0jcVznUNNMZQeKeab0B71EhMYRyOlNI9KceeSKQ1Ihg5FL9KBgewpcUDF96XpjigdORRQFxwHHNKOaF6Uue1NMaZ1nw/wDA1744u7y2h1G3sLSwg+03NxO4UYJCqgyQCzHgD61y/j3w/eeCdeGnyTKPNj85O5ZDkZYDocg/hg12fgDTV1rQfEWlKGaVhazgDptV2Bz+LCrfi/4UT3miW2vajqN2kyRzxIzRhxiNvl3H72O2ewArCWK5a3strL82enTy/mwixC1bb+5L+mV7f9oW4Xwfpng6bwRp182nxrHFcTTSLKsgBCyR+XhkcZ4w1aWjaz8bJ1R9Sls7SFmDx/2tumlC9uBlun94g1k/s0eDrXxH8R7iHUot0ul2MlzEjjIEm5VDD6BiQfcGvaPFenXdo0pgtfNKMfLGPunsa0xuJq+zjKb0en3HPluFoe1lCmtVr95zaah8Q7F4/M+IllFdyjclvY6GJJGH97534H+0cCkbxP4ulkNhqXxY8PpcSEr9ku9LE0zHuCsDEiuLvtH8YLJcQtem1trmYSXUiyE3E5PAJIHyoOgUY71Ne/DrT3vIp/Dd0bZpljPnJc+XJBIowSd3UN69c5rznBKSc2rPyR6rqSlFqEXdO27INZtZNSuZh5XhzWphncdNuprOUH/rnIHGfYgVy6yWek3Cmf7Zpc6tlI76MbSfQSpkf99KtesaR8O/D+jWF83iJra7ubpI1guFnJMW0El94GS7Fuo4/Wp7Pwn4f1bT5NG1vUYNXhnHlwybWNxbk9CX2gMP1B5rOc6a0a08tGaU6Naavqn56r/M7L4OfFDwRoy2yeLvGml6dIyDYk10pyP+A5GK9v1741/BT7C0V/8AFXQXdlOFW5JwT0+6vHFfAPgH4UTeMvEmoeF/MuZr2xuGtkt7YKJJWDMCxZshVG3rg8kV6z4j/Y+8TeEtFl1nVbe+tbZUMjSCZJPLGM7mXaMgd8EcVx1sPhYz5ZSdzuw2Kx0qXNCCsih8WviLoN/4gksLDXv7QjY/uVsAJ3f0A5CqPqfwrjbW01Jh9qudC0zT7c4P2nVXe5f8FBSP9D9TWt8BfDumxWGo+LdStEvJHuWs7UkblUqASfplgfcAV3Vpa6FpOtG/1qY6xPKCEN3ZlIolIxiNd2F9sD866Y+zoy9nFbdWckYVcTD2snq+i0Of0fU/B8Wmm71r4geIY4QwiSXRbGC2t1b0BSLcf881Z0fR9H8WXSp4d+IviHV2kY7LU61Jb3RH+yCNrH0BAz60yX4RaGLyLVtPvxK9sPlimglHH8GdoIbAJ54/CtceANL8QWNno1jamwkt1AXUVjxcRsrbjsweNzcc5ABrqi4zkoxk9f6+RzctSmnKcFZf18zNuvB+oyJDceEvif4st1kJRTNdeZ5Tg4aN1+UqwIwQfSsbxD47/aM+F3lrdfEPU7rT2bZFcb1li3YyFYOpKnHboexr2bwp4H1m21SQanerqC3MweW6KlZJGGAHkXON5AwSByetdF+0t4Y0ux/Z+1q5ltoxJFFbuj458wTIAf5114dyc5RjLY5MTTiqcZuO58Pi9v8AxN4nF9qlzNPdaldASy55DSSDcwHTPJ46V7p8ZPhb8N/DvhSHWPA3iCGfVdMnit9Z09JWk8sSD5H3HgMGGGAJxkelWv2bfhB4c8VWVxc+IfD4ublbe7lW4lkI8lhaNJCsag/f3bWJx6Vg+M9Abwv8Lw7DEmsanBGxPO4JG0h/UrWc8RKNaFNLdtP7kzahgYywdWvPok197R5KaYacTTWIFdx4w1vWmHmnHPakOPyqJAxpAppBp7Gmc1JJGvpTs80xc9D2p3vmgb3HZz1NOHSmgcUvQe9ADwxPNA5HNNHtyKdxxQGx2Pwt8UWnhjxTHJqkjJp99GbS6YdVRiCG/BgM+1e//EK087w7DZ6epkgFvKFeNs5aRiSffPFfJ5wTX0T8CPGNv4h0ObwZrMwN3ZRkWrs3LRfw8+qnj6EVwY2i2nWhulr6Xue9lGLj/utXZu69WrfiU/hBpqeCPix4I1OUAQ+L/DktkzHgG7gJUr9cRx/nXud/oUd5PKn8RJIJHSvMPEPhfVb34ZwX2g27HxB4F1mfVLONeS/lyb3jHc742zjuVHrXtXg7VtI8baNp3izRZBJZ6pbrcIOpQn7yH3Vsgj2q84XNRjOO2jXzWpnkK5cROnPdXi/k9Dy/Xvhlf3jM8EmWbpjpise38A+LbQ+QkaMvrk5r6l0/QbG5Qeciqc7T7Vs2ngu0IwkQK9TuTpXzLxlTaR9hHL4L3ony3YfCfWdVkWPVZ2eMDPlrGQq/7xPWuxi+HFjpFmsrwqFtwXJPbAOfyFfRMHhO2hiIWMbVb7qjrXif7S/iyw8BfDfXdQ3hbueI2VpGOsk8o2qAPYZJ9lNEK06s1Tj1HVoQoU3Vn0PJ/wBhnQxr/wAWPGXjbyA0BvWghf8A2nlZiB+G386+5PitoMep+EbzSL1g6XdvNCflxhWUrx+deJ/sTfDceCvh5oFrdRYvtRJ1C7JHPmSc4P0G0fga+jvHkBklS3Ygkp6cZNXimqlaTXdIWBp+xw0Ivdpt/M/Nb9lfSUktPFXgDVl/0nRtTZ2T+JeiEj8Ur2jXvglbahaho7MSeZwxHB+oODivN/Egh+BP7VEviW+Pl+H/ABYDaahJjCW0rEBZGPQDdsJPozelfYvhuG0vLRFdly/cHNa4yrOnNVF1/NbnLl1CEoSpS3i/weqPk+f4R6/pREGn3s5Xush6D8K2/DHw51iyk868uyCTk7V59uc19TX3hO1cjy40weeR9etYlzoVtAGj27ex6VzRxU09NDrlgYyWuqPNNL0F7Ty2zu5yM9SfeuL/AGsVm1fwP4X+GGntuvvGOuWljHEvLCINvdvouVzXuf8AZtuhbeyqI/mYngADnJ9OnWvC9AvI/iv8atS+LRBfwn4Dhk0LQZWXCXd+w/0q4T/ZRcqD6lfQ19HlClNNy3f9M+YzlRptRj0Of+G1tLpPxN1i50aP/iWJq1zEgAIUxIGi47fdXFeNftB+LLW5utP8B6bJHJDorvcXTp0+0SKBsz/sqAD7mvYPEfjJfhn8MLvxBtjTVtSeRbOBiN6yzMzbyPRVJb8q+QJZpZ5HnmcvJIxd3Y5LMTkk/U1WGpOtWliJbXdvyFmOKWGwscFT6qPN+dv1EzkdKaSOtJSHivTPnQJApjNilbjqKjIz3rNu4rhnnjmjOKMYpM0gIxzzTgaYKcDQMfu9KUHNR9acOmKBNEgOKM03Oe1LigB6nNa3hfWn8P67aaou4xxPiYA4LRnhhn6fyrHBpcAjGeKECundH3B4Tufs+ryWkEjESWlpdRyOP9blNu764C5+tO0zwl4n+GWpX9/8PtNh1nQtRm+2XPh/7UsEtpcP997R2+Qq3UxOV56HtXnXgL4kaLrWh+GGe52arYKNLvIAvzGMJhGHqDtX8c17loGuRXMELpyX+8cg8jpmtMTCNXDqK6No7sHJwxUpt7pPT8f1LWk/HfwxpIUeLvD3inw/NxuXUNCnK5H/AE0jVkP1BxXU2f7TfwVgiLt41AbqYxZTlvpt2VlWvia7s5M2bvH327iD9asv441oRl4LmRJOvDHP6/56V8ZWjSjKzj+P/APvaHtpRVqi+cf8mg1b9p3RtVgZfh94B8Y+JblRhTBpElrb59WnnCoo968ah+HPjL4yeOf+Et+LV1ZQ2ejL5sGiWEvm29mzdFaQ/wCtmbHzMOFUYHUY9Dur3xF4qvPLnvLmRV+8GcmvNvi1e+PfAC/b/CkwCSMPtFuwyr+h45zxRRnHn5aat57sWIotQ5qsnJLpsv8Ag/Nn2h8LdOtLT7HbJCqLbRKFO7bjjPP51teL5Wl1iMq4Crgc9K+P/g/+1NJdab9j8Rj7FqduFR1Lg5Udwe44+vrXoWs/tI+F9P0+bVLi/iJth5jhnPPoOM8noAOvatJ0pKryW63Kp14Tpe15vs2LvxV+Dmm/Euy1Jp4ojdyhljWUbkPGNrD+6Rwe44PavEfhrrPxg+FYOheHb7S/EmmWTtCuj69dNb3dntODHFdAFXQEcCQDAxzWf4g/an+KniLUhP4V0i3srKVtoLsDIwJxnb0T8cn2rudH8H3+uWLarezGS/uCZZ3PXzDyeB0q8TzUrqTTTZy4dU8Q1KndNLdPU76y+Ofj+aALe/ATxFJKep0/VLG5jz7ESg/pTL/4k/FLUkP9kfAjU4Xb+LVdZsraMfUCRm/IVyemWF7p5e3MsgdeGQk8H6V12j3N4rxBpGfHJBPUVzU505SXur8f8zrqU5qH8SX/AJL/AJGHc+CPi/8AEGFrL4h+KtK8NaJccT6Z4cd5Lqdf+eb3kiqEB77FY+hHWr/jex0Xwj4Fi8LeE9Pg0/T7WD7JZ2sJwkW8hAB1JyzEkkkkkk5JrtdVvRBpwlDBGUAHHUj0wfoK8Z8eeP8AQNAn0+78WXwgsobiS5kyD+8EaMURR3JYr07g19nhIqlDTsfE4xqc9X16nzP+09rT3fxC/sEIyR6ZbxMwzkNI8anP4KFArx089K3vHviufxv4w1TxTPF5Rv5y8cX/ADzjGAi/goArBx3BqklHRHm1ZupNyfUSgkflQT6VGc0m+hmBPpSE+lBppqCQzSUox19aQnNAEW7HFLmmEntzS5xxmgokBpcjtUYNPBoCw8HinA44zUeewp2aBWH/AFzThxxTAadmgW5f0TU5NG1iy1WMkG1nSQ9+AeeO/FfYWk6wEghuLa4ZhtDOhx1PfPp7V8XcHr3r6I+Fnig6z4Vs7SRz9phP2ZyCPmKDgn0yMVovepyh8zSjLkrRfyPdbDUzc+W4k3bj6Ctl5I2tmfgNEvzE4wFFedaRfG1mEMjqF3fKQcjnoM/0ro/Ea3k/hq6+x8zPGVD7cnkHAGf0Jr43H03GrbufoGX1+alfqjWsPiFpGlzQ2mmFbm6DhZFQYDMRySewH1zj86434n319rlr/ai2TXErxFZYBIOmec46fLkDHTnOeteUvrOs+CtSj1aHQb+/t1CieeJCwU5+YhTyee/Nb8v7VOiQsbbRvD6hinlM08JcoMYI246kk5zWlOjy2cFcyeIlWvGo7HkHjLwt4i8NyR3tpLO810zzwiNGyIz+GMcgd+1Y9ja+PNfvLOx+z39y+9SESIuFYnqVUfUZ7V7PN8eLq8ENzNqZRoxsRTaqqqvpytKnx/Mkbpa6jawXGTlreCOKRx7svOfpXZ7SpbWJl/ZkHtUduw/w18MtY0mZ766TUree1cbk2lQM4K+3XrXslh428R+EbN7rVRDceaEkgEan5oskNx9e3BGO9eKw/H/xVZFzp8usygLk74HlQ569QQR70y5/aE8Q+L9PfRH8ESahqMA2xSQ27ReWPcnAHWsZ051PjWgSjHC/wpO575p/xM8O+I9RFqtwI7lsAh12uM9VPbgkc+9dRaTy2s/zbcA4GW79x9CK+a/CuheKLzU7K6u9Pi05nw7JG5YDGM/Me5GPwzXul1fJbSRv5gxwmdmSp+nvmuSFGPtkoG6xFT2L9qbeq66wkaD7R90AhUG7BAznPTOM5r5G/ap8QRXnijTPD1plIrC1NzImRjzZTgH67FH519DalfraWc99c+cqgFypJXyk5yeOgxnmviXxz4jbxX4t1PXmJ2XMxEQ9I1G1B+QFfYU9IHxuMleVjEFKT2pmefrQx4qr6HEGe5ppIoLUwsexqCRTmkHNGeaCaAA9Kb9RS59KbnHNAyKj6UlKcDtQUKM04frTM4Jpw9qAH8+tO7c0wGlB4zQKw/NOHNRg5pd2OBQLYk3Y6V1fw58TvoGs+RK5FteDaR/dkH3W9uMgmuRDZNbfgkqPGehCQKUOpW4YEcEFwCD+Bq6btJEvY+ltE1Yalbb5VfJycqAu7nOf1/SvSvD2u+fZvp9wgliY7Qchj6D6V8+ahczeF/Ek2gwGTypZi1rI2SEj4GMdMr0z6Y969I8K6okc6hJ97bcjDZH0OO1eNm2Fvqj6fJsY46S3PY9D8MaNNAdPmjVyQRhj1Hp7Yrg/E/w8tNF1Brm102NVc/OpQBvqD3FdjoV209svkeUrdgnQ/jWxq8dzd24+0xSDepyDzntkelfNwqSoS0Z9aoxqRUktTzXQJND09ZbLWLXTZoJ1GFuYI5MHoMbuh56+3SpGHw80bUm1HT9L8OCUNliLKPaozngH8eayPG3w813ViyaeCyg/dKZI/SvOovhV4kOp/Y5lmiWCb7yKSxXHGfxz+AFepTr8yvzBPH1Ie77K56tcapD4gu5LmFYmEmQNkahfoO2OK6Xwl4FsTN9uu7VBI3zONoCgjpzjmue8I+Br/Qo0e9mlaRSceZg/mOgr06I3A0wBkKbuSQMc+tctbEOa9mmZuUqsva1Fa3Q5XXZ4bW/Y20KBYhtJAzg5/wA/nWNdas7u0jRqyjI278M2MHAHbHXn3xVnXZHt79hK++T73KYB5wAcjjr1zXAePdemiiW3tInNxI4WOOM5Zn6KBjOeT/j0rvyzDPnTPDzTFpQaOQ+Nni++s/DN1awLMRqMy2/nByAispZgfchSAPck9q+djgdq+hv2g9L/ALF+E3hayk2G5fV5p7p1Jw8rQckZ5AHQD0Ar51LdjX0s0o2SPkKjk5Pm3H5/lTCfelLZFMLCszMMk96XtTe9BNAxT6Gkopc8UCENNJ9qU4zTT+tA0RA8fSlyDTe5FFBQ6l6U0HFLxQA8c4zSjp1pox1HSnDGMUCHDIoznvTee1O7ZNACitXwmxHivRCByNRtv/Ri1kkhVLkgKvJPYV3nwY8Da34y8Uafq1lbFNK027jnnupB8rbGDbEHc8fQVcF7yEle9j1L4m6XmSW4U7ZI5d8bH+FgTgiuR8IeNWsriO0lRAYDiQsdp56Hnt616l4stRfmdSBhmbPvXgnivRZ7G9a5tmC8kLgfp/jXBOvGU3SqbHsuhOEVWp72PrH4f+Lobizg3yIJXKpGqvkDnFe2aTcaZdW7W1zNGTjcQThlPTmvzw8HfEjU9BuoY5nUhWDFWbIwPQn+X0r1XTfi7c3akxaoVllcxuA2DGcbl69uP/1cCvGxuW3lzR2Z7WX5ulHlmtUfa4/sq12W0PlO8q7VxxyVPJP4VhpJorXcltdxRxXYIUPkAAgFsgd8188aL8b9RubJLOS9WOZo3jlYjLqeAH/3eDgilTx9btb+c86sjZVJpJC0hGc9B3HrXCsLNbnrSzGnJaH0Z5mgXCOJZIl8khSM53MBlucc4/pXJeMdc0+3jfZPJ9wMPK25A7Kc8Ec5yK8Qk+KVtYQSW8Woje58x9jnr1JIPBznH6VzWufGCyS3WG9uwsrhWSEKX3DPGMdz8vy10YfASqVDixeaxjTsdh408b2kqPbSXMayLHmVmdcxqBnce+cemetch4aWfUdTTV715GZc+RGwxsU/xsOznp7D6muJRL3VNQjv9QuGQz/vDArZwx7se5HYdBxjJ6eq+C7RS8e4AhVAIK8H3r3nKGHSp0z56EZ4mftKhm/tQ2v/ABa/RLj7xi1ZcnuN0L/4V8s19o/HDwZrXjH4S3Gm+HoEnvbK6ivI4mbmQJuDKPchuK+KklaO6fT9QgktLmJijo6kFGHYjqK9D44xfkeZioNVJO2g/kUZ7U6WJ4nKSKQRUZ9qlq2jOdNMXIHejI96b15pc4pDDNGTRntSfU0C8xevNIaCQOlMZqBkec9KM4PWjAoNAxc80oPvSD0o6UAPBNKG9qlis5XAd8Rxn+Ju/wBBT3eKDCwLkkkbm6n/AArRU3u9DN1Fey1Igv8AfYJnpnv+FIGUzeQqHAwWduv4CpURRC0zHkkAfTvVQuRczdP9YTzWnKoWbJTc7o7DwN4Uh8b+KINFnBFnDG1xMqnlwMcE+5I/CvsXw9odn4Z0EWVnCkUUcWxUQYGMdgK+Wf2ftRhtviNb29xj/T7eWBT/ALWNw/8AQTX1pPcB7BMkD5RnNedPFOnj3zbW0PdwWFjUwF473dzi9Ztw+5B3/SvPfE2iJcRP5seR1J9/WvStRQF/TnINYWqWiyRtlcg8HAwf/wBVeHiK16t0e9CivZ2PnfxB4englaSEnH8LDj8xXOm6vLMqj72VR8u07cMOhJ9R15r2zxBoI2s6R4DAnn0rzvV9EBJVUCnnjHBrro4q8bM8vEYNKV4nNjxLqsKBLe5IGPmJXG/69uvarA8W628brFLEqkYzs6n1x2qrNpzRt/qiMHHtSx2zEAmPgH6CtXKPY5lCa6liLVtUnmKiXZuOcA5OD1yOBg12vh7SIkeO9uHMkwXBKj5sAevQD6Vzek2DNcqVhXAPBxwK9I0aM+WsSrknk0vb8q0NYYfmd2bWlaeJGR5MBh0+hH8+teleF4RbsjKNu3gZGMiuP0WzSJ1LKM+mM13WljAUE9skg9K41V553PUpUVCJ6RoQSbdAWGHQg8188ftK/CXSmhn8U2tr5V7BC0wkUcvtOSD68Zr3zwszCZNx5OVx6Vw37TGpW1h4M1BiVwtk6KP9p8Ko/M161etejDl3ucMaC5qnPtb9D4uubgTWkZQAMoyM8jB7VXMMckC3CFkDDJB5APcZHSopjst0UHouOKsaMwURrLjY0kgOfQivalyzlyyPkUnThddyu6ugBK8HgMOQaYT71clDW7lYuUJwARmmtDbTDcD5Te3T8qxlQ6Jmiq6alUN1pCfTNS3FncwDeY90f99eVqtuyc1hKLi7M1TUldDieOaTPNJmikMbnmlGWO0DJ9BV6LSdqCS6l69FQ/zNWBJb2YIjVVPAJUc/nXTHDS3noYzxUL2hqypDpsz8zsIV9/vH8KsKbWzAMMYZsZDvyf8A61QzXbyEsuQcYziq7Pu6ZwRVe5T+HclRnU+N6E01xJK+5mJ78nmo05bDE5zTAe5PXipQrEdOv51m25O7NlFRVkPkYmIouB+NVJsecWJGJFyfr0NTsWUYPGemBUUkZkjYAHcnzKPX1ok+YIxsW9A1i60HWrHWbM4msZ0nT3Knp+I4/GvtvSNcsfEWiWOr6Ywe2voRKn+znqp9wcj8K+EjllDr0AzXsvwA+Kdt4evB4U8Q3Kx6Zdy77eaQ/LbzHg59Fb9Dz3NeVmOHdWKqw+KP5Hs5VilRm6VT4Zfgz3u+gdsvjp054rOTGHXGc8dOn0rsrrS/Mhf5Cd3KlehGOtcfqFvNZyFlxt3bSPSvmua+59Zy8qsZepaXBdxt5XysPmKkdfoOlcBrukqWKyoC2cZxtP5V6gsIujsyOR+VYOtaXKisskbMpzknrVwnYwqQvqeTXPhyMnG7BPTIqBfDQR8fKa7efT40xlTFxnocGqzWcAGA7dfvdK6FUZyeyRjaboyQuG2EkevSuu0iwYsgyEXqcDk1TsbWNnMaFwQeTuzn6mun063KIFRD+QPH9aznNs1hTNfT4xbgbdvTOMcn6mt3SV3TqUjAAx3rmA0gbYM+4znmur0K3YqrEkn6/pUKXKdCj0PQdIaG2tvMdxkL+lfM37U3jpb+5tPCdtLliRdXIB+6gyI1/E5P4CvUfiB49tvAXhqXU9VkXewEdtbqcNPJjhB7ep6AZr4213Wb/X9Vu9a1OfzLq7cvI3YHsB7AYA+lezl1OWIkqkvhj+L/AOAeLm+IjQpujD4pfgjOuHzjAPA696uWo2CGNjgqu859SaqqgklVCOB8z+yirEcm596kfMeg7Cvfi/e5j5aatGxYd2lDE8H68mqrPsYDPXkU4ON7Y6+9Qy8njsc/hTnK+ooRLUF3JAdykgZ9atfZrG+G9lMLn+JBxn3FZeSV4AHYUscrqflPP1pxqLaSuhTpN6w0ZYuNGvIstEBOnqnX8qoHcpwwII6g1rWWqTQFRwQDkE9q0jNpupp5dwik9mI5z9av6tTqfw3Yy9vUpaTV15GLPeu/IPQ/lVVpWdiCx5NM3Z4PPfHpSBiTgHrWU6kp7nRTpRprREi55/X2oYbT2JpA23qPwo3bj8p56elZmgoBLYLHHUZqVME4569etMyMZwCB1p8Tg54IFNbgxGAOeSccUgUggjjuDTpMHPTpwfSo89QR2pCGyRgEun3HOCB/Cf8ACoXRo2Dp365q3uDHOcZ6jsfY1HsVQQgyOrKeq/8A1qGhpntnwa/aKuPC6w+HPGpnvdHUeXFOnzT2qn/0Yg9Oo7Z6V9HS2mi+K9Ij17wxqVtqdlMMrNAwYe4I6qfY4Ir8/wBoiPmT1ra8LeOPFXgm/wD7Q8Na1dafOxG/y3wsg9HX7rD2IryMXlcKz56fuy/Bnt4LNp0EoVfej+KPsZ9Jms59yoygHBGKbe6c11B5mCM15V4a/ayM8KWXjrwtFcngNe6cwicjuTG3yk/Qj6V6Jofxk+E2uKFg8VW1k7cCPUUa3Yc9Mn5T/wB9V41TBYij8Ufu1PdpY7DV/hml66HP6roLkgx4VTwO361kP4duRwVBGcZ6cV7GkWgaxD/oOrabeRsOGhuo3+nQnFNk8LwR7g5iXccbi4xj86hNpWZpKnfVHnGieHcMFKkjPJzkVvvpy24ykTIAMEjrW5PceFtADPqniPSLJdpJM14i8d+M5riPEPxu+E+jb1i1WbWZVGFjsISyk+8j4X8eaSpVaj9yLYpVaNGPvySOk0PQptRnEjLkZAXcOetP8e/ETwn8KrRl1W4W41F1zb6ZAwMrnHDP/wA819z+ANeFeKP2oPFl9BJp/g+xh8P27gr5yN5t0V/3yNqf8BGfevHrm6vNQne8vbiSeeZy0ksjlmdvUknJP1r0sPlU5O9fRdjysVm8ILlw+r7s6Hxz4817x/rMmsa3OGb7sMMeRFbp/cQfzPU9655iVXAG4ngChUCEDq56AVIoKHIOW7sP4fYV9BCChFRirI+anNzk5Sd2xyxFEKZyW/1hA/ShCN3HHGPSmknHC8U5ByFHH1rS5mxyjaT6mo2UHk9MVISzEgL1PrTCQeB06ChvQIjcZyRxik6gYUj6d6Rmzxtyc04sAAFbNSWJwoGOg6VLHIYwoB4wah4zn/JpTkA84/GmpOLuiXFSVmf/2Q==" x="4" y="4" width="88" height="88" clip-path="url(#devDeadCenterClip)" preserveAspectRatio="xMidYMid slice"/>
+
+      <!-- Precision HUD Corner Brackets -->
+      <path d="M -2 18 L -2 -2 L 18 -2" fill="none" stroke="#00ffcc" stroke-width="2" class="hud-bracket"/>
+      <path d="M 78 -2 L 98 -2 L 98 18" fill="none" stroke="#00ffcc" stroke-width="2" class="hud-bracket"/>
+      <path d="M 98 78 L 98 98 L 78 98" fill="none" stroke="#00ffcc" stroke-width="2" class="hud-bracket"/>
+      <path d="M 18 98 L -2 98 L -2 78" fill="none" stroke="#00ffcc" stroke-width="2" class="hud-bracket"/>
+    </g>
+
+    <!-- DEVELOPER IDENTITY INFO LOCKUP (Safe margins, Zero line overlap) -->
+    <g transform="translate(108, 2)">
+      <!-- Tag Chips Row -->
+      <g>
+        <rect width="154" height="20" rx="3" fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-opacity="0.45"/>
+        <circle cx="8" cy="10" r="2.5" fill="#00d4ff"/>
+        <text x="16" y="14" class="mono" font-size="8.5" font-weight="700" fill="#38bdf8" letter-spacing="0.6">B.TECH CSE │ 2023–2027</text>
+
+        <g transform="translate(162, 0)">
+          <rect width="144" height="20" rx="3" fill="#a855f7" fill-opacity="0.12" stroke="#a855f7" stroke-opacity="0.45"/>
+          <circle cx="8" cy="10" r="2.5" fill="#c084fc"/>
+          <text x="16" y="14" class="mono" font-size="8.5" font-weight="700" fill="#c084fc" letter-spacing="0.6">SYSTEMS ARCHITECT</text>
+        </g>
+      </g>
+
+      <!-- Bold Display Name -->
+      <text y="50" class="display" font-size="34" fill="url(#titleChrome)" letter-spacing="-0.3">DEV JANGID</text>
+
+      <!-- Specialization Subtitle (Sized to safely end at x=400, leaving 100px buffer before vertical divider at x=500) -->
+      <text y="72" class="mono" font-size="8.8" font-weight="700" fill="url(#cyanAccent)" letter-spacing="0.3">
+        DISTRIBUTED SYSTEMS • EDGE RUNTIMES • FULL-STACK
+      </text>
+    </g>
   </g>
 
-  <!-- Big Display Name -->
-  <text x="0" y="82" class="display" font-size="56" fill="#ffffff" letter-spacing="-0.02em">DEV JANGID</text>
-
-  <!-- High-Tech Headline -->
-  <text x="0" y="116" class="display" font-size="17" fill="url(#emberGrad)" letter-spacing="0.02em">
-    DISTRIBUTED SYSTEMS • EDGE GATEWAYS • AVIONICS RADAR
-  </text>
-  
-  <text x="0" y="140" class="mono" font-size="12" fill="#94a3b8">
-    &gt; Architecting sub-2.8ms edge proxies, CRDT semilattices &amp; satellite telemetry.
-  </text>
-
-  <!-- Live Telemetry Stream Tape (Different from anyone else!) -->
-  <g transform="translate(0, 162)">
-    <rect width="450" height="28" rx="4" fill="#000000" fill-opacity="0.6" stroke="#00d4ff" stroke-opacity="0.3"/>
-    <text x="12" y="18" class="mono" font-size="10.5" fill="#00d4ff">
-      [UHF_RX: 0x4A 0xF2] <tspan fill="#10b981">SEC_JOIN: CONVERGED</tspan> <tspan fill="#ff7700">p99: 2.24ms</tspan>
+  <!-- Engineering Value Proposition Statement -->
+  <g transform="translate(0, 108)">
+    <text class="sans" font-size="11.5" fill="#e2e8f0" font-weight="400">
+      Architecting sub-2.8ms distributed reverse proxies, CRDT semilattices
+    </text>
+    <text y="17" class="sans" font-size="11.5" fill="#cbd5e1" font-weight="400">
+      and autonomous agent DAG runtimes in TypeScript, Go &amp; WebRTC.
     </text>
   </g>
 
-  <!-- 3 CIRCULAR AVIONICS SPEEDOMETER GAUGES (TOTALLY UNIQUE FEATURE) -->
-  <g transform="translate(0, 212)">
-    <!-- Gauge 1: Verified SLA 99.98% -->
-    <g transform="translate(50, 50)">
-      <circle r="42" fill="none" stroke="#1e293b" stroke-width="7"/>
-      <!-- 99.98% arc (circumference = 263.89, offset ~ 10) -->
-      <circle r="42" fill="none" stroke="#10b981" stroke-width="7" 
-              stroke-dasharray="264" stroke-dashoffset="15" stroke-linecap="round"
-              transform="rotate(-90)" filter="url(#neonGlow)"/>
-      <text x="0" y="-4" class="display" font-size="16" fill="#ffffff" text-anchor="middle">99.98%</text>
-      <text x="0" y="12" class="mono" font-size="8.5" fill="#10b981" text-anchor="middle" font-weight="700">AAI SLA</text>
-      <text x="0" y="58" class="mono" font-size="9" fill="#94a3b8" text-anchor="middle">RADAR UPTIME</text>
-    </g>
+  <!-- LIVE PRODUCTION BENCHMARK CONSOLE WINDOW -->
+  <g transform="translate(0, 150)">
+    <rect width="442" height="150" rx="6" fill="#02050c" stroke="#1e293b" stroke-width="1.2"/>
+    <rect x="0" y="0" width="442" height="25" rx="6" fill="#080f20"/>
+    <line x1="0" y1="25" x2="442" y2="25" stroke="#1e293b"/>
+    
+    <!-- Mini Terminal Title -->
+    <circle cx="12" cy="12.5" r="3" fill="#ef4444" opacity="0.8"/>
+    <circle cx="22" cy="12.5" r="3" fill="#f59e0b" opacity="0.8"/>
+    <circle cx="32" cy="12.5" r="3" fill="#10b981" opacity="0.8"/>
+    <text x="46" y="16.5" class="mono" font-size="9" fill="#94a3b8" font-weight="700">benchmark_cluster.sh --verified-metrics</text>
 
-    <!-- Gauge 2: p99 Latency < 2.8ms -->
-    <g transform="translate(190, 50)">
-      <circle r="42" fill="none" stroke="#1e293b" stroke-width="7"/>
-      <!-- Sub-2.8ms arc -->
-      <circle r="42" fill="none" stroke="#00d4ff" stroke-width="7" 
-              stroke-dasharray="264" stroke-dashoffset="40" stroke-linecap="round"
-              transform="rotate(-90)" filter="url(#neonGlow)"/>
-      <text x="0" y="-4" class="display" font-size="16" fill="#ffffff" text-anchor="middle">&lt; 2.8ms</text>
-      <text x="0" y="12" class="mono" font-size="8.5" fill="#00d4ff" text-anchor="middle" font-weight="700">EDGE p99</text>
-      <text x="0" y="58" class="mono" font-size="9" fill="#94a3b8" text-anchor="middle">HYPERROUTE</text>
-    </g>
+    <!-- Terminal Output Lines -->
+    <g transform="translate(14, 42)">
+      <!-- Line 1: HyperRoute -->
+      <text class="mono" font-size="9.5" fill="#38bdf8">
+        $ hyperroute --bench --p99 --ewma-balance
+      </text>
+      <text y="17" class="mono" font-size="9.5" fill="#10b981">
+        ✓ latency: p50: 0.8ms │ p99: 2.1ms │ 142k req/s
+      </text>
 
-    <!-- Gauge 3: Verified Test Suite 100% -->
-    <g transform="translate(330, 50)">
-      <circle r="42" fill="none" stroke="#1e293b" stroke-width="7"/>
-      <!-- 100% arc -->
-      <circle r="42" fill="none" stroke="#ff5500" stroke-width="7" 
-              stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round"
-              transform="rotate(-90)" filter="url(#neonGlow)"/>
-      <text x="0" y="-4" class="display" font-size="16" fill="#ffffff" text-anchor="middle">72 / 72</text>
-      <text x="0" y="12" class="mono" font-size="8.5" fill="#ffaa00" text-anchor="middle" font-weight="700">100% PASS</text>
-      <text x="0" y="58" class="mono" font-size="9" fill="#94a3b8" text-anchor="middle">CI SUITES</text>
+      <!-- Line 2: NexusCRDT -->
+      <text y="40" class="mono" font-size="9.5" fill="#38bdf8">
+        $ nexus-crdt --verify-convergence --peers=12
+      </text>
+      <text y="57" class="mono" font-size="9.5" fill="#10b981">
+        ✓ state semilattice: 100% causal sync [0 conflicts]
+      </text>
+
+      <!-- Line 3: AgentForge -->
+      <text y="80" class="mono" font-size="9.5" fill="#38bdf8">
+        $ agentforge-dag --kahn-schedule --detect-cycles
+      </text>
+      <text y="97" class="mono" font-size="9.5" fill="#10b981">
+        ✓ topological execution resolved: 0 deadlocks
+      </text>
     </g>
   </g>
 
-  <!-- Navigation Action Pills (Stealth Chamfer) -->
-  <g transform="translate(0, 340)">
-    <!-- Pill 1 -->
-    <polygon points="10,0 100,0 90,26 0,26" fill="#090d16" stroke="#ff5500" stroke-width="1.2"/>
-    <text x="45" y="17" class="mono" font-size="10" font-weight="700" fill="#fed7aa" text-anchor="middle">PROJECTS</text>
+  <!-- 3 Quick Live Link Action Pills -->
+  <g transform="translate(0, 312)">
+    <!-- Button 1: 3D Portfolio -->
+    <a xlink:href="https://dev-jangid-portfolio.vercel.app" target="_blank" class="action-btn">
+      <rect width="138" height="28" rx="4" fill="#140a02" stroke="#ff7700" stroke-opacity="0.8" stroke-width="1.2"/>
+      <g transform="translate(14, 7)">
+        <polygon points="6,0 2,8 7,8 4,14 11,6 7,6" fill="#ffaa00"/>
+        <text x="18" y="10.5" class="mono" font-size="9" font-weight="700" fill="#ffbb33" letter-spacing="0.5">3D PORTFOLIO</text>
+      </g>
+    </a>
 
-    <!-- Pill 2 -->
-    <polygon points="120,0 210,0 200,26 110,26" fill="#090d16" stroke="#00d4ff" stroke-width="1.2"/>
-    <text x="155" y="17" class="mono" font-size="10" font-weight="700" fill="#bae6fd" text-anchor="middle">SYSTEMS</text>
+    <!-- Button 2: LinkedIn -->
+    <a xlink:href="https://www.linkedin.com/in/devjangid911/" target="_blank" class="action-btn" transform="translate(148, 0)">
+      <rect width="138" height="28" rx="4" fill="#041224" stroke="#00d4ff" stroke-opacity="0.8" stroke-width="1.2"/>
+      <g transform="translate(18, 7)">
+        <rect width="13" height="13" rx="2.5" fill="#00d4ff"/>
+        <text x="3.5" y="10" class="sans" font-size="9.5" font-weight="900" fill="#041224">in</text>
+        <text x="20" y="10.5" class="mono" font-size="9" font-weight="700" fill="#38bdf8" letter-spacing="0.5">LINKEDIN</text>
+      </g>
+    </a>
 
-    <!-- Pill 3 -->
-    <polygon points="230,0 320,0 310,26 220,26" fill="#090d16" stroke="#10b981" stroke-width="1.2"/>
-    <text x="265" y="17" class="mono" font-size="10" font-weight="700" fill="#a7f3d0" text-anchor="middle">AVIONICS</text>
-
-    <!-- Pill 4 -->
-    <polygon points="340,0 430,0 420,26 330,26" fill="#090d16" stroke="#f59e0b" stroke-width="1.2"/>
-    <text x="375" y="17" class="mono" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">CONTACT</text>
+    <!-- Button 3: Direct Signal -->
+    <a xlink:href="mailto:jangid.dev20@gmail.com" class="action-btn" transform="translate(296, 0)">
+      <rect width="146" height="28" rx="4" fill="#041810" stroke="#10b981" stroke-opacity="0.8" stroke-width="1.2"/>
+      <g transform="translate(14, 7)">
+        <rect x="0" y="1" width="13" height="11" rx="2" fill="none" stroke="#10b981" stroke-width="1.2"/>
+        <polyline points="3,4 6,6.5 3,9" fill="none" stroke="#10b981" stroke-width="1.2"/>
+        <line x1="8" y1="9" x2="11" y2="9" stroke="#10b981" stroke-width="1.2"/>
+        <text x="18" y="10.5" class="mono" font-size="9" font-weight="700" fill="#34d399" letter-spacing="0.5">DIRECT SIGNAL</text>
+      </g>
+    </a>
   </g>
 </g>
 
-<!-- ================= RIGHT REGION: 360° LIVE AIR TRAFFIC RADAR SCOPE ================= -->
-<g transform="translate(730, 255)">
-  <!-- Outer Azimuth Ring with Degrees -->
-  <circle r="175" fill="none" stroke="#1e293b" stroke-width="1.5"/>
-  <circle r="165" fill="#050a14" stroke="#ff5500" stroke-opacity="0.4" stroke-width="1.5"/>
+<!-- ================= 03. VERTICAL DIVIDER ================= -->
+<line x1="500" y1="64" x2="500" y2="408" stroke="#1e293b" stroke-width="1.2"/>
+<line x1="500" y1="120" x2="500" y2="330" stroke="#00d4ff" stroke-opacity="0.3" stroke-width="1.8"/>
 
-  <!-- Compass Cardinal Ticks -->
-  <line x1="0" y1="-165" x2="0" y2="-152" stroke="#ff5500" stroke-width="2"/>
-  <text x="0" y="-138" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">000° N</text>
-
-  <line x1="165" y1="0" x2="152" y2="0" stroke="#ff5500" stroke-width="2"/>
-  <text x="136" y="4" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">090° E</text>
-
-  <line x1="0" y1="165" x2="0" y2="152" stroke="#ff5500" stroke-width="2"/>
-  <text x="0" y="148" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">180° S</text>
-
-  <line x1="-165" y1="0" x2="-152" y2="0" stroke="#ff5500" stroke-width="2"/>
-  <text x="-136" y="4" class="mono" font-size="10" font-weight="800" fill="#ff7700" text-anchor="middle">270° W</text>
-
-  <!-- Range Rings (10 NM, 25 NM, 50 NM) -->
-  <circle r="125" fill="none" stroke="#ff5500" stroke-opacity="0.2" stroke-dasharray="4 4"/>
-  <circle r="85" fill="none" stroke="#ff5500" stroke-opacity="0.25" stroke-dasharray="2 4"/>
-  <circle r="45" fill="none" stroke="#00d4ff" stroke-opacity="0.3"/>
-  <circle cx="0" cy="0" r="3" fill="#ffffff"/>
-
-  <!-- Crosshairs -->
-  <line x1="-165" y1="0" x2="165" y2="0" stroke="#ffffff" stroke-opacity="0.08"/>
-  <line x1="0" y1="-165" x2="0" y2="165" stroke="#ffffff" stroke-opacity="0.08"/>
-
-  <!-- CONTINUOUS 360° ROTATING RADAR SWEEP BEAM -->
+<!-- ================= 04. RIGHT PANE: PRODUCTION SUITE & ENTERPRISE EXPERIENCE ================= -->
+<g transform="translate(520, 64)">
+  
+  <!-- TOP SECTION: AIRPORTS AUTHORITY OF INDIA (ENTERPRISE CREDENTIAL CARD) -->
   <g>
-    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite"/>
-    <path d="M 0 0 L 165 0 A 165 165 0 0 0 116 -116 Z" fill="url(#radarSweepGrad)"/>
-    <line x1="0" y1="0" x2="165" y2="0" stroke="#ff5500" stroke-width="2" filter="url(#neonGlow)"/>
+    <rect width="442" height="78" rx="6" fill="#061224" fill-opacity="0.85" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1.2"/>
+    <rect x="0" y="0" width="4" height="78" rx="2" fill="#00d4ff"/>
+    
+    <g transform="translate(16, 15)">
+      <text class="mono" font-size="8.5" font-weight="700" fill="#38bdf8" letter-spacing="1">INDUSTRY EXPERIENCE │ SUMMER 2026</text>
+      <text x="406" class="mono" font-size="8.5" font-weight="700" fill="#10b981" text-anchor="end">SLA 99.98%</text>
+      
+      <text y="23" class="display" font-size="15" fill="#ffffff" letter-spacing="0.3">Airports Authority of India (CNS/ATM)</text>
+      
+      <text y="39" class="sans" font-size="10.5" fill="#94a3b8">
+        Enterprise network segregation &amp; mission-critical ANS flight radar feeds.
+      </text>
+      <text y="53" class="mono" font-size="9" fill="#10b981">
+        ✓ Zero broadcast storm loops achieved across primary voice &amp; surveillance channels.
+      </text>
+    </g>
   </g>
 
-  <!-- LIVE FLIGHT / SATELLITE TARGET VECTORS (ILLUMINATED BY RADAR) -->
-  <!-- Target 1: AAI Primary Radar Northern Region -->
-  <g transform="translate(-70, -65)">
-    <circle cx="0" cy="0" r="4" fill="#00ffcc" class="blink"/>
-    <circle cx="0" cy="0" r="9" fill="none" stroke="#00ffcc" stroke-opacity="0.5"/>
-    <line x1="0" y1="0" x2="18" y2="-12" stroke="#00ffcc" stroke-width="1.2"/>
-    <text x="22" y="-10" class="mono" font-size="9" font-weight="700" fill="#00ffcc">AAI-RADAR-NR</text>
-    <text x="22" y="2" class="mono" font-size="8" fill="#94a3b8">FL320 · 99.98%</text>
+  <!-- SUBHEADING: FLAGSHIP CODEBASES MATRIX -->
+  <g transform="translate(0, 94)">
+    <text class="mono" font-size="9" font-weight="700" fill="#94a3b8" letter-spacing="1.5">
+      // 04 PRODUCTION CODEBASES • 72/72 CI PASSING
+    </text>
   </g>
 
-  <!-- Target 2: ISL CanSat Satellite UHF Telemetry -->
-  <g transform="translate(60, 50)">
-    <circle cx="0" cy="0" r="4" fill="#ff5500" class="blink"/>
-    <polygon points="-5,-5 5,-5 0,6" fill="#ffaa00"/>
-    <line x1="0" y1="0" x2="16" y2="14" stroke="#ff5500" stroke-width="1.2"/>
-    <text x="20" y="16" class="mono" font-size="9" font-weight="700" fill="#ffaa00">ISL-CANSAT-1</text>
-    <text x="20" y="28" class="mono" font-size="8" fill="#94a3b8">433.92MHz · UHF</text>
+  <!-- 4 INTERACTIVE SYSTEM REPOSITORY CARDS (2x2 Grid) -->
+  <g transform="translate(0, 112)">
+    
+    <!-- CARD 1: HyperRoute Gateway -->
+    <a xlink:href="https://github.com/Dev-5678/HyperRoute" target="_blank" class="tech-card">
+      <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
+      <g transform="translate(14, 16)">
+        <text class="mono" font-size="8" font-weight="700" fill="#ff7700">REVERSE PROXY</text>
+        <text y="18" class="display card-title" font-size="14" fill="#ffffff">HyperRoute</text>
+        <text y="34" class="sans" font-size="9.5" fill="#94a3b8">Sub-2.8ms edge gateway with</text>
+        <text y="46" class="sans" font-size="9.5" fill="#94a3b8">EWMA load balancing.</text>
+        
+        <rect y="54" width="78" height="17" rx="3" fill="#ff5500" fill-opacity="0.14"/>
+        <text x="39" y="66" class="mono" font-size="8.5" font-weight="700" fill="#ffaa00" text-anchor="middle">p99 &lt; 2.8ms</text>
+      </g>
+    </a>
+
+    <!-- CARD 2: NexusCRDT -->
+    <a xlink:href="https://github.com/Dev-5678/NexusCRDT" target="_blank" class="tech-card" transform="translate(228, 0)">
+      <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
+      <g transform="translate(14, 16)">
+        <text class="mono" font-size="8" font-weight="700" fill="#00d4ff">DISTRIBUTED SYNC</text>
+        <text y="18" class="display card-title" font-size="14" fill="#ffffff">NexusCRDT</text>
+        <text y="34" class="sans" font-size="9.5" fill="#94a3b8">Conflict-free replicated data</text>
+        <text y="46" class="sans" font-size="9.5" fill="#94a3b8">types &amp; state semilattices.</text>
+        
+        <rect y="54" width="92" height="17" rx="3" fill="#00d4ff" fill-opacity="0.14"/>
+        <text x="46" y="66" class="mono" font-size="8.5" font-weight="700" fill="#38bdf8" text-anchor="middle">100% CONVERGE</text>
+      </g>
+    </a>
+
+    <!-- CARD 3: AgentForge -->
+    <a xlink:href="https://github.com/Dev-5678/AgentForge" target="_blank" class="tech-card" transform="translate(0, 102)">
+      <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
+      <g transform="translate(14, 16)">
+        <text class="mono" font-size="8" font-weight="700" fill="#a855f7">DAG RUNTIME</text>
+        <text y="18" class="display card-title" font-size="14" fill="#ffffff">AgentForge</text>
+        <text y="34" class="sans" font-size="9.5" fill="#94a3b8">Kahn topological execution</text>
+        <text y="46" class="sans" font-size="9.5" fill="#94a3b8">for multi-agent pipelines.</text>
+        
+        <rect y="54" width="86" height="17" rx="3" fill="#a855f7" fill-opacity="0.14"/>
+        <text x="43" y="66" class="mono" font-size="8.5" font-weight="700" fill="#c084fc" text-anchor="middle">0 DEADLOCKS</text>
+      </g>
+    </a>
+
+    <!-- CARD 4: ProxiSpeak -->
+    <a xlink:href="https://github.com/Dev-5678/ProxiSpeak" target="_blank" class="tech-card" transform="translate(228, 102)">
+      <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
+      <g transform="translate(14, 16)">
+        <text class="mono" font-size="8" font-weight="700" fill="#10b981">SPATIAL WEBRTC</text>
+        <text y="18" class="display card-title" font-size="14" fill="#ffffff">ProxiSpeak</text>
+        <text y="34" class="sans" font-size="9.5" fill="#94a3b8">Geospatial WebRTC proximity</text>
+        <text y="46" class="sans" font-size="9.5" fill="#94a3b8">audio with HRTF Doppler.</text>
+        
+        <rect y="54" width="86" height="17" rx="3" fill="#10b981" fill-opacity="0.14"/>
+        <text x="43" y="66" class="mono" font-size="8.5" font-weight="700" fill="#34d399" text-anchor="middle">&lt; 24ms AUDIO</text>
+      </g>
+    </a>
   </g>
 
-  <!-- Target 3: HyperRoute Gateway Cluster Node -->
-  <g transform="translate(50, -90)">
-    <rect x="-3" y="-3" width="6" height="6" fill="#38bdf8" class="blink"/>
-    <line x1="0" y1="0" x2="-14" y2="-10" stroke="#38bdf8" stroke-width="1.2"/>
-    <text x="-16" y="-14" class="mono" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="end">EDGE-HYPER-01</text>
-    <text x="-16" y="-3" class="mono" font-size="8" fill="#94a3b8" text-anchor="end">p99: 2.1ms</text>
+  <!-- Live Status Metric Footer on Right -->
+  <g transform="translate(0, 312)">
+    <rect width="442" height="28" rx="4" fill="#061224" stroke="#1e293b" stroke-width="1.2"/>
+    <circle cx="14" cy="14" r="3.5" fill="#10b981" class="blink"/>
+    <text x="25" y="18" class="mono" font-size="8.5" font-weight="700" fill="#94a3b8">
+      STATUS: <tspan fill="#34d399">OPERATIONAL</tspan> │ UPTIME: <tspan fill="#38bdf8">99.98%</tspan> │ ARCH: <tspan fill="#c084fc">DISTRIBUTED</tspan>
+    </text>
   </g>
 </g>
 
-<!-- BOTTOM TICKER STRIP -->
-<line x1="24" y1="452" x2="976" y2="452" stroke="#ff5500" stroke-opacity="0.3"/>
-<text x="32" y="466" class="mono" font-size="9.5" fill="#94a3b8">
-  PRIMARY FLIGHT RADAR // <tspan fill="#10b981">VHF BRIDGE STABLE</tspan> // <tspan fill="#38bdf8">CRDT SEC SYNC ACTIVE</tspan> // <tspan fill="#ff7700">AVX2 SIMD ENABLED</tspan>
-</text>
-<text x="968" y="466" class="mono" font-size="9.5" fill="#38bdf8" text-anchor="end">
-  OPERATOR STATUS: VERIFIED
-</text>
+<!-- ================= 05. BOTTOM ARCHITECTURAL TICKER (PERFECTLY ANCHORED, ZERO OVERFLOW) ================= -->
+<g transform="translate(14, 420)">
+  <line x1="22" y1="0" x2="950" y2="0" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.8"/>
+  
+  <!-- Left Telemetry Text -->
+  <text x="20" y="16" class="mono" font-size="8.5" fill="#64748b">
+    CORE: <tspan fill="#94a3b8">TYPESCRIPT</tspan> &#8226; <tspan fill="#94a3b8">GO</tspan> &#8226; <tspan fill="#94a3b8">NODE.JS</tspan> &#8226; <tspan fill="#94a3b8">WEBRTC</tspan> &#8226; <tspan fill="#94a3b8">CRDT SEMILATTICES</tspan> &#8226; <tspan fill="#94a3b8">DOCKER &amp; CI/CD</tspan>
+  </text>
+  
+  <!-- Right Status Block: strictly inside the chassis (ends at x=915, leaving 49px clear buffer before corner bracket at 964) -->
+  <g transform="translate(915, 16)">
+    <circle cx="-178" cy="-3.5" r="3" fill="#10b981" class="blink"/>
+    <text class="mono" font-size="8.5" font-weight="700" fill="#10b981" text-anchor="end">SYSTEMS GREEN &#8226; ALL TESTS PASSING</text>
+  </g>
+</g>
+
 </svg>

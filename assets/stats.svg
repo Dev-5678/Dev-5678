@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="100%" height="100%">
+<defs>
+  <!-- Background Carbon & Slate Gradients -->
+  <linearGradient id="statsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#040711"/>
+    <stop offset="50%" stop-color="#070e1c"/>
+    <stop offset="100%" stop-color="#03050c"/>
+  </linearGradient>
+
+  <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#00d4ff"/>
+    <stop offset="100%" stop-color="#00ffcc"/>
+  </linearGradient>
+
+  <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff7b00"/>
+    <stop offset="100%" stop-color="#ffaa00"/>
+  </linearGradient>
+
+  <linearGradient id="energyBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.9"/>
+    <stop offset="50%" stop-color="#00ffcc" stop-opacity="0.9"/>
+    <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.3"/>
+  </linearGradient>
+
+  <!-- Filter for High-Intensity Neon Glow -->
+  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+
+<style>
+  .mono { font-family: 'JetBrains Mono', 'Fira Code', 'SF Pro Mono', Menlo, Consolas, monospace; }
+  .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif; }
+  .display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial Black', sans-serif; font-weight: 900; }
+
+  @keyframes blinkLed { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.2; } }
+  @keyframes energyCirc { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -800; } }
+  @keyframes waveFlow { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -80; } }
+  @keyframes pulseMeter { 0%, 100% { opacity: 0.85; } 50% { opacity: 1; filter: drop-shadow(0 0 6px #00ffcc); } }
+
+  .blink { animation: blinkLed 1.2s infinite; }
+  .energy-border { animation: energyCirc 10s linear infinite; }
+  .wave-anim { stroke-dasharray: 6 3; animation: waveFlow 1.4s linear infinite; }
+  .meter-glow { animation: pulseMeter 2.5s ease-in-out infinite; }
+  .stat-panel { cursor: pointer; transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease; }
+  .stat-panel:hover { transform: translateY(-2px); filter: drop-shadow(0 0 14px rgba(0, 212, 255, 0.45)); }
+  .stat-panel:hover rect { stroke: #00ffcc !important; }
+</style>
+
+<!-- Main Chassis Panel -->
+<rect x="0" y="0" width="1000" height="240" rx="10" fill="url(#statsBg)" stroke="#1a2b4c" stroke-width="1.5"/>
+<rect x="2" y="2" width="996" height="236" rx="9" fill="none" stroke="url(#energyBorderGrad)" stroke-width="1.5" stroke-dasharray="80 320" class="energy-border"><animate attributeName="stroke-dashoffset" from="0" to="-800" dur="8s" repeatCount="indefinite"/></rect>
+
+<!-- Corner Cyber Brackets -->
+<path d="M 0 16 L 0 0 L 16 0" fill="none" stroke="#00ffcc" stroke-width="2"/>
+<path d="M 984 0 L 1000 0 L 1000 16" fill="none" stroke="#00ffcc" stroke-width="2"/>
+<path d="M 1000 224 L 1000 240 L 984 240" fill="none" stroke="#00ffcc" stroke-width="2"/>
+<path d="M 16 240 L 0 240 L 0 224" fill="none" stroke="#00ffcc" stroke-width="2"/>
+
+<!-- Header Bar -->
+<rect x="0" y="0" width="1000" height="34" fill="#060b17" rx="10" stroke="#162238" stroke-width="1"/>
+<circle cx="20" cy="17" r="4.5" fill="#ff5f56"/>
+<circle cx="36" cy="17" r="4.5" fill="#ffbd2e"/>
+<circle cx="52" cy="17" r="4.5" fill="#27c93f"/>
+
+<text x="74" y="21" class="mono" font-size="10" font-weight="700" fill="#738a9c">
+  dev-jangid@telemetry:~/$ <tspan fill="#00d4ff">sysctl --verified-benchmarks --production</tspan>
+</text>
+
+<!-- Top Right Status Badge -->
+<g transform="translate(820, 10)">
+  <rect x="0" y="0" width="165" height="15" rx="3" fill="#040812" stroke="#10b981" stroke-width="1"/>
+  <circle cx="10" cy="7.5" r="3" fill="#10b981" class="blink"/>
+  <text x="20" y="11" class="mono" font-size="8" font-weight="700" fill="#10b981">SYSTEM METRICS VERIFIED</text>
+</g>
+
+<!-- ==================================================================== -->
+<!-- COLUMN 1: ANNUAL VELOCITY & CONSISTENCY (x: 20 to 320) -->
+<!-- ==================================================================== -->
+<g transform="translate(24, 48)" class="stat-panel">
+  <rect x="0" y="0" width="300" height="174" rx="6" fill="#060c1a" stroke="#172846" stroke-width="1"/>
+  <text x="14" y="22" class="mono" font-size="9" font-weight="700" fill="#738a9c" letter-spacing="1">ANNUAL ENGINEERING VELOCITY</text>
+  <line x1="14" y1="30" x2="286" y2="30" stroke="#172846" stroke-width="1"/>
+
+  <!-- Metric 1: 523 Contributions -->
+  <g transform="translate(14, 42)">
+    <circle cx="24" cy="24" r="22" fill="#040812" stroke="#00ffcc" stroke-width="2" class="meter-glow"><animate attributeName="stroke-width" values="2;3.2;2" dur="2.4s" repeatCount="indefinite"/><animate attributeName="stroke" values="#00ffcc;#00d4ff;#00ffcc" dur="2.4s" repeatCount="indefinite"/></circle>
+    <text x="24" y="28" class="display" font-size="14" fill="#00ffcc" text-anchor="middle">523</text>
+    <text x="58" y="20" class="mono" font-size="11" font-weight="800" fill="#ffffff">ANNUAL COMMITS</text>
+    <text x="58" y="34" class="sans" font-size="9" fill="#738a9c">Rank: Top 1% Student Engineers</text>
+  </g>
+
+  <!-- Metric 2: 191 Active Days & 42-Day Streak -->
+  <g transform="translate(14, 98)">
+    <rect x="0" y="0" width="130" height="60" rx="4" fill="#030712" stroke="#1f355b" stroke-width="1"/>
+    <text x="10" y="18" class="mono" font-size="8" fill="#738a9c">CALENDAR CONSISTENCY</text>
+    <text x="10" y="40" class="display" font-size="18" fill="#00d4ff">191</text>
+    <text x="48" y="40" class="mono" font-size="9" fill="#e2e8f0">ACTIVE DAYS</text>
+    <text x="10" y="52" class="sans" font-size="7.5" fill="#10b981">✓ Natural year-round activity</text>
+  </g>
+
+  <g transform="translate(152, 98)">
+    <rect x="0" y="0" width="134" height="60" rx="4" fill="#030712" stroke="#1f355b" stroke-width="1"/>
+    <text x="10" y="18" class="mono" font-size="8" fill="#ffaa00">DAILY STREAK</text>
+    <text x="10" y="40" class="display" font-size="18" fill="#ffaa00">42</text>
+    <text x="40" y="40" class="mono" font-size="9" fill="#e2e8f0">DAYS ACTIVE</text>
+    <text x="10" y="52" class="sans" font-size="7.5" fill="#10b981">✓ Unbroken green streak</text>
+  </g>
+</g>
+
+<!-- ==================================================================== -->
+<!-- COLUMN 2: BENCHMARK TELEMETRY & SYSTEM PERFORMANCE (x: 340 to 660) -->
+<!-- ==================================================================== -->
+<g transform="translate(340, 48)" class="stat-panel">
+  <rect x="0" y="0" width="310" height="174" rx="6" fill="#060c1a" stroke="#172846" stroke-width="1"/>
+  <text x="14" y="22" class="mono" font-size="9" font-weight="700" fill="#738a9c" letter-spacing="1">DISTRIBUTED SYSTEMS PERFORMANCE</text>
+  <line x1="14" y1="30" x2="296" y2="30" stroke="#172846" stroke-width="1"/>
+
+  <!-- Row 1: HyperRoute -->
+  <g transform="translate(14, 40)">
+    <text x="0" y="12" class="mono" font-size="9.5" font-weight="700" fill="#ff5500">HyperRoute Gateway</text>
+    <text x="180" y="12" class="mono" font-size="9" font-weight="700" fill="#00ffcc">p99 &lt; 2.1ms</text>
+    <text x="245" y="12" class="mono" font-size="8" fill="#738a9c">142k r/s</text>
+    <rect x="0" y="18" width="280" height="4" rx="2" fill="#0c1626"/>
+    <rect x="0" y="18" width="255" height="4" rx="2" fill="url(#cyanAccent)"/>
+  </g>
+
+  <!-- Row 2: NexusCRDT -->
+  <g transform="translate(14, 72)">
+    <text x="0" y="12" class="mono" font-size="9.5" font-weight="700" fill="#00d4ff">NexusCRDT Canvas</text>
+    <text x="180" y="12" class="mono" font-size="9" font-weight="700" fill="#00ffcc">100% SYNC</text>
+    <text x="245" y="12" class="mono" font-size="8" fill="#738a9c">12-Peers</text>
+    <rect x="0" y="18" width="280" height="4" rx="2" fill="#0c1626"/>
+    <rect x="0" y="18" width="270" height="4" rx="2" fill="url(#cyanAccent)"/>
+  </g>
+
+  <!-- Row 3: ProxiSpeak -->
+  <g transform="translate(14, 104)">
+    <text x="0" y="12" class="mono" font-size="9.5" font-weight="700" fill="#10b981">ProxiSpeak WebRTC</text>
+    <text x="180" y="12" class="mono" font-size="9" font-weight="700" fill="#00ffcc">&lt; 24ms</text>
+    <text x="245" y="12" class="mono" font-size="8" fill="#738a9c">60Hz DSP</text>
+    <rect x="0" y="18" width="280" height="4" rx="2" fill="#0c1626"/>
+    <rect x="0" y="18" width="240" height="4" rx="2" fill="url(#cyanAccent)"/>
+  </g>
+
+  <!-- Row 4: AgentForge -->
+  <g transform="translate(14, 136)">
+    <text x="0" y="12" class="mono" font-size="9.5" font-weight="700" fill="#a855f7">AgentForge DAG</text>
+    <text x="180" y="12" class="mono" font-size="9" font-weight="700" fill="#00ffcc">0 DEADLOCKS</text>
+    <text x="245" y="12" class="mono" font-size="8" fill="#738a9c">Kahn Sort</text>
+    <rect x="0" y="18" width="280" height="4" rx="2" fill="#0c1626"/>
+    <rect x="0" y="18" width="280" height="4" rx="2" fill="url(#cyanAccent)"/>
+  </g>
+</g>
+
+<!-- ==================================================================== -->
+<!-- COLUMN 3: CI/CD & LIVE TELEMETRY OSCILLOSCOPE (x: 666 to 976) -->
+<!-- ==================================================================== -->
+<g transform="translate(666, 48)" class="stat-panel">
+  <rect x="0" y="0" width="310" height="174" rx="6" fill="#060c1a" stroke="#172846" stroke-width="1"/>
+  <text x="14" y="22" class="mono" font-size="9" font-weight="700" fill="#738a9c" letter-spacing="1">LIVE TELEMETRY &amp; CI/CD</text>
+  <line x1="14" y1="30" x2="296" y2="30" stroke="#172846" stroke-width="1"/>
+
+  <!-- CI Pass Badge -->
+  <g transform="translate(14, 40)">
+    <rect x="0" y="0" width="134" height="42" rx="4" fill="#030712" stroke="#10b981" stroke-width="1"/>
+    <circle cx="12" cy="14" r="3" fill="#10b981" class="blink"/>
+    <text x="22" y="17" class="mono" font-size="8" font-weight="700" fill="#10b981">AUTOMATED CI</text>
+    <text x="12" y="34" class="display" font-size="13" fill="#ffffff">72/72 PASSING</text>
+  </g>
+
+  <!-- Architecture Badge -->
+  <g transform="translate(156, 40)">
+    <rect x="0" y="0" width="134" height="42" rx="4" fill="#030712" stroke="#00d4ff" stroke-width="1"/>
+    <circle cx="12" cy="14" r="3" fill="#00d4ff"/>
+    <text x="22" y="17" class="mono" font-size="8" font-weight="700" fill="#00d4ff">ENTERPRISE SLA</text>
+    <text x="12" y="34" class="display" font-size="13" fill="#ffffff">99.95% UPTIME</text>
+  </g>
+
+  <!-- Live Oscilloscope Audio / Network Waveform -->
+  <g transform="translate(14, 94)">
+    <rect x="0" y="0" width="276" height="66" rx="4" fill="#02050e" stroke="#15243d" stroke-width="1"/>
+    <text x="10" y="16" class="mono" font-size="7.5" fill="#738a9c">LIVE PACKET FLOW // WEBRTC DATACHANNEL</text>
+    
+    <!-- Animated SVG Waveform -->
+    <path d="M 10 40 Q 25 20, 40 40 T 70 40 T 100 40 T 130 40 T 160 40 T 190 40 T 220 40 T 250 40 T 270 40" 
+          fill="none" stroke="#00ffcc" stroke-width="1.8" class="wave-anim" filter="url(#neonGlow)"><animate attributeName="stroke-dashoffset" from="0" to="-72" dur="1.3s" repeatCount="indefinite"/></path>
+    
+    <path d="M 10 40 Q 20 52, 35 40 T 65 40 T 95 40 T 125 40 T 155 40 T 185 40 T 215 40 T 245 40 T 270 40" 
+          fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.6" class="wave-anim"/>
+
+    <text x="10" y="58" class="mono" font-size="7" fill="#10b981">● REAL-TIME SYNCHRONIZED</text>
+    <text x="200" y="58" class="mono" font-size="7" fill="#00d4ff">JITTER: 1.2ms</text>
+  </g>
+</g>
+
+</svg>
