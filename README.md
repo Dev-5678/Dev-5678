@@ -24,7 +24,7 @@
   &nbsp;&nbsp;
   <a href="https://github.com/Dev-5678/dev-jangid-portfolio/actions" target="_blank"><img src="https://img.shields.io/badge/CI%20VERIFIED-72%2F72%20PASSING-10b981?style=flat-square&labelColor=080e1c" alt="CI Verification"/></a>
   &nbsp;&nbsp;
-  <a href="https://github.com/Dev-5678"><img src="https://img.shields.io/badge/CONTRIBUTIONS-523_ANNUAL-00ffcc?style=flat-square&labelColor=080e1c" alt="Annual Contributions"/></a>
+  <a href="https://github.com/Dev-5678"><img src="https://img.shields.io/badge/CONTRIBUTIONS-500+_ANNUAL-00ffcc?style=flat-square&labelColor=080e1c" alt="Annual Contributions"/></a>
 </p>
 
 <br/>
@@ -39,34 +39,40 @@
 <!-- INTERACTIVE REPO LAUNCH MATRIX (WITH HOVER EFFECTS & DIRECT REPO ROUTING) -->
 <table align="center" width="100%">
   <tr>
-    <td align="center" width="20%">
+    <td align="center" width="16.6%">
       <a href="https://github.com/Dev-5678/HyperRoute" target="_blank">
-        <img src="https://img.shields.io/badge/01_HYPERROUTE-SUB--2.8ms_GATEWAY-ff5500?style=for-the-badge&logo=fastify&logoColor=white&labelColor=030508" alt="HyperRoute Gateway"/><br/>
-        <sub><b>⚡ Sub-2.8ms Reverse Proxy &amp; Limiter</b></sub>
+        <img src="https://img.shields.io/badge/01_HYPERROUTE-ff5500?style=for-the-badge&logo=fastify&logoColor=white&labelColor=030508" alt="HyperRoute Gateway"/><br/>
+        <sub><b>⚡ Sub-2.8ms Edge Gateway</b></sub>
       </a>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16.6%">
       <a href="https://github.com/Dev-5678/NexusCRDT" target="_blank">
-        <img src="https://img.shields.io/badge/02_NEXUSCRDT-CRDT_SEMILATTICE-00d4ff?style=for-the-badge&logo=typescript&logoColor=white&labelColor=030508" alt="NexusCRDT Engine"/><br/>
-        <sub><b>🧬 Conflict-Free Replicated State</b></sub>
+        <img src="https://img.shields.io/badge/02_NEXUSCRDT-00d4ff?style=for-the-badge&logo=typescript&logoColor=white&labelColor=030508" alt="NexusCRDT Engine"/><br/>
+        <sub><b>🧬 CRDT Semilattice Canvas</b></sub>
       </a>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16.6%">
       <a href="https://github.com/Dev-5678/AgentForge" target="_blank">
-        <img src="https://img.shields.io/badge/03_AGENTFORGE-KAHN_DAG_RUNTIME-a855f7?style=for-the-badge&logo=apacheairflow&logoColor=white&labelColor=030508" alt="AgentForge DAG Runtime"/><br/>
-        <sub><b>🤖 Topological Autonomous DAG</b></sub>
+        <img src="https://img.shields.io/badge/03_AGENTFORGE-a855f7?style=for-the-badge&logo=apacheairflow&logoColor=white&labelColor=030508" alt="AgentForge DAG Runtime"/><br/>
+        <sub><b>🤖 Kahn DAG Task Engine</b></sub>
       </a>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16.6%">
       <a href="https://github.com/Dev-5678/ProxiSpeak" target="_blank">
-        <img src="https://img.shields.io/badge/04_PROXISPEAK-SPATIAL_WEBRTC-10b981?style=for-the-badge&logo=webrtc&logoColor=white&labelColor=030508" alt="ProxiSpeak Gateway"/><br/>
-        <sub><b>🎧 Geospatial HRTC WebRTC Audio</b></sub>
+        <img src="https://img.shields.io/badge/04_PROXISPEAK-10b981?style=for-the-badge&logo=webrtc&logoColor=white&labelColor=030508" alt="ProxiSpeak Gateway"/><br/>
+        <sub><b>🎧 Geospatial WebRTC Audio</b></sub>
       </a>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16.6%">
+      <a href="https://github.com/Dev-5678/aai-cns-atm-telemetry" target="_blank">
+        <img src="https://img.shields.io/badge/05_AAI_RADAR-ffaa00?style=for-the-badge&logo=radar&logoColor=white&labelColor=030508" alt="AAI CNS/ATM Radar Telemetry"/><br/>
+        <sub><b>🛰️ ASTERIX Cat 048 Parser</b></sub>
+      </a>
+    </td>
+    <td align="center" width="16.6%">
       <a href="https://dev-jangid-portfolio.vercel.app" target="_blank">
-        <img src="https://img.shields.io/badge/05_3D_PORTFOLIO-THREE.JS_WEBGL-ffaa00?style=for-the-badge&logo=threedotjs&logoColor=white&labelColor=030508" alt="3D Portfolio Vercel"/><br/>
-        <sub><b>🌐 Interactive Mechanical Cockpit</b></sub>
+        <img src="https://img.shields.io/badge/06_3D_PORTFOLIO-00ffcc?style=for-the-badge&logo=threedotjs&logoColor=white&labelColor=030508" alt="3D Portfolio Vercel"/><br/>
+        <sub><b>🌐 Mechanical 3D Terminal</b></sub>
       </a>
     </td>
   </tr>
@@ -156,16 +162,28 @@ cd NexusCRDT && npm install && npm run test:convergence
 
 <!-- BLUEPRINT 04: AAI CNS/ATM Case Study -->
 <details>
-<summary><img src="https://img.shields.io/badge/BLUEPRINT_04-AAI_CNS%2FATM-ffaa00?style=for-the-badge&logo=radar&logoColor=white"/> <b>&nbsp;&nbsp;Airports Authority of India (CNS/ATM Telemetry &amp; Flight Radar Case Study)</b></summary>
+<summary><img src="https://img.shields.io/badge/BLUEPRINT_04-AAI_CNS%2FATM_RADAR-ffaa00?style=for-the-badge&logo=radar&logoColor=white"/> <b>&nbsp;&nbsp;Airports Authority of India (CNS/ATM Radar Telemetry &amp; Multicast Segregator)</b></summary>
 <br/>
 
-> **Industrial Scope:** Flight radar feed segregation, enterprise network partitioning, and mission-critical voice/surveillance loops with zero broadcast storm loops.
+> **Industrial Scope:** Flight radar feed segregation, EUROCONTROL ASTERIX Cat 048 binary decoding, enterprise UDP multicast partitioning, and mission-critical surveillance loops with zero broadcast storm loops.
 
 <div align="center">
   <img src="./assets/deployments.svg" width="100%" alt="Enterprise Telemetry &amp; Network Segregation Infrastructure"/>
   <br/>
   <img src="./assets/experience.svg" width="100%" alt="Verified Engineering Track Record &amp; Education"/>
 </div>
+
+#### Radar Processing Telemetry:
+* **ASTERIX Cat 048 Throughput:** `> 420,000 frames/sec`
+* **WGS-84 Coordinate Projections:** `> 1,300,000 ops/sec`
+* **Loss-of-Separation Threshold:** `3.0 NM` lateral / `1,000 ft` vertical
+
+```bash
+# Verify AAI CNS/ATM telemetry decoder & test suite:
+git clone https://github.com/Dev-5678/aai-cns-atm-telemetry.git
+cd aai-cns-atm-telemetry && npm test
+```
+<p align="right"><a href="https://github.com/Dev-5678/aai-cns-atm-telemetry" target="_blank"><b>Explore Full AAI Radar Telemetry Codebase ↗</b></a></p>
 </details>
 
 <br/>
