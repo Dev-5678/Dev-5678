@@ -18,13 +18,13 @@
 
 <!-- MISSION-CRITICAL METRIC BADGES -->
 <p align="center">
-  <a href="https://github.com/Dev-5678"><img src="https://komarev.com/ghpvc/?username=Dev-5678&label=PROFILE%20VIEWS&color=00d4ff&style=flat-square&labelColor=080e1c" alt="Profile Views"/></a>
+  <a href="https://github.com/iamdevjangid"><img src="https://komarev.com/ghpvc/?username=iamdevjangid&label=PROFILE%20VIEWS&color=00d4ff&style=flat-square&labelColor=080e1c" alt="Profile Views"/></a>
   &nbsp;&nbsp;
-  <a href="https://github.com/Dev-5678?tab=repositories"><img src="https://img.shields.io/badge/AAI%20CNS%2FATM-SYSTEMS%20INTERN-ffaa00?style=flat-square&labelColor=080e1c" alt="Airports Authority of India Intern"/></a>
+  <a href="https://github.com/iamdevjangid?tab=repositories"><img src="https://img.shields.io/badge/AAI%20CNS%2FATM-SYSTEMS%20INTERN-ffaa00?style=flat-square&labelColor=080e1c" alt="Airports Authority of India Intern"/></a>
   &nbsp;&nbsp;
-  <a href="https://github.com/Dev-5678/dev-jangid-portfolio/actions" target="_blank"><img src="https://img.shields.io/badge/CI%20VERIFIED-72%2F72%20PASSING-10b981?style=flat-square&labelColor=080e1c" alt="CI Verification"/></a>
+  <a href="https://github.com/iamdevjangid/dev-jangid-portfolio/actions" target="_blank"><img src="https://img.shields.io/badge/CI%20VERIFIED-72%2F72%20PASSING-10b981?style=flat-square&labelColor=080e1c" alt="CI Verification"/></a>
   &nbsp;&nbsp;
-  <a href="https://github.com/Dev-5678"><img src="https://img.shields.io/badge/CONTRIBUTIONS-500+_ANNUAL-00ffcc?style=flat-square&labelColor=080e1c" alt="Annual Contributions"/></a>
+  <a href="https://github.com/iamdevjangid"><img src="https://img.shields.io/badge/CONTRIBUTIONS-500+_ANNUAL-00ffcc?style=flat-square&labelColor=080e1c" alt="Annual Contributions"/></a>
 </p>
 
 <br/>
@@ -40,31 +40,31 @@
 <table align="center" width="100%">
   <tr>
     <td align="center" width="16.6%">
-      <a href="https://github.com/Dev-5678/HyperRoute" target="_blank">
+      <a href="https://github.com/iamdevjangid/HyperRoute" target="_blank">
         <img src="https://img.shields.io/badge/01_HYPERROUTE-ff5500?style=for-the-badge&logo=fastify&logoColor=white&labelColor=030508" alt="HyperRoute Gateway"/><br/>
         <sub><b>⚡ Sub-2.8ms Edge Gateway</b></sub>
       </a>
     </td>
     <td align="center" width="16.6%">
-      <a href="https://github.com/Dev-5678/NexusCRDT" target="_blank">
+      <a href="https://github.com/iamdevjangid/NexusCRDT" target="_blank">
         <img src="https://img.shields.io/badge/02_NEXUSCRDT-00d4ff?style=for-the-badge&logo=typescript&logoColor=white&labelColor=030508" alt="NexusCRDT Engine"/><br/>
         <sub><b>🧬 CRDT Semilattice Canvas</b></sub>
       </a>
     </td>
     <td align="center" width="16.6%">
-      <a href="https://github.com/Dev-5678/AgentForge" target="_blank">
+      <a href="https://github.com/iamdevjangid/AgentForge" target="_blank">
         <img src="https://img.shields.io/badge/03_AGENTFORGE-a855f7?style=for-the-badge&logo=apacheairflow&logoColor=white&labelColor=030508" alt="AgentForge DAG Runtime"/><br/>
         <sub><b>🤖 Kahn DAG Task Engine</b></sub>
       </a>
     </td>
     <td align="center" width="16.6%">
-      <a href="https://github.com/Dev-5678/ProxiSpeak" target="_blank">
+      <a href="https://github.com/iamdevjangid/ProxiSpeak" target="_blank">
         <img src="https://img.shields.io/badge/04_PROXISPEAK-10b981?style=for-the-badge&logo=webrtc&logoColor=white&labelColor=030508" alt="ProxiSpeak Gateway"/><br/>
         <sub><b>🎧 Geospatial WebRTC Audio</b></sub>
       </a>
     </td>
     <td align="center" width="16.6%">
-      <a href="https://github.com/Dev-5678/aai-cns-atm-telemetry" target="_blank">
+      <a href="https://github.com/iamdevjangid/aai-cns-atm-telemetry" target="_blank">
         <img src="https://img.shields.io/badge/05_AAI_RADAR-ffaa00?style=for-the-badge&logo=radar&logoColor=white&labelColor=030508" alt="AAI CNS/ATM Radar Telemetry"/><br/>
         <sub><b>🛰️ ASTERIX Cat 048 Parser</b></sub>
       </a>
@@ -105,10 +105,10 @@
 
 ```bash
 # Verify HyperRoute benchmark cluster locally:
-git clone https://github.com/Dev-5678/HyperRoute.git
+git clone https://github.com/iamdevjangid/HyperRoute.git
 cd HyperRoute && npm install && npm test
 ```
-<p align="right"><a href="https://github.com/Dev-5678/HyperRoute" target="_blank"><b>Explore Full HyperRoute Codebase ↗</b></a></p>
+<p align="right"><a href="https://github.com/iamdevjangid/HyperRoute" target="_blank"><b>Explore Full HyperRoute Codebase ↗</b></a></p>
 </details>
 
 <br/>
@@ -131,10 +131,10 @@ cd HyperRoute && npm install && npm test
 
 ```bash
 # Run 12-peer partition convergence stress test:
-git clone https://github.com/Dev-5678/NexusCRDT.git
+git clone https://github.com/iamdevjangid/NexusCRDT.git
 cd NexusCRDT && npm install && npm run test:convergence
 ```
-<p align="right"><a href="https://github.com/Dev-5678/NexusCRDT" target="_blank"><b>Explore Full NexusCRDT Codebase ↗</b></a></p>
+<p align="right"><a href="https://github.com/iamdevjangid/NexusCRDT" target="_blank"><b>Explore Full NexusCRDT Codebase ↗</b></a></p>
 </details>
 
 <br/>
@@ -155,7 +155,7 @@ cd NexusCRDT && npm install && npm run test:convergence
 * **Doppler Shift Engine:** Velocity-vector frequency modulation with dynamic observer vector math.
 * **Spatial Horizon Culling:** 2D QuadTree spatial index pruning all peers outside 150px hearing radius to conserve peer-to-peer WebRTC mesh bandwidth.
 
-<p align="right"><a href="https://github.com/Dev-5678/ProxiSpeak" target="_blank"><b>Explore Full ProxiSpeak Codebase ↗</b></a></p>
+<p align="right"><a href="https://github.com/iamdevjangid/ProxiSpeak" target="_blank"><b>Explore Full ProxiSpeak Codebase ↗</b></a></p>
 </details>
 
 <br/>
@@ -180,10 +180,10 @@ cd NexusCRDT && npm install && npm run test:convergence
 
 ```bash
 # Verify AAI CNS/ATM telemetry decoder & test suite:
-git clone https://github.com/Dev-5678/aai-cns-atm-telemetry.git
+git clone https://github.com/iamdevjangid/aai-cns-atm-telemetry.git
 cd aai-cns-atm-telemetry && npm test
 ```
-<p align="right"><a href="https://github.com/Dev-5678/aai-cns-atm-telemetry" target="_blank"><b>Explore Full AAI Radar Telemetry Codebase ↗</b></a></p>
+<p align="right"><a href="https://github.com/iamdevjangid/aai-cns-atm-telemetry" target="_blank"><b>Explore Full AAI Radar Telemetry Codebase ↗</b></a></p>
 </details>
 
 <br/>
@@ -192,7 +192,7 @@ cd aai-cns-atm-telemetry && npm test
 <div align="center">
 <h2 id="-live-telemetry--metrics">📊 LIVE ENGINEERING TELEMETRY &amp; METRICS</h2>
 
-<a href="https://github.com/Dev-5678">
+<a href="https://github.com/iamdevjangid">
   <img src="./assets/stats.svg" width="100%" alt="Dev Jangid Live Engineering Telemetry &amp; Metrics" />
 </a>
 
@@ -219,13 +219,13 @@ cd aai-cns-atm-telemetry && npm test
     <img src="https://img.shields.io/badge/PORTFOLIO-DEV--JANGID--PORTFOLIO.VERCEL.APP-c084fc?style=for-the-badge&logo=vercel&logoColor=white&labelColor=080e1c" alt="Live Portfolio"/>
   </a>
   &nbsp;&nbsp;
-  <a href="https://github.com/Dev-5678" target="_blank">
-    <img src="https://img.shields.io/badge/GITHUB-DEV_5678-10b981?style=for-the-badge&logo=github&logoColor=white&labelColor=080e1c" alt="GitHub Profile"/>
+  <a href="https://github.com/iamdevjangid" target="_blank">
+    <img src="https://img.shields.io/badge/GITHUB-IAMDEVJANGID-10b981?style=for-the-badge&logo=github&logoColor=white&labelColor=080e1c" alt="GitHub Profile"/>
   </a>
 </p>
 
 <!-- WAVING CYBER FOOTER -->
-<a href="https://github.com/Dev-5678">
+<a href="https://github.com/iamdevjangid">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:030508,50:00d4ff,100:030508&height=110&section=footer" width="100%" alt="Waving Cyber Footer" />
 </a>
 

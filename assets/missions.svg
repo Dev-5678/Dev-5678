@@ -92,7 +92,7 @@
 
 <!-- ROW 1: 2 FLAGSHIP CARDS -->
 <!-- 1. HyperRoute Gateway (CLICKABLE LIVE REPOSITORY) -->
-<a xlink:href="https://github.com/Dev-5678/HyperRoute" target="_blank" class="interactive-card">
+<a xlink:href="https://github.com/iamdevjangid/HyperRoute" target="_blank" class="interactive-card">
 <g transform="translate(42, 118)">
   <polygon points="16,0 445,0 445,224 425,244 0,244 0,16" fill="#070c16" stroke="#ff5500" stroke-opacity="0.6" stroke-width="1.2"/>
   <g transform="translate(20, 20)">
@@ -126,7 +126,7 @@
 </a>
 
 <!-- 2. NexusCRDT Engine (CLICKABLE LIVE REPOSITORY) -->
-<a xlink:href="https://github.com/Dev-5678/NexusCRDT" target="_blank" class="interactive-card">
+<a xlink:href="https://github.com/iamdevjangid/NexusCRDT" target="_blank" class="interactive-card">
 <g transform="translate(513, 118)">
   <polygon points="16,0 445,0 445,224 425,244 0,244 0,16" fill="#070c16" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="1.2"/>
   <g transform="translate(20, 20)">
@@ -161,7 +161,7 @@
 
 <!-- ROW 2: 2 FLAGSHIP CARDS -->
 <!-- 3. AgentForge DAG Runtime (CLICKABLE LIVE REPOSITORY) -->
-<a xlink:href="https://github.com/Dev-5678/AgentForge" target="_blank" class="interactive-card">
+<a xlink:href="https://github.com/iamdevjangid/AgentForge" target="_blank" class="interactive-card">
 <g transform="translate(42, 382)">
   <polygon points="16,0 445,0 445,224 425,244 0,244 0,16" fill="#070c16" stroke="#a855f7" stroke-opacity="0.6" stroke-width="1.2"/>
   <g transform="translate(20, 20)">
@@ -195,7 +195,7 @@
 </a>
 
 <!-- 4. ProxiSpeak Spatial Gateway (CLICKABLE LIVE REPOSITORY) -->
-<a xlink:href="https://github.com/Dev-5678/ProxiSpeak" target="_blank" class="interactive-card">
+<a xlink:href="https://github.com/iamdevjangid/ProxiSpeak" target="_blank" class="interactive-card">
 <g transform="translate(513, 382)">
   <polygon points="16,0 445,0 445,224 425,244 0,244 0,16" fill="#070c16" stroke="#10b981" stroke-opacity="0.6" stroke-width="1.2"/>
   <g transform="translate(20, 20)">

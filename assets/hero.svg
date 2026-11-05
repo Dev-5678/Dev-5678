@@ -331,7 +331,7 @@
   <g transform="translate(0, 112)">
     
     <!-- CARD 1: HyperRoute Gateway -->
-    <a xlink:href="https://github.com/Dev-5678/HyperRoute" target="_blank" class="tech-card">
+    <a xlink:href="https://github.com/iamdevjangid/HyperRoute" target="_blank" class="tech-card">
       <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
       <g transform="translate(14, 16)">
         <text class="mono" font-size="8" font-weight="700" fill="#ff7700">REVERSE PROXY</text>
@@ -345,7 +345,7 @@
     </a>
 
     <!-- CARD 2: NexusCRDT -->
-    <a xlink:href="https://github.com/Dev-5678/NexusCRDT" target="_blank" class="tech-card" transform="translate(228, 0)">
+    <a xlink:href="https://github.com/iamdevjangid/NexusCRDT" target="_blank" class="tech-card" transform="translate(228, 0)">
       <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
       <g transform="translate(14, 16)">
         <text class="mono" font-size="8" font-weight="700" fill="#00d4ff">DISTRIBUTED SYNC</text>
@@ -359,7 +359,7 @@
     </a>
 
     <!-- CARD 3: AgentForge -->
-    <a xlink:href="https://github.com/Dev-5678/AgentForge" target="_blank" class="tech-card" transform="translate(0, 102)">
+    <a xlink:href="https://github.com/iamdevjangid/AgentForge" target="_blank" class="tech-card" transform="translate(0, 102)">
       <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
       <g transform="translate(14, 16)">
         <text class="mono" font-size="8" font-weight="700" fill="#a855f7">DAG RUNTIME</text>
@@ -373,7 +373,7 @@
     </a>
 
     <!-- CARD 4: ProxiSpeak -->
-    <a xlink:href="https://github.com/Dev-5678/ProxiSpeak" target="_blank" class="tech-card" transform="translate(228, 102)">
+    <a xlink:href="https://github.com/iamdevjangid/ProxiSpeak" target="_blank" class="tech-card" transform="translate(228, 102)">
       <rect class="card-bg" width="214" height="92" rx="6" fill="#050e1c" stroke="#1e293b" stroke-width="1.2"/>
       <g transform="translate(14, 16)">
         <text class="mono" font-size="8" font-weight="700" fill="#10b981">SPATIAL WEBRTC</text>
